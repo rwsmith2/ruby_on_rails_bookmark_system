@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+    <head>
+       <title>login page</title>
+    </head>
+    <body>
+       <%if @validation==false&& %>
+          <p>Invalid username and password combination</p>
+       <% end %>
+      
+        <form method='post' action="/login">
+           <p>
+            userID:<input name="id" type="text" value="<%=@id%>" autocomplete="off">
+            </p>
+            <p>
+            name:<input name="name" type="text" value="<%=@name%>">
+            </p>
+            <input type="submit" value="log in">
+        </form>
+    </body>
+</html>

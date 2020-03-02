@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<html>
+    <head>
+       <title>login page</title>
+    </head>
+    <body>
+       <%if @validation==false %>
+          <p>Invalid Username or Invalid Password</p>
+        <% end %>
+      <form method="post" action="/register">
+            <p>
+            id<input name="id" type="text" value="<%=@id%>">
+            name<input name="name" type="text" value="<%=@name%>">
+            gender<input name="gender" type="text" value="<%=@gender%>">
+            age<input name="age" type="text" value="<%=@age%>">
+            </p>
+            <input type="submit" value="add">
+        </form>
+    </body>
+</html>
