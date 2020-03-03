@@ -4,16 +4,10 @@ CREATE TABLE user (
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
     mobile_number TEXT,
-    password TEXT NOT NULL
-);
-
-CREATE TABLE user_condition (
-    user_id INTEGER NOT NULL PRIMARY KEY REFERENCES user(user_id),
+    password TEXT NOT NULL,
     access_level TEXT NOT NULL,
     suspended BOOLEAN NOT NULL
 );
-
-
 
 CREATE TABLE bookmark (
     bookmark_id INTEGER NOT NULL PRIMARY KEY,
@@ -47,3 +41,6 @@ CREATE TABLE bookmark_tag (
     bookmark_id INTEGER NOT NULL REFERENCES bookmark(bookmark_id),
     tag_id INTEGER NOT NULL REFERENCES tag(tag_id)
 );
+
+INSERT INTO user VALUES(1, "Jimmy", "Carr", "jimbo@gmail.com", "07382193828", "123", "employee", 0);
+INSERT INTO user VALUES(2, "James", "Acaster", "mra@hotmail.com", "07281829302", "my super secret password", "admin", 0);

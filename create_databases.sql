@@ -42,3 +42,5 @@ CREATE TABLE bookmark_tag (
     tag_id INTEGER REFERENCES tag(tag_id) FORIEGN KEY
 );
 
+INSERT INTO user VALUES(1, "Jimmy", "Carr", "jimbo@gmail.com", "07382193828", "123");
+INSERT INTO user VALUES(2, "James", "Acaster", "mra@hotmail.com", "07281829302", "my super secret password");

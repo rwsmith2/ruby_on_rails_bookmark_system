@@ -27,7 +27,7 @@ post '/login' do
    @validation=true
    @name=params[:name]
    @password=params[:password]
-   if Users.validation(@name,@passwoed)
+   if Users.validation(@name,@password)
        session[:name]=params[:name]
         $login=true
        redirect '/'
