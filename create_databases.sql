@@ -41,4 +41,3 @@ CREATE TABLE bookmark_tag (
     bookmark_id INTEGER REFERENCES bookmark(bookmark_id) FORIEGN KEY
     tag_id INTEGER REFERENCES tag(tag_id) FORIEGN KEY
 );
-

@@ -16,11 +16,12 @@ module Users
         return result 
     end
     
-    def Users.new(user_id,firstname,surname,email, mobile_number,password)
+    def Users.new(firstname,surname,email, mobile_number,password)
          db= @db=SQLite3::Database.new 'database/bookmark_system.sqlite'
-         query= "INSERT INTO user(user_id,firstname,surname,email, mobile_number,password) 
-                                                                      VALUES(?,?,?,?,?,?)"
-         result=db.execute query, user_id,firstname,surname,email, mobile_number,password
+         query= "INSERT INTO user(firstname,surname,email, mobile_number,password) 
+                                                                      VALUES(?,?,?,?,?)"
+         result=db.execute query, firstname,surname,email, mobile_number,password
+        
     end
     
     def Users.validation(name,password)
@@ -35,6 +36,5 @@ module Users
             end
         end
         return false
-    end
-            
+    end        
 end

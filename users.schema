@@ -1,5 +1,5 @@
 CREATE TABLE user (
-    user_id INTEGER NOT NULL PRIMARY KEY,
+    user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     firstname TEXT NOT NULL,
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
