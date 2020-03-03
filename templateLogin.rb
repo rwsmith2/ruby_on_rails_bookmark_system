@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative 'models/recruit.rb'
+also_reload 'models/*'
+require_relative 'models/users.rb'
 
 
 set :bind, '0.0.0.0'
@@ -24,10 +25,9 @@ end
 
 post '/login' do
    @validation=true
-   @id=params[:id]
    @name=params[:name]
-   if Recruit.validation(@id,@name)
-       puts Recruit.validation(@id,@name)
+   @password=params[:password]
+   if Users.validation(@name,@passwoed)
        session[:name]=params[:name]
         $login=true
        redirect '/'
@@ -43,14 +43,16 @@ end
 
 post '/register' do
     @validation=true
-    @id=params[:id].strip
-    @name=params[:name].strip
-    @gender=params[:gender]
-    @age=params[:age]
-    Recruit.new(@id,@name,@gender,@age)
-    @id_ok=!@id.nil? && @id=''
-    @name_ok=!@name.nil? && @name=''
-    if @id_ok&&@name_ok
+    @user_id=params[:name]
+    @firstname=params[:firstname].strip
+    @surname=params[:surname]
+    @email=params[:email] 
+    @mobile_number=params[:phone_number]
+    @password=params[:password].strip
+    Users.new(user_id,firstname,surname,email, mobile_number,password)
+    @user_id_ok=!@user_id.nil? && @user_id=''
+    @firstname_ok=!@firstname.nil? && @firstname=''
+    if  @user_id_ok&&@firstname_ok
      redirect '/'
     else
       @validation=false

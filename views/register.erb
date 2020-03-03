@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
     <head>
-       <title>login page</title>
+       <title>register page</title>
     </head>
     <body>
        <%if @validation==false %>
@@ -9,10 +9,12 @@
         <% end %>
       <form method="post" action="/register">
             <p>
-            id<input name="id" type="text" value="<%=@id%>">
-            name<input name="name" type="text" value="<%=@name%>">
-            gender<input name="gender" type="text" value="<%=@gender%>">
-            age<input name="age" type="text" value="<%=@age%>">
+            user_id<input name="user_id" type="text" value="<%=@user_id%>">
+            firstname<input name="firstname" type="text" value="<%=@firstname%>">
+            surname<input name="surname" type="text" value="<%=@surname%>">
+            email<input name="email" type="text" value="<%=@email%>">
+            mobile_number<input name=":phone_number" type="text" value="<%=@mobile_number%>">
+            password<input name="password" type="text" value="<%=@password%>">   
             </p>
             <input type="submit" value="add">
         </form>
