@@ -8,12 +8,10 @@ CREATE TABLE user (
 );
 
 CREATE TABLE user_condition (
-    user_id INTEGER NOT NULL PRIMARY KEY REFERENCES user(user_id),
+    user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT REFERENCES user(user_id),
     access_level TEXT NOT NULL,
     suspended BOOLEAN NOT NULL
 );
-
-
 
 CREATE TABLE bookmark (
     bookmark_id INTEGER NOT NULL PRIMARY KEY,
@@ -47,3 +45,4 @@ CREATE TABLE bookmark_tag (
     bookmark_id INTEGER NOT NULL REFERENCES bookmark(bookmark_id),
     tag_id INTEGER NOT NULL REFERENCES tag(tag_id)
 );
+
