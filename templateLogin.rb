@@ -7,9 +7,9 @@ require_relative 'models/users.rb'
 set :bind, '0.0.0.0'
 enable :sessions
 
-$login=false
+
 get '/' do
-   if $login
+   if Users.checkForLogin(session[:name])
     @name=session[:name]
    else
     @name=''
@@ -20,7 +20,11 @@ end
 
 
 get '/login' do
-    erb :templateLogin
+   if !Users.checkForLogin(session[:name])
+     erb :templateLogin
+   else
+       redirect '/?alert1'
+   end
 end
 
 post '/login' do
@@ -29,7 +33,7 @@ post '/login' do
    @password=params[:password]
    if Users.validation(@name,@password)
        session[:name]=params[:name]
-        $login=true
+        
        redirect '/'
    else
        @validation=false
@@ -38,7 +42,11 @@ post '/login' do
 end
 
 get '/register' do
-    erb :register
+    if !Users.checkForLogin(session[:name])
+      erb :register
+    else
+      redirect '/?alert1'
+    end
 end
 
 post '/register' do
@@ -60,8 +68,12 @@ end
 
 
 get '/logout' do
-    $login=false
-    erb :logout
+    if Users.checkForLogin(session[:name])
+     session.delete(:name)
+     erb :logout
+    else
+     redirect '/?alert2'
+    end
 end
 
 

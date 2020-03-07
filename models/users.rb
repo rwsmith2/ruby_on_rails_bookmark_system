@@ -17,10 +17,12 @@ module Users
     end
     
     def Users.new(firstname,surname,email, mobile_number,password)
-         db= @db=SQLite3::Database.new 'database/bookmark_system.sqlite'
+         db=SQLite3::Database.new 'database/bookmark_system.sqlite'
          query= "INSERT INTO user(firstname,surname,email, mobile_number,password) 
                                                                       VALUES(?,?,?,?,?)"
          result=db.execute query, firstname,surname,email, mobile_number,password
+         query2= "INSERT INTO  user_condition(access_level,suspended) VALUES(?,?)"
+         result2=db.execute query2,"registered" , 0
         
     end
     
@@ -36,5 +38,13 @@ module Users
             end
         end
         return false
-    end        
+    end 
+    def Users.checkForLogin(session)
+        if session && session!=""
+            return true
+        else
+            return false
+        end
+    end
+        
 end

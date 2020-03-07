@@ -4,15 +4,15 @@
        <title>register page</title>
     </head>
     <body>
-       <%if @validation==false %>
-          <p>Invalid Username or Invalid Password</p>
+       <%if @==false %>
+          validation<p>Invalid Username or Invalid Password</p>
         <% end %>
       <form method="post" action="/register">
             <p>
             firstname<input name="firstname" type="text" value="<%=@firstname%>">
             surname<input name="surname" type="text" value="<%=@surname%>">
             email<input name="email" type="text" value="<%=@email%>">
-            mobile_number<input name=":phone_number" type="text" value="<%=@mobile_number%>">
+            mobile_number<input name="phone_number" type="text" value="<%=@mobile_number%>">
             password<input name="password" type="text" value="<%=@password%>">   
             </p>
             <input type="submit" value="add">

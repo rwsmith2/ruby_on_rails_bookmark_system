@@ -14,6 +14,15 @@
          </form>
         <form  methood='get' action='/logout'>
            <input type="submit" value="logout">  
-        </form>      
+        </form> 
+        <script>     
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('alert1')) {
+                alert('You need to logout first');
+            }
+              if (params.has('alert2')) {
+                alert('You need to login first');
+            }
+        </script>
     </body>
 </html>
