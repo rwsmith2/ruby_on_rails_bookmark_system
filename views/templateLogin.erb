@@ -4,10 +4,12 @@
        <title>login page</title>
     </head>
     <body>
-       <%if @validation==false&& %>
+       <%if @validation==false %>
           <p>Invalid username and password combination</p>
        <% end %>
-      
+       <%if @suspend==true %>
+          <p>You are under suspending, please contact with the admin first</p>
+       <% end %>    
         <form method='post' action="/login">
            <p>
             username:<input name="name" type="text" value="<%=@name%>" autocomplete="off">

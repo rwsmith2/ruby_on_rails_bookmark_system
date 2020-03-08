@@ -11,10 +11,15 @@
         </form>
          <form  methood='get' action='/register'>
            <input type="submit" value="To register">  
-         </form>
+        </form>
         <form  methood='get' action='/logout'>
            <input type="submit" value="logout">  
         </form> 
+        <%if session[:role]=="admin" %>
+         <form  methood='get' action='/check_all_users'>
+           <input type="submit" value="check all users">  
+         </form> 
+        <% end %>
         <script>     
             const params = new URLSearchParams(window.location.search);
             if (params.has('alert1')) {

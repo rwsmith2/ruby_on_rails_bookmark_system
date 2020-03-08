@@ -29,16 +29,25 @@ end
 
 post '/login' do
    @validation=true
+   @suspend=false
    @name=params[:name]
-   @password=params[:password]
+   @password=params[:password]  
    if Users.validation(@name,@password)
-       session[:name]=params[:name]
-        
-       redirect '/'
-   else
-       @validation=false
+     @id=Users.findId(@name,@password)
+     if Users.underSuspend(@id)
+       @suspend=true
        erb :templateLogin
+     else
+       session[:name]=params[:name]  
+       @id=Users.findId(@name,@password)
+       session[:role]=Users.checkRole(@id)
+       redirect '/'
+     end
+   else      
+      @validation=false
+      erb :templateLogin
    end
+  
 end
 
 get '/register' do
@@ -51,14 +60,13 @@ end
 
 post '/register' do
     @validation=true
-    @firstname=params[:firstname].strip
+    @firstname=params[:firstname]
     @surname=params[:surname]
     @email=params[:email] 
     @mobile_number=params[:phone_number]
-    @password=params[:password].strip
-    Users.new(@firstname,@surname,@email, @mobile_number,@password)
-    @firstname_ok=!@firstname.nil? && @firstname=''
-    if  @firstname_ok
+    @password=params[:password]
+    if  @firstname!=''||@surname!=''||@email!=''||@mobile_number!=''||@password!=''
+     Users.new(@firstname,@surname,@email, @mobile_number,@password)
      redirect '/'
     else
       @validation=false
@@ -70,13 +78,91 @@ end
 get '/logout' do
     if Users.checkForLogin(session[:name])
      session.delete(:name)
+     session.delete(:role)
      erb :logout
     else
      redirect '/?alert2'
     end
 end
 
+get "/check_all_users" do
+    @list=Users.findAll()
+    erb :all_users
+end
 
+post "/check_all_users/suspend" do
     
+    @id=params[:id]
+    Users.suspend(@id)
+    @list=Users.findAll()
+    erb :all_users
+end
+
+post "/check_all_users/unsuspend" do
+   
+    @id=params[:id]
+    Users.unsuspend(@id)
+    @list=Users.findAll()
+    erb :all_users
+end
+
+get "/check_all_users/back" do
+    redirect '/'
+end
+
+get "/check_all_users/details" do
+    @id=params[:id]
+    @found=Users.findOne(@id)
+    @firstname=@found[:firstname]
+    @surname=@found[:surname]
+    @email=@found[:email]
+    @phone=@found[:phone]
+    @password=@found[:password]
+    @access_level=@found[:access_level]  
+    erb :details
+end
+
+get "/check_all_users/details/back" do
+    redirect '/check_all_users'
+end
+
+post "/check_all_users/details/set_role" do
+    @id=params[:id]
+    @access_level=params[:access_level]
+    Users.setRole(@access_level,@id)
+    @found=Users.findOne(@id)
+    @firstname=@found[:firstname]
+    @surname=@found[:surname]
+    @email=@found[:email]
+    @phone=@found[:phone]
+    @password=@found[:password]
+    @access_level=@found[:access_level] 
+    erb :details
+end
+
+get "/check_all_users/details/set_password" do
+     @id=params[:id]
+    erb :set_password
+end
+
+post "/check_all_users/details/set_password" do
+    @id=params[:id]
+    @newpassword=params[:new_password]
+    Users.changePassword(@newpassword,@id)
+    @found=Users.findOne(@id)
+    @firstname=@found[:firstname]
+    @surname=@found[:surname]
+    @email=@found[:email]
+    @phone=@found[:phone]
+    @password=@found[:password]
+    @access_level=@found[:access_level] 
+    erb :details
+end
+
+
+
+
+
+
 
 

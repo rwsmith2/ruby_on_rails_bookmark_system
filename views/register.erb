@@ -4,9 +4,9 @@
        <title>register page</title>
     </head>
     <body>
-       <%if @==false %>
-          validation<p>Invalid Username or Invalid Password</p>
-        <% end %>
+       <%if @validation==false %>
+          <p>You need to finish all your information before you submit</p>
+       <% end %>
       <form method="post" action="/register">
             <p>
             firstname<input name="firstname" type="text" value="<%=@firstname%>">
@@ -15,7 +15,7 @@
             mobile_number<input name="phone_number" type="text" value="<%=@mobile_number%>">
             password<input name="password" type="text" value="<%=@password%>">   
             </p>
-            <input type="submit" value="add">
+            <input type="submit" value="Submit">
         </form>
     </body>
 </html>

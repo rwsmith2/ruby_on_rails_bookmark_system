@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <head>
+       <title>list</title>
+    </head>
+    <body>
+        <% @list.each do |user| %>
+           <form method="post" action="/check_all_users/suspend">
+            <p>
+            <input type="hidden" name="id" value="<%=user[:id]%>">
+            </p>
+             <%=user[:id]%> <%=user[:firstname]%> <%=user[:surname]%> <%=user[:access_level]%> <%=user[:suspended]%>
+               <p><input type="submit" value="Suspend"></p>
+           </form>
+           <form method="post" action="/check_all_users/unsuspend">
+            <p>
+            <input type="hidden" name="id" value="<%=user[:id]%>">
+            </p>
+                 <input type="submit" value="UnSuspend">
+           </form>
+           <form method="get" action="/check_all_users/details">
+               <input type="hidden" name="id" value="<%=user[:id]%>">
+                 <input type="submit" value="Details">
+           </form>
+        <% end %>
+         <form method="get" action="/check_all_users/back">
+                 <input type="submit" value="Back">
+          </form>       
+    </body>
+</html>

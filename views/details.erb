@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>details</title>
+    </head>
+    <body>   
+            <p>user_id: <%=@id%></p>
+            <p>firstname: <%=@firstname%></p>
+            <p>surname: <%=@surname%></p>
+            <p>email: <%=@email%></p>
+            <p>phone: <%=@phone%></p>
+            <p>password: <%=@password%></p>
+            <p>access level: <%=@access_level%></p>   
+          <form method="post" action="/check_all_users/details/set_role">
+            <input type="hidden" name="id" value="<%=@id%>">
+            <select name="access_level">
+                <option value="registered" >Registered</option>
+                <option value="employee">Employee</option>
+                <option value="admin" >Admin</option> 
+            </select>
+            <input type="submit" value="Save">
+          </form>
+          <form method="get" action="/check_all_users/details/set_password">
+            <input type="hidden" name="id" value="<%=@id%>">
+            <input type="submit" value="Reset password">
+          </form>
+          <form method="get" action="/check_all_users/details/back">
+                 <input type="submit" value="Back">
+          </form>   
+    </body>
+</html>
