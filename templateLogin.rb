@@ -159,6 +159,10 @@ post "/check_all_users/details/set_password" do
     erb :details
 end
 
+get "/adding_bookmarks" do
+    erb :adding_bookmarks
+end
+
 
 
 

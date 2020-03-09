@@ -20,6 +20,9 @@
            <input type="submit" value="check all users">  
          </form> 
         <% end %>
+        <form  methood='get' action='/adding_bookmarks'>
+           <input type="submit" value="Add bookmarks">  
+        </form> 
         <script>     
             const params = new URLSearchParams(window.location.search);
             if (params.has('alert1')) {
@@ -29,5 +32,7 @@
                 alert('You need to login first');
             }
         </script>
+        
+        
     </body>
 </html>
