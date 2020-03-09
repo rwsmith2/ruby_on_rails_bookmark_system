@@ -9,12 +9,14 @@
         <form  methood='get' action='/login'>
           <input type="submit" value="To log in">  
         </form>
+       <% if !session[:name] %>
+        <form  methood='get' action='/login'>
+          <input type="submit" value="To log in">  
+        </form>
          <form  methood='get' action='/register'>
            <input type="submit" value="To register">  
         </form>
-        <form  methood='get' action='/logout'>
-           <input type="submit" value="logout">  
-        </form> 
+        <% end %>
         <%if session[:role]=="admin" %>
          <form  methood='get' action='/check_all_users'>
            <input type="submit" value="check all users">  
