@@ -7,19 +7,41 @@
     <body>
         <h1><u>Adding BookMarks</u></h1>
         
-        <form method="post" action="/register">
-            <p>
-            firstname<input name="firstname" type="text" value="<%=@firstname%>">
-            surname<input name="surname" type="text" value="<%=@surname%>">
-            email<input name="email" type="text" value="<%=@email%>">
-            mobile_number<input name="phone_number" type="text" value="<%=@mobile_number%>">
-            password<input name="password" type="text" value="<%=@password%>">   
-            </p>
-            <input type="submit" value="Submit">
+        <form method="post" action="/adding_bookmark">
+            <table>
+                <tr>
+                    <td>Title<input name="bm_title" type="text" value=""></td>
+                </tr>
+               
+                <tr>
+                    <td>Content<input name="bm_content" type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td>Description<input name="bm_description" type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td>Author<input name="bm_author" type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td>Date Created<input name="bm_date" type="text" value=""> </td>
+                </tr>
+                <tr>
+                    <td>Rating<input name="bm_rating" type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td>Num_of_rating<input name="bm_num_of_rating" type="text" value=""> </td>
+                </tr>
+                <tr>
+                    <td>Reported<input name="bm_reported" type="text" value="">  </td>
+                </tr>
+            </table>
+            <input type="submit" value="Create">
         </form>
         
         
     </body>
 </html>
+
+
 
 

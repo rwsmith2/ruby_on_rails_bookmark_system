@@ -163,7 +163,23 @@ get "/adding_bookmarks" do
     erb :adding_bookmarks
 end
 
-
+post "/adding_bookmarks" do
+    @title=params[:bm_title]
+    @content=params[:bm_content]
+    @descriptiont=params[:bm_description]
+    @authort=params[:bm_author]
+    @date=params[:bm_date]
+    @rating=params[:bm_rating]
+    @num_rating=params[:bm_num_of_rating]
+    @reported=params[:bm_reported]
+    
+    if  @title!=''||@content!=''||@descriptiont!=''||@authort!=''||@date!=''||@rating!=''||@num_rating!=''||@reported!=''
+        @id = @title + "_" + @date
+        Bookmark.new(@id,@title,@content,@descriptiont,@authort,@date,@rating,@num_rating,@reported)
+    else 
+        "Invalid"
+        redirect "/adding_bookmarks"
+end
 
 
 
