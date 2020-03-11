@@ -1,21 +1,44 @@
 <!DOCTYPE>
-<html>
-    <head>
-       <title>register page</title>
-    </head>
-    <body>
-       <%if @validation==false %>
-          <p>You need to finish all your information before you submit</p>
-       <% end %>
-      <form method="post" action="/register">
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+    <nav>
+		<a href="/login">Log In</a>
+        <a href="/">Home</a>
+	</nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>Register</h2>
+			<form method="post" action="/register">
             <p>
-            firstname<input name="firstname" type="text" value="<%=@firstname%>">
-            surname<input name="surname" type="text" value="<%=@surname%>">
-            email<input name="email" type="text" value="<%=@email%>">
-            mobile_number<input name="phone_number" type="text" value="<%=@mobile_number%>">
-            password<input name="password" type="text" value="<%=@password%>">   
+            Firstname:<input name="firstname" type="text" value="<%=@firstname%>">
+            Surname:<input name="surname" type="text" value="<%=@surname%>">
+            E-mail:<input name="email" type="text" value="<%=@email%>">
+            Mobile Number:<input name=":phone_number" type="text" value="<%=@mobile_number%>">
+            Password:<input name="password" type="text" value="<%=@password%>">   
             </p>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Register">
         </form>
-    </body>
+        <%if @validation==false %>
+          <p id=failure_text>Please ensure all fields are filled correctly.</p>
+        <% end %>
+	</main>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+
+</body>
 </html>
