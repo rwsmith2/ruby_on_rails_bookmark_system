@@ -11,6 +11,11 @@
 	<header>
 		<h1>Bookmark Manager</h1>
 	</header>
+    <% if session[:name] %>
+    <nav>
+        <a href="/logout">Log Out</a>
+	</nav>
+    <% end %>
 	<main>
 		<div class="contentSmallForm">
 			<h2>Welcome <%=@name%></h2>
@@ -44,9 +49,6 @@
         </script>
 	</main>
 	<footer>
-		<ul>
-			<li><a href="/">Back to homepage</a></li>
-		</ul>
 		<hr>
 		<p>COM1001, 2020</p>
 	</footer>
