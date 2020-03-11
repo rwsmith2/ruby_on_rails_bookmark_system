@@ -1,23 +1,50 @@
 <!DOCTYPE>
-<html>
-    <head>
-       <title>login page</title>
-    </head>
-    <body>
-       <%if @validation==false %>
-          <p>Invalid username and password combination</p>
-       <% end %>
-       <%if @suspend==true %>
-          <p>You are under suspending, please contact with the admin first</p>
-       <% end %>    
-        <form method='post' action="/login">
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+    <nav>
+		<a href="/register">Register</a>
+        <a href="/">Home</a>
+	</nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>Log In</h2>
+			<form method='post' action="/login">
            <p>
-            username:<input name="name" type="text" value="<%=@name%>" autocomplete="off">
+            Username:<input name="name" type="text" value="<%=@name%>" autocomplete="off">
             </p>
             <p>
-            password:<input name="password" type="password" value="<%=@password%>" autocomplete="off">
+            Password:<input name="password" type="password" value="<%=@password%>" autocomplete="off">
             </p>
-            <input type="submit" value="log in">
+            <input type="submit" value="Login">
         </form>
-    </body>
+        <%if @validation==false&& %>
+          <p id="failure_text">Invalid Username or Password. Please try again.</p>
+       <% end %>
+       <%if @suspend==true %>
+          <p id="failure_text">YYour account has been suspended. Please contact admin.</p>
+       <% end %> 
+	</main>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+
+</body>
+
+
+
+
 </html>
