@@ -134,4 +134,13 @@ tr:hover {
 .TableHolder{
     height: 500px;
     overflow: auto;
-    }
+}
+select{
+  background-color: rgb(224, 155, 4);
+  color: black;
+  border-radius: 0.2em;
+  border: 1px solid white;
+  padding: 10px 3% 10px 3%;
+  margin: 0 0 8px 3%;
+  font-size: 1em;
+}
