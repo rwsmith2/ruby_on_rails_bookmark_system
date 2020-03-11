@@ -31,12 +31,12 @@
 	        <% end %>
 	        <%if session[:role]=="admin" %>
          		<form  methood='get' action='/check_all_users'>
-           			<input type="submit" value="check all users">  
+           			<input type="submit" value="View Users">  
          		</form> 
         	<% end %>
 
             <form  methood='get' action='/adding_bookmarks'>
-           		<input type="submit" value="Add bookmarks">  
+           		<input type="submit" value="Add Bookmarks">  
         	</form> 
         	<script>     
 	            const params = new URLSearchParams(window.location.search);

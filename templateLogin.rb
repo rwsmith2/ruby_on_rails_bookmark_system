@@ -92,18 +92,16 @@ end
 
 post "/check_all_users/suspend" do
     
-    @id=params[:id]
+    @id=params[:ids]
     Users.suspend(@id)
-    @list=Users.findAll()
-    erb :all_users
+    redirect 'check_all_users'
 end
 
 post "/check_all_users/unsuspend" do
    
-    @id=params[:id]
+    @id=params[:idu]
     Users.unsuspend(@id)
-    @list=Users.findAll()
-    erb :all_users
+    redirect 'check_all_users'
 end
 
 get "/check_all_users/back" do

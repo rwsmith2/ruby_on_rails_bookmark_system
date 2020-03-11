@@ -84,7 +84,7 @@ input[type=button], input[type=submit], input[type=reset] {
   color: black;
   border-radius: 0.2em;
   border: 1px solid white;
-  padding: 10px 2% 10px 2%;
+  padding: 10px 3% 10px 3%;
   margin: 0 0 8px 3%;
   font-size: 1em;
 }
@@ -117,3 +117,21 @@ footer p{
 	text-align: center;
 	color:rgb(224, 155, 4);
 }
+table {
+      border-radius: 0.2em;
+      border: 1px solid rgb(48,48,48);
+      width: 98%;
+      margin: 0 1% 1em 1%;
+    }
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+tr:hover {
+    background-color:#f5f5f5;
+    }
+.TableHolder{
+    height: 500px;
+    overflow: auto;
+    }
