@@ -1,40 +1,55 @@
 <!DOCTYPE>
-<html>
-    <head>
-       <title>home</title>
-    </head>
-    <body>
-        <p><%=@name%></p>
-        <p>home</p>
-        <form  methood='get' action='/login'>
-          <input type="submit" value="To log in">  
-        </form>
-       <% if !session[:name] %>
-        <form  methood='get' action='/login'>
-          <input type="submit" value="To log in">  
-        </form>
-         <form  methood='get' action='/register'>
-           <input type="submit" value="To register">  
-        </form>
-        <% end %>
-        <%if session[:role]=="admin" %>
-         <form  methood='get' action='/check_all_users'>
-           <input type="submit" value="check all users">  
-         </form> 
-        <% end %>
-        <form  methood='get' action='/adding_bookmarks'>
-           <input type="submit" value="Add bookmarks">  
-        </form> 
-        <script>     
-            const params = new URLSearchParams(window.location.search);
-            if (params.has('alert1')) {
-                alert('You need to logout first');
-            }
-              if (params.has('alert2')) {
-                alert('You need to login first');
-            }
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+	<main>
+		<div class="contentSmallForm">
+			<h2>Welcome <%=@name%></h2>
+			<p>Please select one of the services below.</p>
+			<hr>
+			<% if !session[:name] %>
+	            <form  methood='get' action='/login' >
+	              <input type="submit" value="Log In">  
+	            </form>
+	             <form  methood='get' action='/register'>
+	               <input type="submit" value="Register">  
+	             </form>
+	        <% end %>
+	        <%if session[:role]=="admin" %>
+         		<form  methood='get' action='/check_all_users'>
+           			<input type="submit" value="check all users">  
+         		</form> 
+        	<% end %>
+
+            <form  methood='get' action='/adding_bookmarks'>
+           		<input type="submit" value="Add bookmarks">  
+        	</form> 
+        	<script>     
+	            const params = new URLSearchParams(window.location.search);
+	            if (params.has('alert1')) {
+	                alert('You need to logout first');
+	            }
+	            if (params.has('alert2')) {
+	                alert('You need to login first');
+	            }
         </script>
-        
-        
-    </body>
+	</main>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+
+</body>
 </html>

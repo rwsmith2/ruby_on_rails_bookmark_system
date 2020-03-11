@@ -1,0 +1,119 @@
+body{
+	margin:0%;
+	background-color: rgb(224, 155, 4);
+	width: 100%;
+	min-width: 250px;
+	font-family: 'Poppins', sans-serif;
+}
+
+header{
+	width:90%;
+	height:auto;
+	background-color: rgb(48,48,48);
+	padding: 16px 5% 16px 5%;
+	margin: 0%;
+	display: inline-block;
+	border-radius:0 0 0.4em 0.4em;
+
+}
+header h1{
+	color:white;
+	margin:0%;
+	font-size: 2em;
+	text-align: left;
+	display: inline-block;
+}
+
+
+nav{
+	height:69px;
+	width:60%;
+	background-color: rgb(48,48,48);
+	display:inline-block;
+	position: absolute;
+	margin: 0 0 0 -60%;
+}
+nav a{
+    text-decoration:none;
+    float:right;
+    color:white;
+    text-align:center;
+    font-size:20px;
+    padding:23px 20px;
+    display:block;
+}
+nav a:hover{
+    color:rgb(224, 155, 4);
+}
+
+
+
+.contentSmallForm{
+	margin: 100px 25% 10px 25%;
+	height:auto;
+	width:50%;
+	border-radius: 0.2em;
+	border: 1px solid rgb(48,48,48);
+	background-color: white;
+}
+.contentSmallForm p{
+	padding: 0 3% 0 3%;
+	font-size: 0.9em;
+}
+.contentSmallForm h2{
+	padding:0 3% 0 3%;
+}
+#failure_text{
+	color: rgb(224, 155, 4);
+}
+input[type=text],[type=password]  {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(48,48,48);
+  border-radius: 0.2em;
+  background-color: rgb(217, 217, 217);
+}
+
+input[type=text]:focus , [type=password]:focus{
+  border: 3px solid #555;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: rgb(224, 155, 4);
+  color: black;
+  border-radius: 0.2em;
+  border: 1px solid white;
+  padding: 10px 2% 10px 2%;
+  margin: 0 0 8px 3%;
+  font-size: 1em;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+	color: white;
+	border: 1px solid rgb(48,48,48);
+}
+footer{
+    position: absolute;
+    bottom: 0;
+	width: 92%;
+	height: auto;
+	background-color: rgb(48,48,48);
+	padding:30px 4% 5px 4%;
+	border-radius:0.4em 0.4em 0 0;
+}
+footer ul{
+	margin: 0%;
+	list-style: none;
+	padding: 0;
+}
+footer ul li a{
+	text-decoration: none;
+	color: rgb(224, 155, 4);
+}
+footer ul li a:hover{
+	color:white;
+}
+footer p{
+	text-align: center;
+	color:rgb(224, 155, 4);
+}

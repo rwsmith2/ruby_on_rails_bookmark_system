@@ -179,6 +179,7 @@ post "/adding_bookmarks" do
     else 
         "Invalid"
         redirect "/adding_bookmarks"
+    end
 end
 
 
