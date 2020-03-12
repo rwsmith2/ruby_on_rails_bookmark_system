@@ -23,10 +23,13 @@
             Firstname:<input name="firstname" type="text" value="<%=@firstname%>">
             Surname:<input name="surname" type="text" value="<%=@surname%>">
             E-mail:<input name="email" type="text" value="<%=@email%>">
-            Mobile Number:<input name=":phone_number" type="text" value="<%=@mobile_number%>">
+            Mobile Number:<input name="phone_number" type="text" value="<%=@mobile_number%>">
             Password:<input name="password" type="text" value="<%=@password%>">   
             </p>
             <input type="submit" value="Register">
+        </form>
+        <form method="get" action="/">
+           <input type="submit" value="Cancel"> 
         </form>
         <%if @validation==false %>
           <p id=failure_text>Please ensure all fields are filled correctly.</p>

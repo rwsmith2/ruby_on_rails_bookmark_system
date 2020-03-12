@@ -20,18 +20,21 @@
 			<h2>Log In</h2>
 			<form method='post' action="/login">
            <p>
-            Username:<input name="name" type="text" value="<%=@name%>">
+            Username:<input name="email" type="text" value="<%=@username%>">
             </p>
             <p>
             Password:<input name="password" type="password" value="<%=@password%>">
             </p>
             <input type="submit" value="Login">
         </form>
-        <%if @validation==false&& %>
+        <form method="get" action="/">
+           <input type="submit" value="Cancel"> 
+        </form>
+        <%if @validation==false %>
           <p id="failure_text">Invalid Username or Password. Please try again.</p>
        <% end %>
        <%if @suspend==true %>
-          <p id="failure_text">YYour account has been suspended. Please contact admin.</p>
+          <p id="failure_text">Your account has been suspended. Please contact admin.</p>
        <% end %> 
 	</main>
 	<footer>

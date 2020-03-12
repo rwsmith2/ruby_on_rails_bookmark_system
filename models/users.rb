@@ -48,13 +48,13 @@ module Users
         
     end
     
-    def Users.validation(name,password)
-        if name && name!='' && password && password!=''
+    def Users.validation(email,password)
+        if email && email!='' && password && password!=''
             db=SQLite3::Database.new 'database/bookmark_system.sqlite'
-            query= "SELECT firstname,password FROM user;"
+            query= "SELECT email,password FROM user;"
             rows=db.execute query  
             rows.each do |row|
-                if row[0]==name && row[1]==password
+                if row[0]==email && row[1]==password
                     return true  
                 end          
             end
@@ -69,12 +69,21 @@ module Users
         end
     end
     
-    def Users.findId(name,password)
+    def Users.findName(id)
+         db=SQLite3::Database.new 'database/bookmark_system.sqlite'
+         query= "SELECT firstname FROM user WHERE user_id=?;"
+         rows=db.execute query, id
+         row=rows[0]
+         return row[0]
+    end
+        
+        
+    def Users.findId(email,password)
           db=SQLite3::Database.new 'database/bookmark_system.sqlite'
-            query= "SELECT user_id FROM user WHERE firstname=? AND password=?;"
-            rows=db.execute query, name,password
-            row=rows[0]
-            return row[0]
+          query= "SELECT user_id FROM user WHERE email=? AND password=?;"
+          rows=db.execute query, email,password
+          row=rows[0]
+          return row[0]
     end
     
     def Users.checkRole(id)

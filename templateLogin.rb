@@ -9,7 +9,7 @@ enable :sessions
 
 
 get '/' do
-   if Users.checkForLogin(session[:name])
+   if Users.checkForLogin(session[:login])
     @name=session[:name]
    else
     @name=''
@@ -20,27 +20,24 @@ end
 
 
 get '/login' do
-   if !Users.checkForLogin(session[:name])
      erb :templateLogin
-   else
-       redirect '/?alert1'
-   end
 end
 
 post '/login' do
    @validation=true
    @suspend=false
-   @name=params[:name]
+   @username=params[:email]
    @password=params[:password]  
-   if Users.validation(@name,@password)
-     @id=Users.findId(@name,@password)
+   if Users.validation(@username,@password)
+     @id=Users.findId(@username,@password)
      if Users.underSuspend(@id)
        @suspend=true
        erb :templateLogin
      else
-       session[:name]=params[:name]  
-       @id=Users.findId(@name,@password)
+       session[:login]=true 
+       @id=Users.findId(@username,@password)
        session[:role]=Users.checkRole(@id)
+       session[:name]=Users.findName(@id)
        redirect '/'
      end
    else      
@@ -51,11 +48,9 @@ post '/login' do
 end
 
 get '/register' do
-    if !Users.checkForLogin(session[:name])
+
       erb :register
-    else
-      redirect '/?alert1'
-    end
+
 end
 
 post '/register' do
@@ -65,8 +60,9 @@ post '/register' do
     @email=params[:email] 
     @mobile_number=params[:phone_number]
     @password=params[:password]
-    if  @firstname!=''||@surname!=''||@email!=''||@mobile_number!=''||@password!=''
-     Users.new(@firstname,@surname,@email, @mobile_number,@password)
+    if  (@firstname!=''&&@firstname)||(@surname!=''&&@surname)||(@email!=''&&@email)||
+           (@mobile_number!=''&&@mobile_number)||(@password!=''&&@password)
+     Users.new(@firstname,@surname,@email,@mobile_number,@password)
      redirect '/'
     else
       @validation=false
@@ -76,13 +72,11 @@ end
 
 
 get '/logout' do
-    if Users.checkForLogin(session[:name])
+
      session.delete(:name)
+     session.delete(:login)
      session.delete(:role)
      erb :logout
-    else
-     redirect '/?alert2'
-    end
 end
 
 get "/check_all_users" do
@@ -144,17 +138,24 @@ get "/check_all_users/details/set_password" do
 end
 
 post "/check_all_users/details/set_password" do
+    @validation=true
     @id=params[:id]
     @newpassword=params[:new_password]
-    Users.changePassword(@newpassword,@id)
-    @found=Users.findOne(@id)
-    @firstname=@found[:firstname]
-    @surname=@found[:surname]
-    @email=@found[:email]
-    @phone=@found[:phone]
-    @password=@found[:password]
-    @access_level=@found[:access_level] 
-    erb :details
+    if  @newpassword&&@newpassword==""
+        @validation=false
+        puts "sds"
+        erb :set_password
+    else
+      Users.changePassword(@newpassword,@id)
+      @found=Users.findOne(@id)
+      @firstname=@found[:firstname]
+      @surname=@found[:surname]
+      @email=@found[:email]
+      @phone=@found[:phone]
+      @password=@found[:password]
+      @access_level=@found[:access_level] 
+      erb :details
+    end
 end
 
 get "/adding_bookmarks" do
