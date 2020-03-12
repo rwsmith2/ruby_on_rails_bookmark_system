@@ -34,11 +34,14 @@
            			<input type="submit" value="View Users">  
          		</form> 
         	<% end %>
-
+            <%if session[:role]=="admin" || session[:role]=="employee"  %>
             <form  methood='get' action='/adding_bookmarks'>
            		<input type="submit" value="Add Bookmarks">  
         	</form> 
-      
+
+            <% end %>
+       
+
 	</main>
 	<footer>
 		<hr>

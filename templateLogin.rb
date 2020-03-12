@@ -163,14 +163,15 @@ get "/adding_bookmarks" do
 end
 
 post "/adding_bookmarks" do
+    time = Time.new
     @title=params[:bm_title]
     @content=params[:bm_content]
     @descriptiont=params[:bm_description]
     @authort=params[:bm_author]
-    @date=params[:bm_date]
-    @rating=params[:bm_rating]
-    @num_rating=params[:bm_num_of_rating]
-    @reported=params[:bm_reported]
+    @date= (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)
+    @rating=0
+    @num_rating=0
+    @reported=false
     
     if  @title!=''||@content!=''||@descriptiont!=''||@authort!=''||@date!=''||@rating!=''||@num_rating!=''||@reported!=''
         @id = @title + "_" + @date
