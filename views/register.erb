@@ -24,7 +24,8 @@
             Surname:<input name="surname" type="text" value="<%=@surname%>">
             E-mail:<input name="email" type="text" value="<%=@email%>">
             Mobile Number:<input name="phone_number" type="text" value="<%=@mobile_number%>">
-            Password:<input name="password" type="text" value="<%=@password%>">   
+            Password:<input name="password" type="password" value="<%=@password%>"> 
+            Confirm Password: <input name="confirm_password" type="password" value="<%=@password%>">
             </p>
             <input type="submit" value="Register">
         </form>
@@ -34,6 +35,10 @@
         <%if @validation==false %>
           <p id=failure_text>Please ensure all fields are filled correctly.</p>
         <% end %>
+        <%if @confirmation==false %>
+          <p id=failure_text>The "Password" and "Confirm Password" are not the same</p>
+        <% end %>
+        </div>
 	</main>
 	<footer>
 		<ul>

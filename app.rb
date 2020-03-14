@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 also_reload 'models/*'
 require_relative 'models/users.rb'
+require_relative 'models/bookmark.rb'
 
 
 set :bind, '0.0.0.0'
@@ -20,7 +21,7 @@ end
 
 
 get '/login' do
-     erb :templateLogin
+     erb :login
 end
 
 post '/login' do
@@ -32,7 +33,7 @@ post '/login' do
      @id=Users.findId(@username,@password)
      if Users.underSuspend(@id)
        @suspend=true
-       erb :templateLogin
+       erb :login
      else
        session[:login]=true 
        @id=Users.findId(@username,@password)
@@ -42,7 +43,7 @@ post '/login' do
      end
    else      
       @validation=false
-      erb :templateLogin
+      erb :login
    end
   
 end
@@ -55,15 +56,22 @@ end
 
 post '/register' do
     @validation=true
+    @confirmation=true
     @firstname=params[:firstname]
     @surname=params[:surname]
     @email=params[:email] 
     @mobile_number=params[:phone_number]
     @password=params[:password]
-    if  (@firstname!=''&&@firstname)||(@surname!=''&&@surname)||(@email!=''&&@email)||
-           (@mobile_number!=''&&@mobile_number)||(@password!=''&&@password)
-     Users.new(@firstname,@surname,@email,@mobile_number,@password)
-     redirect '/'
+    @confirm_password=params[:confirm_password]
+    if  (@firstname!=''&&@firstname)&&(@surname!=''&&@surname)&&(@email!=''&&@email)&&
+           (@mobile_number!=''&&@mobile_number)&&(@password!=''&&@password)&&(@confirm_password&&@confirm_password!='')
+     if(Users.confirmPassword(@password,@confirm_password))
+      Users.new(@firstname,@surname,@email,@mobile_number,@password)
+      redirect '/'
+     else
+         @confirmation=false
+         erb :register
+     end
     else
       @validation=false
       erb :register
@@ -72,15 +80,24 @@ end
 
 
 get '/logout' do
-
      session.delete(:name)
      session.delete(:login)
      session.delete(:role)
      erb :logout
 end
 
+
+
+
 get "/check_all_users" do
     @list=Users.findAll()
+    erb :all_users
+end
+
+post "/check_all_users" do
+    @search=params[:search]
+    @list=Users.findSearch(@search)
+    puts @list
     erb :all_users
 end
 

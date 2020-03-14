@@ -3,14 +3,15 @@ require 'sinatra/reloader'
 
 
 module Users
-    def Users.find_name(search)
+    def Users.findSearch(search)
         result=[]
         if search && search!=''
             db=SQLite3::Database.new 'database/bookmark_system.sqlite'
-            query= "SELECT firstname,surname FROM user WHERE user_id LIKE ?;"
+            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user JOIN user_condition 
+                                                           WHERE user.firstname LIKE ? AND user.user_id==user_condition.user_id;"
             rows=db.execute query, '%'+search+'%' 
             rows.each do |row|
-                result.push({firstname: row[0], surname: row[1]})
+                result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
             end
         end
         return result 
@@ -48,6 +49,13 @@ module Users
         
     end
     
+    def Users.confirmPassword(password,confirm_password)
+        if (password==confirm_password)
+            return true
+        else
+            return false
+        end
+    end
     def Users.validation(email,password)
         if email && email!='' && password && password!=''
             db=SQLite3::Database.new 'database/bookmark_system.sqlite'

@@ -18,9 +18,13 @@
 	<main>
 		<div class="contentSmallForm">
 			<h2>View Users</h2>
+             <form method="post" action="/check_all_users">
+                  <p>Search by firstname: <input name="search" type="text" value="<%=@search%>"></p>
+                  <input type="submit" value="Search">
+             </form>
       <div class="TableHolder">
       <table>
-        <tr><th>ID</th><th>Firstname</th><th>Surname</th><th>Access Level</th><th>Status</th><th></th></th><th>Details</th></tr>
+        <tr><th>ID</th><th>Firstname</th><th>Surname</th><th>Access Level</th><th>Status</th><th></th><th>Details</th></tr>
         <% @list.each do |user| %>
           <tr>
               <td><%=user[:id]%></td>
