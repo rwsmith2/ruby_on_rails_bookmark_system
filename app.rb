@@ -8,6 +8,7 @@ require_relative 'models/bookmark.rb'
 set :bind, '0.0.0.0'
 enable :sessions
 
+$db = SQLite3::Database.new 'database/bookmark_system.sqlite'
 
 get '/' do
    if Users.checkForLogin(session[:login])
@@ -29,16 +30,16 @@ post '/login' do
    @suspend=false
    @username=params[:email]
    @password=params[:password]  
-   if Users.validation(@username,@password)
+   if Users.validation(@username,@password, $db)
      @id=Users.findId(@username,@password)
      if Users.underSuspend(@id)
        @suspend=true
        erb :login
      else
        session[:login]=true 
-       @id=Users.findId(@username,@password)
-       session[:role]=Users.checkRole(@id)
-       session[:name]=Users.findName(@id)
+       @id=Users.findId(@username,@password, $db)
+       session[:role]=Users.checkRole(@id, $db)
+       session[:name]=Users.findName(@id, $db)
        redirect '/'
      end
    else      
@@ -65,8 +66,8 @@ post '/register' do
     @confirm_password=params[:confirm_password]
     if  (@firstname!=''&&@firstname)&&(@surname!=''&&@surname)&&(@email!=''&&@email)&&
            (@mobile_number!=''&&@mobile_number)&&(@password!=''&&@password)&&(@confirm_password&&@confirm_password!='')
-     if(Users.confirmPassword(@password,@confirm_password))
-      Users.new(@firstname,@surname,@email,@mobile_number,@password)
+     if(Users.confirmPassword(@password,@confirm_password, $db))
+      Users.new(@firstname,@surname,@email,@mobile_number,@password, $db)
       redirect '/'
      else
          @confirmation=false
@@ -90,13 +91,13 @@ end
 
 
 get "/check_all_users" do
-    @list=Users.findAll()
+    @list=Users.findAll($db)
     erb :all_users
 end
 
 post "/check_all_users" do
     @search=params[:search]
-    @list=Users.findSearch(@search)
+    @list=Users.findSearch(@search, $db)
     puts @list
     erb :all_users
 end
@@ -104,14 +105,14 @@ end
 post "/check_all_users/suspend" do
     
     @id=params[:ids]
-    Users.suspend(@id)
+    Users.suspend(@id, $db)
     redirect 'check_all_users'
 end
 
 post "/check_all_users/unsuspend" do
    
     @id=params[:idu]
-    Users.unsuspend(@id)
+    Users.unsuspend(@id, $db)
     redirect 'check_all_users'
 end
 
@@ -121,7 +122,7 @@ end
 
 get "/check_all_users/details" do
     @id=params[:id]
-    @found=Users.findOne(@id)
+    @found=Users.findOne(@id, $db)
     @firstname=@found[:firstname]
     @surname=@found[:surname]
     @email=@found[:email]
@@ -138,8 +139,8 @@ end
 post "/check_all_users/details/set_role" do
     @id=params[:id]
     @access_level=params[:access_level]
-    Users.setRole(@access_level,@id)
-    @found=Users.findOne(@id)
+    Users.setRole(@access_level,@id, $db)
+    @found=Users.findOne(@id, $db)
     @firstname=@found[:firstname]
     @surname=@found[:surname]
     @email=@found[:email]
@@ -163,8 +164,8 @@ post "/check_all_users/details/set_password" do
         puts "sds"
         erb :set_password
     else
-      Users.changePassword(@newpassword,@id)
-      @found=Users.findOne(@id)
+      Users.changePassword(@newpassword, @id, $db)
+      @found=Users.findOne(@id, $db)
       @firstname=@found[:firstname]
       @surname=@found[:surname]
       @email=@found[:email]

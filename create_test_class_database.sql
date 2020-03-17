@@ -28,7 +28,7 @@ CREATE TABLE comment (
     content TEXT NOT NULL,
     author TEXT NOT NULL,
     date_created DATE NOT NULL,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id) FORIEGN KEY
+    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
 );
 
 CREATE TABLE tag (
@@ -38,12 +38,11 @@ CREATE TABLE tag (
 
 CREATE TABLE bookmark_tag (
     bookmark_tag_id INTEGER NOT NULL PRIMARY KEY,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id) FORIEGN KEY
-    tag_id INTEGER REFERENCES tag(tag_id) FORIEGN KEY
+    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
+    -- tag_id INTEGER REFERENCES tag(tag_id)
 );
 
-
-INSERT INTO user VALUES(1, "Logan", "Miller", "lmiller6@sheffield.ac.uk", "07123456789", "password");
-INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "07111222333", "pWORD1");
-INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "07328197892"), "CAPITALlower314");
+INSERT INTO user VALUES(1, "Logan", "Miller", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
+INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "employee", "07111222333", 0, "pWORD1");
+INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
 
