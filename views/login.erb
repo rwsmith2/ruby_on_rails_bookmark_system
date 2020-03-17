@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+   <div id="page-container">
+   <div id="content-wrap">
 	<header>
 		<h1>Bookmark Manager</h1>
 	</header>
@@ -20,7 +22,7 @@
 			<h2>Log In</h2>
 			<form method='post' action="/login">
            <p>
-            Username:<input name="email" type="text" value="<%=@username%>">
+            E-Mail:<input name="email" type="text" value="<%=@username%>">
             </p>
             <p>
             Password:<input name="password" type="password" value="<%=@password%>">
@@ -38,6 +40,7 @@
        <% end %> 
         </div>
 	</main>
+    </div>
 	<footer>
 		<ul>
 			<li><a href="/">Back to homepage</a></li>
@@ -45,6 +48,7 @@
 		<hr>
 		<p>COM1001, 2020</p>
 	</footer>
+    </div>
 
 </body>
 
