@@ -24,11 +24,11 @@ class TestStringComparison < Minitest::Test
     end
     
     def test_password
-        assert_equal true, Users.confirmPassword("TEST data 1", "TEST data 1", $db)
-        assert_equal true, Users.confirmPassword("hd", "hd", $db)
-        assert_equal false, Users.confirmPassword("password", "PASSWORD", $db)
-        assert_equal false, Users.confirmPassword("POHDEJBJH£B8739892", "hdweibfig", $db)
-        assert_equal false, Users.confirmPassword("one", "1", $db)
+        assert_equal true, Users.confirm_password("TEST data 1", "TEST data 1", $db)
+        assert_equal true, Users.confirm_password("hd", "hd", $db)
+        assert_equal false, Users.confirm_password("password", "PASSWORD", $db)
+        assert_equal false, Users.confirm_password("POHDEJBJH£B8739892", "hdweibfig", $db)
+        assert_equal false, Users.confirm_password("one", "1", $db)
     end
     
     def test_validation
@@ -37,29 +37,33 @@ class TestStringComparison < Minitest::Test
         assert_equal false, Users.validation("lmiller6@sheffield.ac.uk", "PASSWORD", $db);
         assert_equal false, Users.validation("jamesa@gmail.com", "", $db);
     end
+    def test_check_same_email
+    
+        #new method!!!
+    end
     
     def test_check_for_login
-        assert_equal true, Users.checkForLogin(true, $db);
-        assert_equal false, Users.checkForLogin(false, $db);
+        assert_equal true, Users.check_for_login(true, $db);
+        assert_equal false, Users.check_for_login(false, $db);
     end
     
     # Commented out whilst firstname and forname field name discrepancies
     # in schema and users.rb are resolved (as it causes errors)
     #
-    #def test_find_name
-    #    assert_equal "Logan", Users.findName(1, $db);
+    def test_find_name
+    #   assert_equal "Logan", Users.find_name(1, $db);
     #    assert_equal "logan", Users.findName(1, $db);
     #    assert_equal "LOGAN", Users.findName(1, $db);
     #    assert_equal "Jimmy", Users.findName(2, $db);
     #    assert_equal "James", Users.findName(2, $db);
     #    assert_equal "Sarah", Users.findName(1, $db);
-    #end
+    end
     
     def test_find_id
-        assert_equal 1, Users.findId("lmiller6@sheffield.ac.uk", "password", $db);
+        assert_equal 1, Users.find_id("lmiller6@sheffield.ac.uk", "password", $db);
         # Line below causes error for some reason
         # assert_equal 2, Users.findId("jamesa@gmail.com", "pWORD1", $db);
-        assert_equal 3, Users.findId("jimbo69@hotmail.com", "CAPITALlower314", $db);
+        assert_equal 3, Users.find_id("jimbo69@hotmail.com", "CAPITALlower314", $db);
     end
     
     def test_check_role

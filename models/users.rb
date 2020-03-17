@@ -3,7 +3,8 @@ require 'sinatra/reloader'
 
 
 module Users
-    def Users.findSearch(search, db)
+    def Users.find_search(search,db)
+        
         result=[]
         if search && search!=''
             query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user JOIN user_condition 
@@ -16,7 +17,8 @@ module Users
         return result 
     end
     
-    def Users.findAll(db)
+    def Users.find_all(db)
+        
         result=[]
             query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user JOIN user_condition WHERE user.user_id==user_condition.user_id;"
             rows=db.execute query 
@@ -27,7 +29,8 @@ module Users
         return result 
     end
     
-    def Users.findOne(id, db)
+    def Users.find_one(id,db)
+      
         result=[]
         query= "SELECT user.user_id,firstname,surname,email,mobile_number,password,access_level FROM user JOIN user_condition WHERE user.user_id=? AND user_condition.user_id=?;"
         rows=db.execute query,id, id 
@@ -36,7 +39,8 @@ module Users
         return result 
     end
     
-    def Users.new(firstname, surname, email, mobile_number, password, db)
+    def Users.new(firstname, surname, email, mobile_number, password,db)
+   
          query= "INSERT INTO user(firstname,surname,email, mobile_number,password) 
                                                                       VALUES(?,?,?,?,?)"
          result=db.execute query, firstname,surname,email, mobile_number,password
@@ -45,14 +49,31 @@ module Users
         
     end
     
-    def Users.confirmPassword(password, confirm_password, db)
+    def Users.confirm_password(password, confirm_password,db)
+
         if (password==confirm_password)
             return true
         else
             return false
         end
     end
-    def Users.validation(email, password, db)
+    
+    def Users.check_same_email(email,db)
+    
+        if email && email!='' 
+            query= "SELECT email FROM user;"
+            rows=db.execute query  
+            rows.each do |row|
+                if row[0]==email 
+                    return true  
+                end          
+            end
+        end
+        return false
+    end
+        
+    def Users.validation(email, password,db)
+   
         if email && email!='' && password && password!=''
             query= "SELECT email,password FROM user;"
             rows=db.execute query  
@@ -64,7 +85,8 @@ module Users
         end
         return false
     end 
-    def Users.checkForLogin(session, db)
+    def Users.check_for_login(session,db)
+
         if session && session!=""
             return true
         else
@@ -72,7 +94,7 @@ module Users
         end
     end
     
-    def Users.findName(id, db)
+    def Users.find_name(id,db)
          query= "SELECT firstname FROM user WHERE user_id=?;"
          rows=db.execute query, id
          row=rows[0]
@@ -80,31 +102,34 @@ module Users
     end
         
         
-    def Users.findId(email, password, db)
+    def Users.find_id(email, password,db)
           query= "SELECT user_id FROM user WHERE email=? AND password=?;"
           rows=db.execute query, email,password
           row=rows[0]
           return row[0]
     end
     
-    def Users.checkRole(id, db)
+    def Users.check_role(id,db)
             query= "SELECT access_level FROM user_condition WHERE user_id=?;"
             rows=db.execute query,id
             row=rows[0]
             return row[0]
     end
     
-    def Users.suspend(id, db)
+    def Users.suspend(id,db)
+     
        query= "UPDATE user_condition SET suspended=? WHERE user_id=?;"
        result=db.execute query,1,id   
     end
     
-    def Users.unsuspend(id, db)
+    def Users.unsuspend(id,db)
+     
        query= "UPDATE user_condition SET suspended=? WHERE user_id=?;"
        result=db.execute query,0,id   
     end
     
-   def Users.underSuspend(id, db)
+   def Users.under_suspend(id,db)
+   
        query= "SELECT suspended FROM user_condition WHERE user_id=?;"
        rows=db.execute query,id 
        row=rows[0]
@@ -115,12 +140,14 @@ module Users
        end
    end
        
-   def Users.setRole(access_level, id, db)   
+   def Users.set_role(access_level, id,db)   
+    
        query= "UPDATE user_condition SET access_level=? WHERE user_id=?;"
        rows=db.execute query, access_level,id
    end
     
-   def Users.changePassword(password, id, db)  
+   def Users.change_password(password, id,db)  
+   
        query= "UPDATE user SET password=? WHERE user_id=?;"
        rows=db.execute query, password,id
    end

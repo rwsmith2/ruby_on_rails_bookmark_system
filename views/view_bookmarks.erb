@@ -1,0 +1,78 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+  <nav>
+        <a href="/logout">Log Out</a>
+        <a href="/">Home</a>
+  </nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>View Bookmarks</h2>
+             <form method="post" action="/view_bookmarks">
+                  <p><input name="search" type="text" value="<%=@search%>"></p>
+                  <input type="submit" value="Search">
+             </form>
+      <div class="TableHolder">
+      <table>
+        <tr><th>Title</th><th>Author</th><th>Date</th><th>Rate</th><th>State</th><th></th><th>Details</th></tr>
+        <% @list.each do |bookmark| %>
+          <tr>
+              <td><%=bookmark[:title]%></td>
+              <td><%=bookmark[:author]%></td>
+              <td><%=bookmark[:date]%></td>
+              <td><%=bookmark[:rating]%></td>
+              <% if bookmark[:reported] == 1 %>
+              <td>Reported</td>
+              <td>
+                  <form method="post" action="/check_all_users/unsuspend">
+                  <p><input type="hidden" name="idu" value="<%=user[:id]%>"></p>
+                  <input type="submit" value="UnSuspend">
+                  </form>
+              </td>
+              <% end %>
+              <% if bookmark[:reported] == 0 %>
+              <td>Not Reported</td>
+              <td>
+                  <form method="post" action="/check_all_users/suspend">
+                  <p><input type="hidden" name="ids" value="<%=user[:id]%>"></p>
+                  <input type="submit" value="Suspend">
+                  </form>
+              </td>
+              <% end %>
+              
+              <td>
+                  <form method="get" action="/check_all_users/details">
+               <input type="hidden" name="id" value="<%=user[:id]%>">
+                 <input type="submit" value="Details">
+           </form>
+              </td>
+          </tr>
+        <% end %>  
+      </table>
+      </div>
+     </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+            
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+</body>
+</html>

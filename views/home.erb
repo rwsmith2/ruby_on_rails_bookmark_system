@@ -42,6 +42,14 @@
         	</form> 
 
             <% end %>
+            <% if !session[:login] %>
+             <h2>View as a guest</h2>
+            <%end%>
+            <form  methood='get' action='/view_bookmarks'>
+                  <input type="submit" value="View all bookmarks">
+            </form> 
+        	
+            
        
         </div>
 	</main>

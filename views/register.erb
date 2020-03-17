@@ -39,6 +39,9 @@
         <%if @confirmation==false %>
           <p id=failure_text>The "Password" and "Confirm Password" are not the same</p>
         <% end %>
+        <%if @unique_email==false %>
+          <p id=failure_text>Your email has been taken.Please use another one.</p>
+        <% end %>
         </div>
 	</main>
     </div>

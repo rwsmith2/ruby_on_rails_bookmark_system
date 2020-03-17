@@ -9,9 +9,10 @@ set :bind, '0.0.0.0'
 enable :sessions
 
 $db = SQLite3::Database.new 'database/bookmark_system.sqlite'
+    
 
 get '/' do
-   if Users.checkForLogin(session[:login])
+   if Users.check_for_login(session[:login],$db)
     @name=session[:name]
    else
     @name=''
@@ -30,16 +31,16 @@ post '/login' do
    @suspend=false
    @username=params[:email]
    @password=params[:password]  
-   if Users.validation(@username,@password, $db)
-     @id=Users.findId(@username,@password)
-     if Users.underSuspend(@id)
+   if Users.validation(@username,@password,$db)
+     @id=Users.find_id(@username,@password,$db)
+     if Users.under_suspend(@id,$db)
        @suspend=true
        erb :login
      else
        session[:login]=true 
-       @id=Users.findId(@username,@password, $db)
-       session[:role]=Users.checkRole(@id, $db)
-       session[:name]=Users.findName(@id, $db)
+       @id=Users.find_id(@username,@password,$db)
+       session[:role]=Users.check_role(@id,$db)
+       session[:name]=Users.find_name(@id,$db)
        redirect '/'
      end
    else      
@@ -58,6 +59,7 @@ end
 post '/register' do
     @validation=true
     @confirmation=true
+    @unique_email=true
     @firstname=params[:firstname]
     @surname=params[:surname]
     @email=params[:email] 
@@ -66,9 +68,14 @@ post '/register' do
     @confirm_password=params[:confirm_password]
     if  (@firstname!=''&&@firstname)&&(@surname!=''&&@surname)&&(@email!=''&&@email)&&
            (@mobile_number!=''&&@mobile_number)&&(@password!=''&&@password)&&(@confirm_password&&@confirm_password!='')
-     if(Users.confirmPassword(@password,@confirm_password, $db))
-      Users.new(@firstname,@surname,@email,@mobile_number,@password, $db)
-      redirect '/'
+     if(Users.confirm_password(@password,@confirm_password,$db))
+      if(!Users.check_same_email(@email,$db))
+       Users.new(@firstname,@surname,@email,@mobile_number,@password,$db)
+       redirect '/' 
+      else
+        @unique_email=false
+        erb :register
+      end
      else
          @confirmation=false
          erb :register
@@ -91,28 +98,27 @@ end
 
 
 get "/check_all_users" do
-    @list=Users.findAll($db)
+    @list=Users.find_all($db)
     erb :all_users
 end
 
 post "/check_all_users" do
     @search=params[:search]
-    @list=Users.findSearch(@search, $db)
-    puts @list
+    @list=Users.find_search(@search,$db)
     erb :all_users
 end
 
 post "/check_all_users/suspend" do
     
     @id=params[:ids]
-    Users.suspend(@id, $db)
+    Users.suspend(@id,$db)
     redirect 'check_all_users'
 end
 
 post "/check_all_users/unsuspend" do
    
     @id=params[:idu]
-    Users.unsuspend(@id, $db)
+    Users.unsuspend(@id,$db)
     redirect 'check_all_users'
 end
 
@@ -122,7 +128,7 @@ end
 
 get "/check_all_users/details" do
     @id=params[:id]
-    @found=Users.findOne(@id, $db)
+    @found=Users.find_one(@id,$db)
     @firstname=@found[:firstname]
     @surname=@found[:surname]
     @email=@found[:email]
@@ -139,8 +145,8 @@ end
 post "/check_all_users/details/set_role" do
     @id=params[:id]
     @access_level=params[:access_level]
-    Users.setRole(@access_level,@id, $db)
-    @found=Users.findOne(@id, $db)
+    Users.set_role(@access_level,@id,$db)
+    @found=Users.find_one(@id,$db)
     @firstname=@found[:firstname]
     @surname=@found[:surname]
     @email=@found[:email]
@@ -164,8 +170,8 @@ post "/check_all_users/details/set_password" do
         puts "sds"
         erb :set_password
     else
-      Users.changePassword(@newpassword, @id, $db)
-      @found=Users.findOne(@id, $db)
+      Users.change_password(@newpassword, @id,$db)
+      @found=Users.find_one(@id,$db)
       @firstname=@found[:firstname]
       @surname=@found[:surname]
       @email=@found[:email]
@@ -184,21 +190,28 @@ post "/adding_bookmarks" do
     time = Time.new
     @title=params[:bm_title]
     @content=params[:bm_content]
-    @descriptiont=params[:bm_description]
+    @description=params[:bm_description]
     @author=params[:bm_author]
     @date= (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)
     @rating=0
     @num_rating=0
     @reported=false
     
-    if  @title!=''||@content!=''||@descriptiont!=''||@author!=''||@date!=''||@rating!=''||@num_rating!=''||@reported!=''
-        @id = @title + "_" + @date
-        Bookmark.new(@id,@title,@content,@descriptiont,@author,@date,@rating,@num_rating,@reported)
+    if  (@title!=''&&@title)&&(@content!=''&&@content)&&(@description!=''&&@description)&&
+                    (@author!=''&&@author)&&(@date!=''&&@date)&&(@rating!=''&&@rating)&&
+                                    (@num_rating!=''&&@num_rating)&&(@reported!=''&&@reported)     
+        Bookmark.new(@title,@content,@description,@author,@date,@rating,@num_rating,@reported,$db)
     else 
-        "Invalid"
         redirect "/adding_bookmarks"
     end
 end
+
+get "/view_bookmarks" do
+    @list=Bookmark.find_all($db)
+    erb :view_bookmarks
+end
+
+
 
 
 
