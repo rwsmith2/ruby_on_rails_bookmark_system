@@ -34,26 +34,30 @@
               <td><%=bookmark[:date]%></td>
               <td><%=bookmark[:rating]%></td>
               <% if bookmark[:reported] == 1 %>
-              <td>Reported</td>
+              <td>Has Been Reported</td>
               <td>
-                  <form method="post" action="/check_all_users/unsuspend">
+                  <%if(session[:role]=="admin")%>
+                  <form method="post" action="/view_bookmarks/unreported">
                   <p><input type="hidden" name="idu" value="<%=bookmark[:id]%>"></p>
-                  <input type="submit" value="UnSuspend">
+                  <input type="submit" value="Unreported">
                   </form>
+                  <%end%>
               </td>
               <% end %>
               <% if bookmark[:reported] == 0 %>
               <td>Not Reported</td>
               <td>
-                  <form method="post" action="/check_all_users/suspend">
-                  <p><input type="hidden" name="ids" value="<%=bookmark[:id]%>"></p>
-                  <input type="submit" value="Suspend">
+                  
+                  <form method="post" action="/view_bookmarks/reported">
+                  <p><input type="hidden" name="idr" value="<%=bookmark[:id]%>"></p>
+                  <input type="submit" value="Reported">
                   </form>
+                  
               </td>
               <% end %>
               
               <td>
-                <form method="get" action="/check_all_users/details">
+                <form method="get" action="/view_bookmarks/details">
                  <input type="hidden" name="id" value="<%=bookmark[:id]%>">
                  <input type="submit" value="Details">
                 </form>
