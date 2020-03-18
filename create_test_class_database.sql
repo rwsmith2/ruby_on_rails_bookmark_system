@@ -1,6 +1,6 @@
 CREATE TABLE user (
     user_id INTEGER NOT NULL PRIMARY KEY,
-    forname TEXT NOT NULL,
+    firstname TEXT NOT NULL,
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
     access_level TEXT NOT NULL,

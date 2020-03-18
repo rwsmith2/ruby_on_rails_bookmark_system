@@ -2,6 +2,8 @@
 # - Delete database/test_class_db.sqlite
 # - Run sqlite3 database/test_class_database.sqlite < create_test_class_database.sql
 # - Run ruby test_class.rb
+# 
+# - You must follow these steps everytime to ensure test data has not been changed
 
 require 'sinatra'
 require 'minitest/autorun'
@@ -11,16 +13,55 @@ class TestStringComparison < Minitest::Test
     
     $db = SQLite3::Database.new 'database/test_class_database.sqlite'
     
+    # Compares methods returned hash values by outputting methods to console and checking this output
+    # (assert_equal currently not working for hash values)
     def test_find_search
-        # Cannot be completed until I understand user_condition table
-    end
-    
-    def test_find_all
-        # Cannot be completed until I understand user_condition table
+        assert_output(//, '') do
+            setup_test_find_search("");
+        end
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("LOGAN");
+        end
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("logan");
+        end
+         assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("oga");
+        end   
     end
 
+    # Outputs result of Users.find_all so that the returned hash value can be checked
+    # (assert_equal currently not working for hash values)
+    def setup_test_find_search(search)
+        puts Users.find_search(search, $db);
+    end
+    
+    # Compares methods returned hash value by outputting method to console and checking this output
+    # (assert_equal currently not working for hash values)
+    def test_find_all
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n{:id=>2, :firstname=>\"James\", :surname=>\"Acaster\", :access_level=>\"employee\", :suspended=>0}\n{:id=>3, :firstname=>\"Jimmy\", :surname=>\"Carr\", :access_level=>\"registered\", :suspended=>1}\n/, '') do
+            setup_test_find_all;
+        end
+    end
+    
+    # Outputs result of Users.find_all so that the returned hash value can be checked
+    # (assert_equal currently not working for hash values)
+    def setup_test_find_all 
+        puts Users.find_all($db);
+    end
+
+    # Compares methods returned hash value by outputting method to console and checking this output
+    # (assert_equal currently not working for hash values)
     def test_find_one
-        # Cannot be completed until I understand user_condition table
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :email=>\"lmiller6@sheffield.ac.uk\", :phone=>\"07123456789\", :password=>\"password", :access_level=>"admin"}/, '') do
+            setup_test_find_one;
+        end
+    end
+        
+    # Outputs result of Users.find_one so that the returned hash value can be checked
+    # (assert_equal currently not working for hash values)
+    def setup_test_find_one
+        puts Users.find_one(1, $db);
     end
     
     def test_password
@@ -61,35 +102,63 @@ class TestStringComparison < Minitest::Test
     
     def test_find_id
         assert_equal 1, Users.find_id("lmiller6@sheffield.ac.uk", "password", $db);
-        # Line below causes error for some reason
-        # assert_equal 2, Users.findId("jamesa@gmail.com", "pWORD1", $db);
+        assert_equal 2, Users.find_id("jamesa@gmail.com", "pWORD1", $db);
         assert_equal 3, Users.find_id("jimbo69@hotmail.com", "CAPITALlower314", $db);
     end
     
+    
     def test_check_role
-        # Cannot be completed until I understand user_condition table
+        assert_equal "admin", Users.check_role(1, $db);
+        assert_equal "employee", Users.check_role(2, $db);
+        assert_equal "registered", Users.check_role(3, $db);
     end
     
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
     def test_suspend
-        # Cannot be completed until I understand user_condition table
+        assert_equal [], Users.suspend(2, $db);
+        assert_equal [], Users.suspend(3, $db);
+        
+        # Change test data back to original form
+        assert_equal [], Users.unsuspend(2, $db);
     end
     
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
     def test_unsuspend
-        # Cannot be completed until I understand user_condition table
+        assert_equal [], Users.unsuspend(2, $db);
+        assert_equal [], Users.unsuspend(3, $db);    
+        
+        # Change test data back to original form
+        assert_equal [], Users.suspend(3, $db);
     end
 
-    #What does this method actually do? Could name be improved?
     def test_undersuspend
-        # Cannot be completed until I understand user_condition table
+        assert_equal true, Users.under_suspend(3, $db);
+        assert_equal false, Users.under_suspend(1, $db);
     end
     
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
     def test_set_role
-        # Cannot be completed until I understand user_condition table
+        assert_equal [], Users.set_role("admin", 2, $db);
+        assert_equal [], Users.set_role("employee", 1, $db);
+        
+        # Change test data back to original form
+        assert_equal [], Users.set_role("employee", 2, $db);
+        assert_equal [], Users.set_role("admin", 1, $db);
     end
     
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
     def test_change_password
-        # Cannot test method which does not return a value, perhaps users.rb code
-        # needs to be changed?
+        assert_equal [], Users.change_password("new password", 2, $db);
+        assert_equal [], Users.change_password("UPPERhelloW0r1D! ", 3, $db);
+        
+        # Change test data back to original form
+        assert_equal [], Users.change_password("pWORD1", 2, $db);
+        assert_equal [], Users.change_password("CAPITALlower314", 3, $db);
+        
     end
     
 end

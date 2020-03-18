@@ -7,7 +7,7 @@ module Users
         
         result=[]
         if search && search!=''
-            query= "SELECT user,firstname,surname,access_level,suspended FROM user WHERE firstname LIKE ? ;"
+            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user WHERE firstname LIKE ? ;"
             rows=db.execute query, '%'+search+'%' 
             rows.each do |row|
                 result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
