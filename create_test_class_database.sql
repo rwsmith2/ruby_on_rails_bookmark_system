@@ -12,7 +12,6 @@ CREATE TABLE user (
 CREATE TABLE bookmark (
     bookmark_id INTEGER NOT NULL PRIMARY KEY,
     title TEXT NOT NULL,
-    image TEXT,
     content TEXT NOT NULL,
     description TEXT,
     author TEXT NOT NULL,

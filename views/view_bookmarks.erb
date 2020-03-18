@@ -37,7 +37,7 @@
               <td>Reported</td>
               <td>
                   <form method="post" action="/check_all_users/unsuspend">
-                  <p><input type="hidden" name="idu" value="<%=user[:id]%>"></p>
+                  <p><input type="hidden" name="idu" value="<%=bookmark[:id]%>"></p>
                   <input type="submit" value="UnSuspend">
                   </form>
               </td>
@@ -46,17 +46,17 @@
               <td>Not Reported</td>
               <td>
                   <form method="post" action="/check_all_users/suspend">
-                  <p><input type="hidden" name="ids" value="<%=user[:id]%>"></p>
+                  <p><input type="hidden" name="ids" value="<%=bookmark[:id]%>"></p>
                   <input type="submit" value="Suspend">
                   </form>
               </td>
               <% end %>
               
               <td>
-                  <form method="get" action="/check_all_users/details">
-               <input type="hidden" name="id" value="<%=user[:id]%>">
+                <form method="get" action="/check_all_users/details">
+                 <input type="hidden" name="id" value="<%=bookmark[:id]%>">
                  <input type="submit" value="Details">
-           </form>
+                </form>
               </td>
           </tr>
         <% end %>  

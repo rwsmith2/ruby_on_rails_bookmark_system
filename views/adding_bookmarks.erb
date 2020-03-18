@@ -24,13 +24,15 @@
 			<h2>Adding Bookmarks</h2>
 			<form method="post" action="/adding_bookmarks">
             <p>
-            Title<input name="bm_title" type="text" value="">
-            Content<input name="bm_content" type="text" value="">
-            Description<input name="bm_description" type="text" value="">
-            </p>
-            <input name="bm_author" type="hidden" value="<%=@name%>">
-            <input type="submit" value="Add">
+            Title<input name="bm_title" type="text" value="<%=@title%>">
+            Description<input name="bm_description" type="text" value="<%=@description%>">
+            <input name="bm_author" type="hidden" value="<%=session[:name]%>">
+            Content<input type="text" name="bm_content"  value="<%=@content%>" maxlength="400" size="20">
+            <p><input type="submit" value="Add"></p>
         </form>
+          <%if @validation==false %>
+           <p id="failure_text">Please ensure all fields are filled correctly.</p>
+          <% end %>
         </div>
 	</main>
     </div>

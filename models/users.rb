@@ -7,8 +7,7 @@ module Users
         
         result=[]
         if search && search!=''
-            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user JOIN user_condition 
-                                                           WHERE user.firstname LIKE ? AND user.user_id==user_condition.user_id;"
+            query= "SELECT user,firstname,surname,access_level,suspended FROM user WHERE firstname LIKE ? ;"
             rows=db.execute query, '%'+search+'%' 
             rows.each do |row|
                 result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
@@ -20,7 +19,7 @@ module Users
     def Users.find_all(db)
         
         result=[]
-            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user JOIN user_condition WHERE user.user_id==user_condition.user_id;"
+            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user ;"
             rows=db.execute query 
             rows.each do |row|
                 result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
@@ -32,8 +31,8 @@ module Users
     def Users.find_one(id,db)
       
         result=[]
-        query= "SELECT user.user_id,firstname,surname,email,mobile_number,password,access_level FROM user JOIN user_condition WHERE user.user_id=? AND user_condition.user_id=?;"
-        rows=db.execute query,id, id 
+        query= "SELECT user.user_id,firstname,surname,email,mobile_number,password,access_level FROM user WHERE user_id= ?;"
+        rows=db.execute query,id 
         row=rows[0]
         result={id: row[0], firstname: row[1], surname: row[2],email: row[3], phone: row[4],password: row[5], access_level:row[6]}   
         return result 
@@ -41,12 +40,9 @@ module Users
     
     def Users.new(firstname, surname, email, mobile_number, password,db)
    
-         query= "INSERT INTO user(firstname,surname,email, mobile_number,password) 
-                                                                      VALUES(?,?,?,?,?)"
-         result=db.execute query, firstname,surname,email, mobile_number,password
-         query2= "INSERT INTO  user_condition(access_level,suspended) VALUES(?,?)"
-         result2=db.execute query2,"registered" , 0
-        
+         query= "INSERT INTO user(firstname,surname,email, mobile_number,password,access_level,suspended) 
+                                                                      VALUES(?,?,?,?,?,?,?)"
+         result=db.execute query, firstname,surname,email, mobile_number,password,"registered" , 0
     end
     
     def Users.confirm_password(password, confirm_password,db)
@@ -110,7 +106,7 @@ module Users
     end
     
     def Users.check_role(id,db)
-            query= "SELECT access_level FROM user_condition WHERE user_id=?;"
+            query= "SELECT access_level FROM user WHERE user_id=?;"
             rows=db.execute query,id
             row=rows[0]
             return row[0]
@@ -118,19 +114,19 @@ module Users
     
     def Users.suspend(id,db)
      
-       query= "UPDATE user_condition SET suspended=? WHERE user_id=?;"
+       query= "UPDATE user SET suspended=? WHERE user_id=?;"
        result=db.execute query,1,id   
     end
     
     def Users.unsuspend(id,db)
      
-       query= "UPDATE user_condition SET suspended=? WHERE user_id=?;"
+       query= "UPDATE user SET suspended=? WHERE user_id=?;"
        result=db.execute query,0,id   
     end
     
    def Users.under_suspend(id,db)
    
-       query= "SELECT suspended FROM user_condition WHERE user_id=?;"
+       query= "SELECT suspended FROM user WHERE user_id=?;"
        rows=db.execute query,id 
        row=rows[0]
        if row[0]==1
@@ -142,7 +138,7 @@ module Users
        
    def Users.set_role(access_level, id,db)   
     
-       query= "UPDATE user_condition SET access_level=? WHERE user_id=?;"
+       query= "UPDATE user SET access_level=? WHERE user_id=?;"
        rows=db.execute query, access_level,id
    end
     

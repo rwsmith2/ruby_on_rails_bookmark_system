@@ -1,6 +1,6 @@
 CREATE TABLE user (
-    user_id INTEGER NOT NULL PRIMARY KEY,
-    forname TEXT NOT NULL,
+    user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    firstname TEXT NOT NULL,
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
     access_level TEXT NOT NULL,
@@ -10,9 +10,8 @@ CREATE TABLE user (
 );
 
 CREATE TABLE bookmark (
-    bookmark_id INTEGER NOT NULL PRIMARY KEY,
+    bookmark_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    image TEXT,
     content TEXT NOT NULL,
     description TEXT,
     author TEXT NOT NULL,
@@ -23,27 +22,27 @@ CREATE TABLE bookmark (
 );
 
 CREATE TABLE comment (
-    comment_id INTEGER NOT NULL PRIMARY KEY,
+    comment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     author TEXT NOT NULL,
     date_created DATE NOT NULL,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id) FORIEGN KEY
+    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
 );
 
 CREATE TABLE tag (
-    tag_id INTEGER NOT NULL PRIMARY KEY,
+    tag_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     tag TEXT NOT NULL
 );
 
 CREATE TABLE bookmark_tag (
-    bookmark_tag_id INTEGER NOT NULL PRIMARY KEY,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id) FORIEGN KEY
-    tag_id INTEGER REFERENCES tag(tag_id) FORIEGN KEY
+    bookmark_tag_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
+    -- tag_id INTEGER REFERENCES tag(tag_id)
 );
 
+INSERT INTO user VALUES(1, "Logan", "Miller", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
+INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "employee", "07111222333", 0, "pWORD1");
+INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
 
-INSERT INTO user VALUES(1, "Logan", "Miller", "lmiller6@sheffield.ac.uk", "07123456789", "password");
-INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "07111222333", "pWORD1");
-INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "07328197892"), "CAPITALlower314");
 

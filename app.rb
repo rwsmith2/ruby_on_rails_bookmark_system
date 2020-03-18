@@ -187,6 +187,7 @@ get "/adding_bookmarks" do
 end
 
 post "/adding_bookmarks" do
+    validation=true
     time = Time.new
     @title=params[:bm_title]
     @content=params[:bm_content]
@@ -195,14 +196,14 @@ post "/adding_bookmarks" do
     @date= (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)
     @rating=0
     @num_rating=0
-    @reported=false
+    @reported=0
     
-    if  (@title!=''&&@title)&&(@content!=''&&@content)&&(@description!=''&&@description)&&
-                    (@author!=''&&@author)&&(@date!=''&&@date)&&(@rating!=''&&@rating)&&
-                                    (@num_rating!=''&&@num_rating)&&(@reported!=''&&@reported)     
+    if  (@title!=''&&@title)&&(@content!=''&&@content)&&(@description!=''&&@description)    
         Bookmark.new(@title,@content,@description,@author,@date,@rating,@num_rating,@reported,$db)
+        redirect "/"
     else 
-        redirect "/adding_bookmarks"
+        @validation=false
+        erb :adding_bookmarks
     end
 end
 
