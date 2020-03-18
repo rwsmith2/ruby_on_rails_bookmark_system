@@ -64,12 +64,19 @@ class TestStringComparison < Minitest::Test
         puts Users.find_one(1, $db);
     end
     
-    def test_password
+    # Users.new test missing as you cannot check if new has been created without the new being given an id
+    
+    def test_confirm_password
         assert_equal true, Users.confirm_password("TEST data 1", "TEST data 1", $db)
         assert_equal true, Users.confirm_password("hd", "hd", $db)
         assert_equal false, Users.confirm_password("password", "PASSWORD", $db)
         assert_equal false, Users.confirm_password("POHDEJBJH£B8739892", "hdweibfig", $db)
         assert_equal false, Users.confirm_password("one", "1", $db)
+    end
+    
+    def test_check_same_email
+        assert_equal false, Users.check_same_email("unusedemail@email.com", $db);
+        assert_equal true, Users.check_same_email("lmiller6@sheffield.ac.uk", $db);
     end
     
     def test_validation
@@ -78,26 +85,17 @@ class TestStringComparison < Minitest::Test
         assert_equal false, Users.validation("lmiller6@sheffield.ac.uk", "PASSWORD", $db);
         assert_equal false, Users.validation("jamesa@gmail.com", "", $db);
     end
-    def test_check_same_email
-    
-        #new method!!!
-    end
+
     
     def test_check_for_login
         assert_equal true, Users.check_for_login(true, $db);
         assert_equal false, Users.check_for_login(false, $db);
     end
     
-    # Commented out whilst firstname and forname field name discrepancies
-    # in schema and users.rb are resolved (as it causes errors)
-    #
     def test_find_name
-    #   assert_equal "Logan", Users.find_name(1, $db);
-    #    assert_equal "logan", Users.findName(1, $db);
-    #    assert_equal "LOGAN", Users.findName(1, $db);
-    #    assert_equal "Jimmy", Users.findName(2, $db);
-    #    assert_equal "James", Users.findName(2, $db);
-    #    assert_equal "Sarah", Users.findName(1, $db);
+        assert_equal "Logan", Users.find_name(1, $db);
+        assert_equal "James", Users.find_name(2, $db);
+        assert_equal "Jimmy", Users.find_name(3, $db);
     end
     
     def test_find_id

@@ -3,6 +3,8 @@ require 'sinatra/reloader'
 
 
 module Users
+    
+    # Returns the name, access level and suspension status of all users with the search parameter within their first name
     def Users.find_search(search,db)
         
         result=[]
@@ -16,6 +18,7 @@ module Users
         return result 
     end
     
+    # Returns all users ID, name, access level and suspension status
     def Users.find_all(db)
         
         result=[]
@@ -28,6 +31,7 @@ module Users
         return result 
     end
     
+    # Returns ID, name, email, phone number, password and access level of user with given ID
     def Users.find_one(id,db)
       
         result=[]
@@ -38,13 +42,15 @@ module Users
         return result 
     end
     
-    def Users.new(firstname, surname, email, mobile_number, password,db)
+    # Creates a new user with given values
+    def Users.new(firstname, surname, email, mobile_number, password, db)
    
          query= "INSERT INTO user(firstname,surname,email, mobile_number,password,access_level,suspended) 
                                                                       VALUES(?,?,?,?,?,?,?)"
          result=db.execute query, firstname,surname,email, mobile_number,password,"registered" , 0
     end
     
+    # Checks users password matches confirmed password during registering stage
     def Users.confirm_password(password, confirm_password,db)
 
         if (password==confirm_password)
@@ -54,6 +60,7 @@ module Users
         end
     end
     
+    # Checks if email given already being used by a user
     def Users.check_same_email(email,db)
     
         if email && email!='' 
@@ -67,7 +74,8 @@ module Users
         end
         return false
     end
-        
+    
+    # Checks if email & password given by user are correct, if so user can log in
     def Users.validation(email, password,db)
    
         if email && email!='' && password && password!=''
@@ -81,6 +89,8 @@ module Users
         end
         return false
     end 
+    
+    # Checks if user is currently logged in
     def Users.check_for_login(session,db)
 
         if session && session!=""
@@ -90,6 +100,7 @@ module Users
         end
     end
     
+    # Returns name of user with given ID
     def Users.find_name(id,db)
          query= "SELECT firstname FROM user WHERE user_id=?;"
          rows=db.execute query, id
@@ -97,7 +108,7 @@ module Users
          return row[0]
     end
         
-        
+    # Returns ID of user with given email & password combination 
     def Users.find_id(email, password,db)
           query= "SELECT user_id FROM user WHERE email=? AND password=?;"
           rows=db.execute query, email,password
@@ -105,6 +116,7 @@ module Users
           return row[0]
     end
     
+    # Returns access level of user with given ID
     def Users.check_role(id,db)
             query= "SELECT access_level FROM user WHERE user_id=?;"
             rows=db.execute query,id
@@ -112,20 +124,20 @@ module Users
             return row[0]
     end
     
+    # Suspends user with given ID
     def Users.suspend(id,db)
-     
        query= "UPDATE user SET suspended=? WHERE user_id=?;"
        result=db.execute query,1,id   
     end
     
+    # Unsuspends user with given ID
     def Users.unsuspend(id,db)
-     
        query= "UPDATE user SET suspended=? WHERE user_id=?;"
        result=db.execute query,0,id   
     end
     
-   def Users.under_suspend(id,db)
-   
+    # Returns true if user with given ID is suspended
+    def Users.under_suspend(id,db)
        query= "SELECT suspended FROM user WHERE user_id=?;"
        rows=db.execute query,id 
        row=rows[0]
@@ -136,12 +148,14 @@ module Users
        end
    end
        
+   # Changes access level of user with given ID to given access level
    def Users.set_role(access_level, id,db)   
     
        query= "UPDATE user SET access_level=? WHERE user_id=?;"
        rows=db.execute query, access_level,id
    end
-    
+   
+   # Changes password of user with given ID to given password
    def Users.change_password(password, id,db)  
    
        query= "UPDATE user SET password=? WHERE user_id=?;"
