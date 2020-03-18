@@ -212,10 +212,64 @@ get "/view_bookmarks" do
     erb :view_bookmarks
 end
 
+post "/view_bookmarks" do
+    @search=params[:search]
+    @list=Bookmark.find_search(@search,$db)
+    erb :view_bookmarks
+end
+
+post "/view_bookmarks/reported" do
+    
+    @id=params[:idr]
+    Bookmark.reported(@id,$db)
+    redirect '/view_bookmarks'
+end
+
+post "/view_bookmarks/unreported" do
+   
+    @id=params[:idu]
+    Bookmark.unreported(@id,$db)
+    redirect '/view_bookmarks'
+end
 
 
+get "/view_bookmarks/details" do
+    @id=params[:id]
+    @found=Bookmark.find_one(@id,$db)
+    @title=@found[:title]
+    @author=@found[:author]
+    @description=@found[:description]
+    @content=@found[:content]
+    @rate=@found[:rate]
+    @num_of_rate=@found[:num_of_rate] 
+    @date=@found[:date] 
+    erb :bookmark_details
+end
 
+get "/view_bookmarks/details/back" do
+    redirect '/view_bookmarks'
+end
 
+post "/view_bookmarks/details/rating" do
+    @id=params[:id]
+    @rating_points=params[:rating_points].to_i
+    Bookmark.rate(@rating_points,@id,$db)
+    @found=Bookmark.find_one(@id,$db)
+    @title=@found[:title]
+    @author=@found[:author]
+    @description=@found[:description]
+    @content=@found[:content]
+    @rate=@found[:rate]
+    @num_of_rate=@found[:num_of_rate] 
+    @date=@found[:date] 
+    erb :bookmark_details
+end
+
+post "/view_bookmarks/details/delete" do
+    @id=params[:id]
+    Bookmark.delete(@id,$db)
+    redirect '/view_bookmarks'
+end
 
 
 
