@@ -1,7 +1,7 @@
 # Instructions to run:
-# - Delete database/test_class_db.sqlite
+# - Delete database/test_class_database.sqlite
 # - Run sqlite3 database/test_class_database.sqlite < create_test_class_database.sql
-# - Run ruby test_class.rb
+# - Run ruby bookmarks_test_class.rb
 # 
 # - You must follow these steps everytime to ensure test data has not been changed
 
@@ -11,7 +11,7 @@ require_relative 'models/users.rb'
 
 class TestStringComparison < Minitest::Test
     
-    $db = SQLite3::Database.new 'database/test_class_database.sqlite'
+    $db = SQLite3::Database.new 'database/test_class_database.sqlite';
     
     # Compares methods returned hash values by outputting methods to console and checking this output
     # (assert_equal currently not working for hash values)
