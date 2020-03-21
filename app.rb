@@ -9,7 +9,8 @@ set :bind, '0.0.0.0'
 enable :sessions
 
 $db = SQLite3::Database.new 'database/bookmark_system.sqlite'
-    
+
+#User Part--------------------------   
 
 get '/' do
    
@@ -50,6 +51,8 @@ post '/login' do
            session[:login] = true 
            session[:role] = Users.check_role(@id, $db)
            session[:name] = Users.find_name(@id, $db)
+           session[:id] = @id
+           
            redirect '/'
      end
    else      
@@ -114,6 +117,7 @@ get '/logout' do
      session.delete(:name)
      session.delete(:login)
      session.delete(:role)
+     session.delete(:id)
      erb :logout
 end
 
@@ -127,8 +131,13 @@ get "/check_all_users" do
 end
 
 post "/check_all_users" do
+    @no_results=false
     @search = params[:search]
     @list = Users.find_search(@search, $db)
+    
+    if (@list==[])
+        @no_results=true
+    end
     
     erb :all_users
 end
@@ -162,7 +171,7 @@ get "/check_all_users/details" do
     @password = @found[:password]
     @access_level = @found[:access_level] 
     
-    erb :details
+    erb :user_details
 end
 
 get "/check_all_users/details/back" do
@@ -184,7 +193,7 @@ post "/check_all_users/details/set_role" do
     @password = @found[:password]
     @access_level = @found[:access_level]
     
-    erb :details
+    erb :user_details
 end
 
 get "/check_all_users/details/set_password" do
@@ -202,7 +211,6 @@ post "/check_all_users/details/set_password" do
    
     if @newpassword && @newpassword==""
         @validation = false
-        puts "sds"
         erb :set_password
     else
       Users.change_password(@newpassword, @id, $db)
@@ -219,18 +227,22 @@ post "/check_all_users/details/set_password" do
     end
 end
 
+#Bookmark Part--------------------------
+
 get "/adding_bookmarks" do
     erb :adding_bookmarks
 end
 
 post "/adding_bookmarks" do
-    validation = true
+    @validation = true
+    @duplicate=false
     time = Time.new
     
     @title = params[:bm_title]
     @content = params[:bm_content]
     @description = params[:bm_description]
     @author = params[:bm_author]
+    @author_id=session[:id]
     
     @date = (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)
     @rating = 0
@@ -240,10 +252,15 @@ post "/adding_bookmarks" do
     #If bookmark details have been entered
     if (@title != '' && @title) &&
        (@content != '' && @content) &&
-       (@description != '' && @description)    
-        
-       Bookmark.new(@title, @content, @description, @author, @date, @rating, @num_rating, @reported, $db)
+       (@description != '' && @description)
+      #If the title of the bookmark is unique
+      if(!Bookmark.duplicate(@title,$db)) 
+       Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, @reported, $db)
        redirect "/"
+      else
+          @duplicate=true
+          erb :adding_bookmarks
+      end
     else 
         @validation = false
         erb :adding_bookmarks
@@ -257,9 +274,12 @@ get "/view_bookmarks" do
 end
 
 post "/view_bookmarks" do
+    @no_results=false
     @search = params[:search]
     @list = Bookmark.find_search(@search, $db)
-    
+    if (@list==[])
+        @no_results=true
+    end
     erb :view_bookmarks
 end
 
@@ -321,6 +341,12 @@ post "/view_bookmarks/details/delete" do
     
     Bookmark.delete(@id, $db)
     redirect '/view_bookmarks'
+end
+
+get "/my_bookmarks" do
+    @id=session[:id]
+    @list = Bookmark.find_my_bookmark(@id,$db)
+    erb :my_bookmarks
 end
 
 

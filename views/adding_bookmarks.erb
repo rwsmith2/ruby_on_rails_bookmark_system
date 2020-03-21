@@ -33,6 +33,9 @@
           <%if @validation==false %>
            <p id="failure_text">Please ensure all fields are filled correctly.</p>
           <% end %>
+          <%if @duplicate==true %>
+           <p id="failure_text">The title of your bookmark already exists. Please change another one</p>
+          <% end %>
         </div>
 	</main>
     </div>

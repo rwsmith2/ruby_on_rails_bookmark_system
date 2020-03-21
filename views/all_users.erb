@@ -24,6 +24,9 @@
                   <p>Search by firstname: <input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
+             <%if @no_results==true %>
+                <p id=failure_text>Sorry. There is no relevant results.</p>
+            <% end %>
       <div class="TableHolder">
       <table>
         <tr><th>ID</th><th>Firstname</th><th>Surname</th><th>Access Level</th><th>Status</th><th></th><th>Details</th></tr>

@@ -15,6 +15,7 @@ CREATE TABLE bookmark (
     content TEXT NOT NULL,
     description TEXT,
     author TEXT NOT NULL,
+    author_id INTEGER NOT NULL,
     date_created DATE NOT NULL,
     rating INTEGER,
     num_of_ratings INTEGER,
@@ -47,6 +48,6 @@ INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "employee", "
 INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
 
 -- Bookmark test data
-INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller", '2020-2-10', 4, 2, 0);
-INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data", "Jimmy Carr", '2020-3-19', 5, 31, 0);
-INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr", '2019-12-9', 2, 10, 0);
+INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0);
+INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data",2, "Jimmy Carr", '2020-3-19', 5, 31, 0);
+INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr", '2019-12-9',3, 2, 10, 0);

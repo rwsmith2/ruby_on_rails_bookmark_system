@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+  <nav>
+        <a href="/logout">Log Out</a>
+        <a href="/">Home</a>
+  </nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>My Bookmarks</h2>
+      <div class="TableHolder">       
+      <table>
+        <tr><th>ID</th><th>Title</th><th>Date</th><th></th><th>Details</th></tr>
+        <% @list.each do |bookmark| %>
+          <tr>
+              <td><%=bookmark[:id]%></td>
+              <td><%=bookmark[:title]%></td>
+              <td><%=bookmark[:date]%></td>
+              <td></td>   
+              <td>
+                <form method="get" action="/my_bookmarks/edit">
+                 <input type="hidden" name="id" value="<%=bookmark[:id]%>">
+                 <input type="submit" value="Edit">
+                </form>
+              </td>
+          </tr>
+        <% end %>  
+      </table>
+      </div>
+     </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+            
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+</body>
+</html>

@@ -24,7 +24,10 @@
                   <p><input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
-      <div class="TableHolder">
+            <%if @no_results==true %>
+                <p id=failure_text>Sorry. There is no relevant results.</p>
+            <% end %>
+      <div class="TableHolder">       
       <table>
         <tr><th>Title</th><th>Author</th><th>Date</th><th>Rate</th><th>State</th><th></th><th>Details</th></tr>
         <% @list.each do |bookmark| %>

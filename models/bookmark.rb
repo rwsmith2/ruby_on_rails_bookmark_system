@@ -4,12 +4,12 @@ require 'sinatra/reloader'
 module Bookmark
     
     # Create new bookmark
-    def Bookmark.new(title, content, description, author, date, rating, num_rating, reported, db)
+    def Bookmark.new(title, content, description, author,author_id, date, rating, num_rating, reported, db)
         
-        query= "INSERT INTO bookmark(title,content,description,author,date_created,rating,num_of_ratings,reported) 
-                                                                      VALUES(?,?,?,?,?,?,?,?)"
+        query= "INSERT INTO bookmark(title,content,description,author,author_id,date_created,rating,num_of_ratings,reported) 
+                                                                      VALUES(?,?,?,?,?,?,?,?,?)"
         
-        result = db.execute query, title, content, description, author, date, rating, num_rating, reported
+        result = db.execute query, title, content, description, author,author_id, date, rating, num_rating, reported
         
     end
     
@@ -49,8 +49,7 @@ module Bookmark
             rows.each do |row|
                 result.push({title: row[0], author: row[1], date: row[2], rating: row[3],reported: row[4]})
             end
-        end
-        
+        end        
         return result 
     end
     
@@ -105,5 +104,27 @@ module Bookmark
         result=db.execute query, id
     end
     
+    def Bookmark.duplicate(title,db)   
+       query= "SELECT title FROM bookmark;"
+       rows=db.execute query  
+       rows.each do |row|
+          if row[0]==title 
+              return true  
+          end          
+       end
+       
+      return false
+    end
+    
+    
+    def Bookmark.find_my_bookmark(id, db)
+        result = []
+        query = "SELECT bookmark_id,title,date_created  FROM bookmark  WHERE author_id=?;"
+        rows = db.execute query,id 
+        rows.each do |row|
+         result.push({id: row[0],title: row[1], date:row[2]})  
+        end
+        return result 
+    end
     
 end

@@ -23,7 +23,7 @@
 			<h2>Welcome <%=@name%></h2>
 			<p>Please select one of the services below.</p>
 			<hr>
-			<% if !session[:name] %>
+			<% if !session[:login] %>
 	            <form  methood='get' action='/login' >
 	              <input type="submit" value="Log In">  
 	            </form>
@@ -40,7 +40,11 @@
             <form  methood='get' action='/adding_bookmarks'>
            		<input type="submit" value="Add Bookmarks">  
         	</form> 
-
+            <% end %>
+             <%if session[:role]=="admin" || session[:role]=="employee"  %>
+            <form  methood='get' action='/my_bookmarks'>
+           		<input type="submit" value="View My Bookmarks">  
+        	</form> 
             <% end %>
             <% if !session[:login] %>
              <h2>View as a guest</h2>
