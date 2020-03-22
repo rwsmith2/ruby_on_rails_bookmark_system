@@ -350,4 +350,50 @@ get "/my_bookmarks" do
 end
 
 
+get "/my_bookmarks/edit" do
+    @id=params[:id]
+    @found=Bookmark.find_one(@id,$db)
+    @title = @found[:title]
+    @author = @found[:author]
+    @description = @found[:description]
+    @content = @found[:content]  
+    erb :edit
+end
+
+post"/my_bookmarks/edit" do
+    @validation=true
+    @same=false
+    @duplicate=false
+    @id=params[:id]
+    @title = params[:title]
+    @author = params[:author]
+    @description = params[:description]
+    @content = params[:content]  
+    if (@title != '' && @title) &&
+       (@content != '' && @content) &&
+       (@description != '' && @description)
+      if(!Bookmark.not_change(@id,@title,@author,@description,@content,$db))
+        if(!Bookmark.duplicate(@title,$db))
+           Bookmark.update(@id,@title ,@author ,@description,@content,$db)
+           redirect "/my_bookmarks"
+        else
+             @duplicate=true
+             erb :edit
+        end
+      else
+           @same=true
+           erb :edit
+      end
+    else
+         @validation=false
+         erb :edit
+    end
+end
+
+post "/my_bookmarks/edit/delete" do
+  @id=params[:id]
+  Bookmark.delete(@id,$db)
+  redirect"/my_bookmarks"
+end
+
 

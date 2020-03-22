@@ -127,4 +127,19 @@ module Bookmark
         return result 
     end
     
+    def Bookmark.update(id,title ,author,description,content,db)
+
+       query= "UPDATE bookmark SET title=?, author=?, description=?,content=? WHERE bookmark_id=?;"
+       result=db.execute query, title,author,description,content,id   
+    end
+    
+    def Bookmark.not_change(id,title ,author,description,content,db)
+        
+        found=Bookmark.find_one(id, db)
+        if(title==found[:title]&&author==found[:author]&&
+               description==found[:description]&&content==found[:content])
+          return true
+        end
+        return false
+    end
 end
