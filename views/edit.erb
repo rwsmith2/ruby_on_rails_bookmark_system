@@ -27,7 +27,8 @@
             <p>Title<input name="title" type="text" value="<%=@title%>"></p>
             <p>Author<input name="author" type="text" value="<%=@author%>"></p>
             <p>Description<input name="description" type="text" value="<%=@description%>"></p>
-            <p>Content<input name="content" type="text" value="<%=@content%>"></p>
+            <p><label for="content">Content</label>  
+            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
             <input type="submit" value="Save">
          </form>
    

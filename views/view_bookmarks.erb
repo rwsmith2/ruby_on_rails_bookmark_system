@@ -33,9 +33,14 @@
         <% @list.each do |bookmark| %>
           <tr>
               <td><%=bookmark[:title]%></td>
-              <td><%=bookmark[:author]%></td>
+              <td><%=bookmark[:author]%></td>           
               <td><%=bookmark[:date]%></td>
-              <td><%=bookmark[:rating]%></td>
+              <%if bookmark[:num_of_rate]!=0%>
+               <td><%=bookmark[:rating]%></td>
+              <%end%>
+              <%if bookmark[:num_of_rate]==0%>
+               <td>Not Rated</td>
+              <%end%>
               <% if bookmark[:reported] == 1 %>
               <td>Has Been Reported</td>
               <td>
@@ -50,7 +55,6 @@
               <% if bookmark[:reported] == 0 %>
               <td>Not Reported</td>
               <td>
-                  
                   <form method="post" action="/view_bookmarks/reported">
                   <p><input type="hidden" name="idr" value="<%=bookmark[:id]%>"></p>
                   <input type="submit" value="Reported">

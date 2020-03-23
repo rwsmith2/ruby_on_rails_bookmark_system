@@ -72,6 +72,7 @@ post '/register' do
     @validation = true
     @confirmation = true
     @unique_email = true
+    @valid_email=true
     
     @firstname = params[:firstname]
     @surname = params[:surname]
@@ -79,6 +80,7 @@ post '/register' do
     @mobile_number = params[:phone_number]
     @password = params[:password]
     @confirm_password = params[:confirm_password]
+    @valid_email_address=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     
     #If all details have been filled in
     if  (@firstname != '' && @firstname) &&
@@ -87,10 +89,12 @@ post '/register' do
         (@mobile_number != '' && @mobile_number) &&
         (@password != '' && @password) && 
         (@confirm_password && @confirm_password != '')
-         
+       #If the email address is valid
+       if(@email=~@valid_email_address)
+           
         #If both password match
         if(Users.confirm_password(@password,@confirm_password,$db))
-            
+           
             #If email currently not registered with another account
             if(!Users.check_same_email(@email,$db))
                 
@@ -106,6 +110,10 @@ post '/register' do
              @confirmation = false
              erb :register
          end
+       else
+           @valid_email=false
+           erb :register
+       end
     else
         @validation = false
         erb :register
@@ -373,7 +381,7 @@ post"/my_bookmarks/edit" do
        (@content != '' && @content) &&
        (@description != '' && @description)
       if(!Bookmark.not_change(@id,@title,@author,@description,@content,$db))
-        if(!Bookmark.duplicate(@title,$db))
+        if(!Bookmark.change_to_duplicate(@title,@id,$db))
            Bookmark.update(@id,@title ,@author ,@description,@content,$db)
            redirect "/my_bookmarks"
         else

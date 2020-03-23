@@ -54,6 +54,7 @@ class TestStringComparison < Minitest::Test
     
     # Compares methods returned hash valuea by outputting methods to console and checking this output
     # (assert_equal currently not working for hash values)
+    # NOTICE: change the function
     def test_find_search
         assert_output(//, '') do
             setup_test_find_search("");
@@ -74,6 +75,7 @@ class TestStringComparison < Minitest::Test
     
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
+    # NOTICE: change the function
     def test_find_one
         assert_output(/{:id=>1, :title=>\"Lab results\", :author=>\"Logan Miller\", :description=>\"Details of february's lab\", :content=>\"\/lab.html\", :rate=>4, :num_of_rate=>2, :date=>\"2020-2-10\"}/) do
             setup_test_find_one;

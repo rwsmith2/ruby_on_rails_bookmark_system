@@ -42,6 +42,9 @@
         <%if @unique_email==false %>
           <p id=failure_text>Your email has been taken.Please use another one.</p>
         <% end %>
+        <%if @valid_email==false %>
+          <p id=failure_text>Your email address is invalid.Please change it.</p>
+        <% end %>
         </div>
 	</main>
     </div>

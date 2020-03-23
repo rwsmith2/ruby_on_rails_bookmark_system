@@ -16,10 +16,10 @@ module Bookmark
     # Return all bookmarks
     def Bookmark.find_all(db)
         result = []
-        query = "SELECT title,author,date_created,rating,reported,bookmark_id FROM bookmark;"
+        query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark;"
         rows = db.execute query 
         rows.each do |row|
-            result.push({title: row[0], author: row[1], date: row[2], rating: row[3],reported: row[4], id:row[5]})
+            result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
         end
         
         return result 
@@ -44,10 +44,10 @@ module Bookmark
         
         #If user has entered something in the search field
         if search && search!=''
-            query = "SELECT title, author, date_created, rating, reported FROM bookmark WHERE title LIKE ? ;"
+            query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE title LIKE ? ;"
             rows = db.execute query, '%'+search+'%' 
             rows.each do |row|
-                result.push({title: row[0], author: row[1], date: row[2], rating: row[3],reported: row[4]})
+                result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
             end
         end        
         return result 
@@ -109,6 +109,19 @@ module Bookmark
        rows=db.execute query  
        rows.each do |row|
           if row[0]==title 
+              return true  
+          end          
+       end
+       
+      return false
+    end
+    
+    def Bookmark.change_to_duplicate(title,id,db)
+       found=Bookmark.find_one(id, db)
+       query= "SELECT title FROM bookmark;"
+       rows=db.execute query  
+       rows.each do |row|
+          if row[0]!=found[:title]&&row[0]==title 
               return true  
           end          
        end

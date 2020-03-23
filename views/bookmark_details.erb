@@ -30,7 +30,9 @@
             <p>Rating: <%=@rate%></p>
             <p>Number of Ratings: <%=@num_of_rate%></p>
             <p>Creating Date: <%=@date%></p>   
-          <form method="post" action="/view_bookmarks/details/rating">
+            
+          <%if session[:role]%>
+           <form method="post" action="/view_bookmarks/details/rating">
             <input type="hidden" name="id" value="<%=@id%>">
             <select name="rating_points">
                 <option value="5" >5</option>
@@ -41,7 +43,8 @@
                 <option value="0" >0</option> 
             </select>
             <input type="submit" value="Rate">
-          </form>
+           </form>
+          <%end%>
           <%if session[:role]=="admin"%>
            <form method="post" action="/view_bookmarks/details/delete">
             <input type="hidden" name="id" value="<%=@id%>">
