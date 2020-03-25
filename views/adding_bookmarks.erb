@@ -21,21 +21,24 @@
   </nav>
 	<main>
 		<div class="contentSmallForm">
-			<h2>Adding Bookmarks</h2>
+			<h2>Adding Bookmarks</h2>          
 			<form method="post" action="/adding_bookmarks">
             <p>
-            Title<input name="bm_title" type="text" value="<%=@title%>">
-            Description<input name="bm_description" type="text" value="<%=@description%>">
-            Author<input name="bm_author" type="text" value="<%=@author%>">    
+            Title<input name="title" type="text" value="<%=@title%>">
+            Description<input name="description" type="text" value="<%=@description%>">
+            Author<input name="author" type="text" value="<%=@author%>">  </p>  
             <p><label for="content">Content</label>  
             <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
-            <p><input type="submit" value="Add"></p>
+            <input type="submit" value="Add">
+        </form>
+        <form method="get" action="/">
+           <input type="submit" value="Cancel"> 
         </form>
           <%if @validation==false %>
            <p id="failure_text">Please ensure all fields are filled correctly.</p>
           <% end %>
           <%if @duplicate==true %>
-           <p id="failure_text">The title of your bookmark already exists. Please change another one</p>
+           <p id="failure_text">The title of your bookmark already exists. Please change another one.</p>
           <% end %>
         </div>
 	</main>

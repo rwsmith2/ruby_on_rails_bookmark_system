@@ -253,10 +253,10 @@ post "/adding_bookmarks" do
     @duplicate=false
     time = Time.new
     
-    @title = params[:bm_title]
-    @content = params[:bm_content]
-    @description = params[:bm_description]
-    @author = params[:bm_author]
+    @title = params[:title]
+    @content = params[:content]
+    @description = params[:description]
+    @author = params[:author]
     @author_id=session[:id]
     
     @date = (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)

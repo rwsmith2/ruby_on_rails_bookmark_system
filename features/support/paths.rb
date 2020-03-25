@@ -22,6 +22,8 @@ module NavigationHelpers
       '/check_all_users/details'
     when /the reset password page/
       '/check_all_users/details/set_password'
+    when /the adding bookmark page/
+      '/adding_bookmarks'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
