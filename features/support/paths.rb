@@ -14,6 +14,14 @@ module NavigationHelpers
       '/login'
     when /the logout page/
       '/logout'
+    when /the register page/
+      '/register'
+    when /the all users page/
+      '/check_all_users'
+    when /the user details page/
+      '/check_all_users/details'
+    when /the reset password page/
+      '/check_all_users/details/set_password'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

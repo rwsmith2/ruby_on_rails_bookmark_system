@@ -24,6 +24,11 @@
                   <p><input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
+            <% if session[:search_bm] == true %>
+             <form method="post" action="/view_bookmarks/back">
+                  <input type="submit" value="Back to all bookmarks">
+             </form>
+            <%end%>
             <%if @no_results==true %>
                 <p id=failure_text>Sorry. There is no relevant results.</p>
             <% end %>

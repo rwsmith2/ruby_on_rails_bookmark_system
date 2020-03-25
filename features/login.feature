@@ -1,4 +1,3 @@
-# Scenarios go here!
 Feature: login
 
 Scenario: Go to login page
@@ -27,7 +26,7 @@ Scenario: Wrong or empty password
     When I fill in "password" with "pass word"
     When I press "Login" within ".contentSmallForm"
     Then I should see "Invalid Username or Password. Please try again."
-    
+   
 Scenario: Logout
     Given I am on the login page
     When I fill in "email" with "lmiller6@sheffield.ac.uk"
@@ -38,3 +37,11 @@ Scenario: Logout
     Then I should be on the logout page
     Then I should see "You have succesfully logged out."
     Then I should see "Thank you for using Bookmark Manager"
+
+Scenario: Suspend account
+   
+    Given I am on the login page
+    When I fill in "email" with "jimbo69@hotmail.com"
+    When I fill in "password" with "CAPITALlower314"
+    When I press "Login" within ".contentSmallForm"
+    Then I should see "Your account has been suspended. Please contact admin."

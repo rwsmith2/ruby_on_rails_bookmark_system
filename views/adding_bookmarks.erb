@@ -27,9 +27,8 @@
             Title<input name="bm_title" type="text" value="<%=@title%>">
             Description<input name="bm_description" type="text" value="<%=@description%>">
             Author<input name="bm_author" type="text" value="<%=@author%>">    
-            <br><br>
-            <textarea name="bm_content" placeholder="Please type your content here..." rows="5" cols="92"></textarea>    
-            </p>
+            <p><label for="content">Content</label>  
+            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
             <p><input type="submit" value="Add"></p>
         </form>
           <%if @validation==false %>

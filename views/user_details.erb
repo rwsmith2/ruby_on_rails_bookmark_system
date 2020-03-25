@@ -32,9 +32,9 @@
           <form method="post" action="/check_all_users/details/set_role">
             <input type="hidden" name="id" value="<%=@id%>">
             <select name="access_level">
-                <option value="registered" >Registered</option>
-                <option value="employee">Employee</option>
-                <option value="admin" >Admin</option> 
+                <option name="R" value="registered" >Registered</option>
+                <option name="E" value="employee">Employee</option>
+                <option name="A" value="admin" >Admin</option> 
             </select>
             <input type="submit" value="Save">
           </form>

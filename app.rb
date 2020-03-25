@@ -13,13 +13,15 @@ $db = SQLite3::Database.new 'database/bookmark_system.sqlite'
 #User Part--------------------------   
 
 get '/' do
-   
+   session[:search_u]=false
+   session[:search_bm]=false
    # If the user is logged in
    if Users.check_for_login(session[:login],$db)
     @name=session[:name]
    else
     @name=''
    end
+    session[:search]=false
     erb :home
 end
 
@@ -133,17 +135,21 @@ end
 
 
 get "/check_all_users" do
-    @list  =Users.find_all($db)
+   if session[:search_u]==false
+     @list=Users.find_all($db)
+   else
+     @list= Users.find_search( session[:result_u], $db)
+   end
     
-    erb :all_users
+   erb :all_users
 end
 
 post "/check_all_users" do
+    session[:search_u]=true
     @no_results=false
-    @search = params[:search]
-    @list = Users.find_search(@search, $db)
-    
-    if (@list==[])
+    session[:result_u] = params[:search]
+    @list = Users.find_search( session[:result_u], $db)    
+    if ( @list==[])
         @no_results=true
     end
     
@@ -152,20 +158,21 @@ end
 
 post "/check_all_users/suspend" do
     @id=params[:ids]
-    
     Users.suspend(@id,$db)
-    redirect 'check_all_users'
+    redirect "/check_all_users"
 end
 
 post "/check_all_users/unsuspend" do
+    
     @id=params[:idu]
     
     Users.unsuspend(@id,$db)
-    redirect 'check_all_users'
+    redirect '/check_all_users'
 end
 
-get "/check_all_users/back" do
-    redirect '/'
+post "/check_all_users/back" do 
+    session[:search_u]=false
+    redirect '/check_all_users'
 end
 
 get "/check_all_users/details" do
@@ -231,7 +238,7 @@ post "/check_all_users/details/set_password" do
       @password = @found[:password]
       @access_level = @found[:access_level] 
       
-      erb :details
+      erb :user_details
     end
 end
 
@@ -276,15 +283,25 @@ post "/adding_bookmarks" do
 end
 
 get "/view_bookmarks" do
-    @list = Bookmark.find_all($db)
-    
+    puts session[:search_bm]
+    if session[:search_bm]==false
+      @list = Bookmark.find_all($db)
+    else
+      @list = Bookmark.find_search( session[:result_bm], $db)
+    end
     erb :view_bookmarks
 end
 
+post "/view_bookmarks/back" do
+    session[:search_bm]=false
+    redirect '/view_bookmarks'
+end
+
 post "/view_bookmarks" do
+    session[:search_bm]=true
     @no_results=false
-    @search = params[:search]
-    @list = Bookmark.find_search(@search, $db)
+    session[:result_bm] = params[:search]
+    @list = Bookmark.find_search( session[:result_bm], $db)
     if (@list==[])
         @no_results=true
     end

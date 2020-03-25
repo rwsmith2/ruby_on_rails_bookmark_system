@@ -24,13 +24,18 @@
                   <p>Search by firstname: <input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
+            <% if session[:search_u] == true %>
+             <form method="post" action="/check_all_users/back">
+                  <input type="submit" value="Back to all users">
+             </form>
+            <%end%>
              <%if @no_results==true %>
                 <p id=failure_text>Sorry. There is no relevant results.</p>
             <% end %>
       <div class="TableHolder">
       <table>
         <tr><th>ID</th><th>Firstname</th><th>Surname</th><th>Access Level</th><th>Status</th><th></th><th>Details</th></tr>
-        <% @list.each do |user| %>
+        <%  @list.each do |user| %>
           <tr>
               <td><%=user[:id]%></td>
               <td><%=user[:firstname]%></td>
