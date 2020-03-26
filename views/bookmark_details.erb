@@ -27,8 +27,12 @@
             <p>Author: <%=@author%></p>
             <p>Description: <%=@description%></p>
             <p>Content: <%=@content%></p>
-            <p>Rating: <%=@rate%></p>
-            <p>Number of Ratings: <%=@num_of_rate%></p>
+            <%if @num_of_rate==0%>
+              <p>Rateing: Not Rated</p>
+            <%else%>
+             <p>Rating: <%=@rate%></p>
+            <%end%>
+            <p>Number of Ratings: <%=@num_of_rate%></p>     
             <p>Creating Date: <%=@date%></p>   
             
           <%if session[:role]%>

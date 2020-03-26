@@ -52,7 +52,7 @@
                   <%if(session[:role]=="admin")%>
                   <form method="post" action="/view_bookmarks/unreported">
                   <p><input type="hidden" name="idu" value="<%=bookmark[:id]%>"></p>
-                  <input type="submit" value="Unreported">
+                  <input type="submit" value="Unreport">
                   </form>
                   <%end%>
               </td>
@@ -62,7 +62,7 @@
               <td>
                   <form method="post" action="/view_bookmarks/reported">
                   <p><input type="hidden" name="idr" value="<%=bookmark[:id]%>"></p>
-                  <input type="submit" value="Reported">
+                  <input type="submit" value="Report">
                   </form>
                   
               </td>

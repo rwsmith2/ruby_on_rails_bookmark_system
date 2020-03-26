@@ -283,7 +283,6 @@ post "/adding_bookmarks" do
 end
 
 get "/view_bookmarks" do
-    puts session[:search_bm]
     if session[:search_bm]==false
       @list = Bookmark.find_all($db)
     else

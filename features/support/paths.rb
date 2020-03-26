@@ -24,7 +24,15 @@ module NavigationHelpers
       '/check_all_users/details/set_password'
     when /the adding bookmark page/
       '/adding_bookmarks'
-
+    when /the view bookmark page/
+      '/view_bookmarks'
+    when /the bookmark details page/
+      '/view_bookmarks/details'
+    when /the my bookmark page/
+      '/my_bookmarks'
+    when /the edit bookmark page/
+      '/my_bookmarks/edit'
+        
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
