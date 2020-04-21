@@ -8,9 +8,11 @@ CREATE TABLE user (
     suspended BOOLEAN NOT NULL,
     password TEXT NOT NULL
 );
-
+--Table for bookmark
 CREATE TABLE bookmark (
+    --primary key for table
     bookmark_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     description TEXT,
