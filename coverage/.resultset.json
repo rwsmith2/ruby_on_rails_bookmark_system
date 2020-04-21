@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/codio/workspace/app.rb": {
+      "/home/codio/workspace/project/app.rb": {
         "lines": [
           1,
           1,
@@ -428,7 +428,7 @@
           null
         ]
       },
-      "/home/codio/workspace/models/users.rb": {
+      "/home/codio/workspace/project/models/users.rb": {
         "lines": [
           1,
           1,
@@ -599,7 +599,7 @@
           null
         ]
       },
-      "/home/codio/workspace/models/bookmark.rb": {
+      "/home/codio/workspace/project/models/bookmark.rb": {
         "lines": [
           1,
           1,
@@ -762,6 +762,6 @@
         ]
       }
     },
-    "timestamp": 1587393569
+    "timestamp": 1587473244
   }
 }
