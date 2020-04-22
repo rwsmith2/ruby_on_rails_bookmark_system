@@ -14,7 +14,9 @@
 		<h1>Bookmark Manager</h1>
 	</header>
   <nav>
+      <% if session[:name] %>
         <a href="/logout">Log Out</a>
+      <% end %>
         <a href="/">Home</a>
   </nav>
 	<main>
