@@ -5,7 +5,7 @@ require_relative 'models/users.rb'
 require_relative 'models/bookmark.rb'
 
 #If checking the system test please delete the database first 
-#and type "sqlite3 database/bookmark_system.squite<create_database.sql" to create a new one.
+#and type "sqlite3 database/bookmark_system.sqlite<create_database.sql" to create a new one.
 #Then type "cucumber features" to run the tests.
 set :bind, '0.0.0.0'
 enable :sessions
