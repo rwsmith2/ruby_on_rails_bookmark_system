@@ -23,7 +23,8 @@
             <p>
             Firstname:<input name="firstname" type="text" value="<%=@firstname%>">
             Surname:<input name="surname" type="text" value="<%=@surname%>">
-            Username / E-mail:<input name="email" type="text" value="<%=@email%>">
+            Username:<input name="username" type="text" value="<%=@username%>">
+            E-mail:<input name="email" type="text" value="<%=@email%>">
             Mobile Number:<input name="phone_number" type="text" value="<%=@mobile_number%>">
             Password:<input name="password" type="password" value="<%=@password%>"> 
             Confirm Password: <input name="confirm_password" type="password" value="<%=@confirm_password%>">
@@ -39,8 +40,8 @@
         <%if @confirmation==false %>
           <p id=failure_text>The 'Password' and 'Confirm Password' are not the same</p>
         <% end %>
-        <%if @unique_email==false %>
-          <p id=failure_text>Your Username / E-mail has been taken. Please use another one.</p>
+        <%if @unique_username==false %>
+          <p id=failure_text>Your Username has been taken. Please use another one.</p>
         <% end %>
         <%if @valid_email==false %>
           <p id=failure_text>Your email address is invalid. Please change it.</p>

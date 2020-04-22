@@ -35,19 +35,19 @@ module Users
     def Users.find_one(id,db)
       
         result=[]
-        query= "SELECT user.user_id,firstname,surname,email,mobile_number,password,access_level FROM user WHERE user_id= ?;"
+        query= "SELECT user.user_id,firstname,surname,username,email,mobile_number,password,access_level FROM user WHERE user_id= ?;"
         rows=db.execute query,id 
         row=rows[0]
-        result={id: row[0], firstname: row[1], surname: row[2],email: row[3], phone: row[4],password: row[5], access_level:row[6]}   
+        result={id: row[0], firstname: row[1], surname: row[2],username: row[3],email: row[4], phone: row[5],password: row[6], access_level:row[7]}   
         return result 
     end
     
     # Creates a new user with given values
-    def Users.new(firstname, surname, email, mobile_number, password, db)
+    def Users.new(firstname, surname,username, email, mobile_number, password, db)
    
-         query= "INSERT INTO user(firstname,surname,email, mobile_number,password,access_level,suspended) 
-                                                                      VALUES(?,?,?,?,?,?,?)"
-         result=db.execute query, firstname,surname,email, mobile_number,password,"registered" , 0
+         query= "INSERT INTO user(firstname,surname,username,email, mobile_number,password,access_level,suspended) 
+                                                                      VALUES(?,?,?,?,?,?,?,?)"
+         result=db.execute query, firstname,surname,username,email, mobile_number,password,"registered" , 0
     end
     
     # Checks users password matches confirmed password during registering stage
@@ -61,13 +61,13 @@ module Users
     end
     
     # Checks if email given already being used by a user
-    def Users.check_same_email(email,db)
+    def Users.check_same_username(username,db)
     
-        if email && email!='' 
-            query= "SELECT email FROM user;"
+        if username && username!='' 
+            query= "SELECT username FROM user;"
             rows=db.execute query  
             rows.each do |row|
-                if row[0]==email 
+                if row[0]==username 
                     return true  
                 end          
             end
@@ -76,13 +76,13 @@ module Users
     end
     
     # Checks if email & password given by user are correct, if so user can log in
-    def Users.validation(email, password,db)
+    def Users.validation(username, password,db)
    
-        if email && email!='' && password && password!=''
-            query= "SELECT email,password FROM user;"
+        if username && username!='' && password && password!=''
+            query= "SELECT username,password FROM user;"
             rows=db.execute query  
             rows.each do |row|
-                if row[0]==email && row[1]==password
+                if row[0]==username && row[1]==password
                     return true  
                 end          
             end
@@ -109,9 +109,9 @@ module Users
     end
         
     # Returns ID of user with given email & password combination 
-    def Users.find_id(email, password,db)
-          query= "SELECT user_id FROM user WHERE email=? AND password=?;"
-          rows=db.execute query, email,password
+    def Users.find_id(username, password,db)
+          query= "SELECT user_id FROM user WHERE username=? AND password=?;"
+          rows=db.execute query, username,password
           row=rows[0]
           return row[0]
     end

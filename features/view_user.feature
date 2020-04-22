@@ -2,7 +2,7 @@ Feature: view user
 
 Scenario: Go to all users page
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View Users" within ".contentSmallForm"

@@ -2,6 +2,7 @@ CREATE TABLE user (
     user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     firstname TEXT NOT NULL,
     surname TEXT NOT NULL,
+    username TEXT NOT NULL,
     email TEXT NOT NULL,
     access_level TEXT NOT NULL,
     mobile_number TEXT,
@@ -44,12 +45,12 @@ CREATE TABLE bookmark_tag (
     -- tag_id INTEGER REFERENCES tag(tag_id)
 );
 -- Users test data
-INSERT INTO user VALUES(1, "Logan", "Miller", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
-INSERT INTO user VALUES(2, "James", "Acaster", "jamesa@gmail.com", "employee", "07111222333", 0, "pWORD1");
-INSERT INTO user VALUES(3, "Jimmy", "Carr", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
-INSERT INTO user VALUES(4, "Admin", "Account", "admin", "admin", "01189998819991197253", 0, "admin");
-INSERT INTO user VALUES(5, "User", "Account", "user", "employee", "01189998819991197253", 0, "user");
-INSERT INTO user VALUES(6, "qwe", "qwe", "qwe", "registered", "21312", 0, "123");
+INSERT INTO user VALUES(1, "Logan", "Miller","role1", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
+INSERT INTO user VALUES(2, "James", "Acaster","role2" ,"jamesa@gmail.com", "employee", "07111222333", 0, "pWORD1");
+INSERT INTO user VALUES(3, "Jimmy", "Carr", "role3","jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
+INSERT INTO user VALUES(4, "Admin", "Account","admin", "admin@gmail.com", "admin", "01189998819991197253", 0, "admin");
+INSERT INTO user VALUES(5, "User", "Account", "user","user@gmail.com", "employee", "01189998819991197253", 0, "user");
+INSERT INTO user VALUES(6, "qwe", "qwe", "role4","qwe@gmail.com", "registered", "21312", 0, "123");
 
 -- Bookmark test data
 INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0);

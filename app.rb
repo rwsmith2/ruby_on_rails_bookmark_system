@@ -38,7 +38,7 @@ post '/login' do
    @validation = true
    @suspend = false
     
-   @username = params[:email]
+   @username = params[:username]
    @password = params[:password]  
    
    # If username & password matches
@@ -77,9 +77,11 @@ post '/register' do
     @confirmation = true
     @unique_email = true
     @valid_email=true
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     
     @firstname = params[:firstname]
     @surname = params[:surname]
+    @username= params[:username]
     @email = params[:email] 
     @mobile_number = params[:phone_number]
     @password = params[:password]
@@ -88,6 +90,7 @@ post '/register' do
     #If all details have been filled in
     if  (@firstname != '' && @firstname) &&
         (@surname != '' && @surname) &&
+        (@username != '' && @username) &&
         (@email != '' && @email) &&
         (@mobile_number != '' && @mobile_number) &&
         (@password != '' && @password) && 
@@ -97,14 +100,20 @@ post '/register' do
         if(Users.confirm_password(@password,@confirm_password,$db))
            
             #If email currently not registered with another account
-            if(!Users.check_same_email(@email,$db))
+            if(!Users.check_same_username(@username,$db))
                 
-                #Create new user
-                Users.new(@firstname,@surname,@email,@mobile_number,@password,$db)
+                if(@email=~VALID_EMAIL_REGEX)
+                 #Create new user
+                 Users.new(@firstname,@surname,@username,@email,@mobile_number,@password,$db)
                 
-                redirect '/' 
+                 redirect '/'
+                else
+                   @valid_email=false
+                   erb :register
+                end
+                    
             else
-                @unique_email = false
+                @unique_username = false
                 erb :register
             end
          else
@@ -173,9 +182,10 @@ end
 get "/check_all_users/details" do
     @id = params[:id]
     @found = Users.find_one(@id,$db)
-    
+    puts @found
     @firstname = @found[:firstname]
     @surname = @found[:surname]
+    @username = @found[:username]
     @email = @found[:email]
     @phone = @found[:phone]
     @password = @found[:password]
@@ -198,6 +208,7 @@ post "/check_all_users/details/set_role" do
     
     @firstname = @found[:firstname]
     @surname = @found[:surname]
+    @username = @found[:username]
     @email = @found[:email]
     @phone = @found[:phone]
     @password = @found[:password]
@@ -228,6 +239,7 @@ post "/check_all_users/details/set_password" do
       
       @firstname = @found[:firstname]
       @surname = @found[:surname]
+      @username = @found[:username]
       @email = @found[:email]
       @phone = @found[:phone]
       @password = @found[:password]

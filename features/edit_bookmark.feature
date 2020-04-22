@@ -2,7 +2,7 @@ Feature: edit bookmark
 
 Scenario: Go to my bookmark page
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View My Bookmark" within ".contentSmallForm"
@@ -10,7 +10,7 @@ Scenario: Go to my bookmark page
 
 Scenario: Go to edit bookmark page
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
@@ -23,7 +23,7 @@ Scenario: Go to edit bookmark page
 
 Scenario: Edit bookmark with empty fieads
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
@@ -35,7 +35,7 @@ Scenario: Edit bookmark with empty fieads
     
 Scenario: Edit bookmark with duplicate title
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
@@ -46,7 +46,7 @@ Scenario: Edit bookmark with duplicate title
  
 Scenario: Edit bookmark without changing
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
@@ -56,7 +56,7 @@ Scenario: Edit bookmark without changing
     
 Scenario: Edit bookmark without changing
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
