@@ -84,7 +84,6 @@ post '/register' do
     @mobile_number = params[:phone_number]
     @password = params[:password]
     @confirm_password = params[:confirm_password]
-    @valid_email_address=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     
     #If all details have been filled in
     if  (@firstname != '' && @firstname) &&
@@ -93,8 +92,6 @@ post '/register' do
         (@mobile_number != '' && @mobile_number) &&
         (@password != '' && @password) && 
         (@confirm_password && @confirm_password != '')
-       #If the email address is valid
-       if(@email=~@valid_email_address)
            
         #If both password match
         if(Users.confirm_password(@password,@confirm_password,$db))
@@ -114,10 +111,6 @@ post '/register' do
              @confirmation = false
              erb :register
          end
-       else
-           @valid_email=false
-           erb :register
-       end
     else
         @validation = false
         erb :register
