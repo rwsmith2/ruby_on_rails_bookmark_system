@@ -1,7 +1,7 @@
 # Instructions to run:
 # - Delete database/test_class_database.sqlite
 # - Run sqlite3 database/test_class_database.sqlite < create_test_class_database.sql
-# - Run ruby bookmarks_test_class.rb
+# - Run ruby users_test_class.rb
 # 
 # - You must follow these steps everytime to ensure test data has not been changed
 
