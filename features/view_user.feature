@@ -78,10 +78,10 @@ Scenario: Reset password properly
     When I fill in "search" with "Jimmy"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
-    Then I should see "Password: CAPITALlower314"
     When I press "Reset password" within ".contentSmallForm"
     Then I should be on the reset password page
     When I fill in "new_password" with "awe"
     When I press "Submit" within ".contentSmallForm"
-    Then I should see "Password: awe"
+    Then I should be on the user details page
     
+#request for unsuspend

@@ -53,7 +53,7 @@ class TestStringComparison < Minitest::Test
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_one
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :username=>\"role1\", :email=>\"lmiller6@sheffield.ac.uk\", :phone=>\"07123456789\", :password=>\"password", :access_level=>"admin"}/, '') do
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :username=>\"role1\", :email=>\"lmiller6@sheffield.ac.uk\", :phone=>\"07123456789\", :access_level=>"admin"}/, '') do
             setup_test_find_one;
         end
     end
