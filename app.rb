@@ -343,6 +343,7 @@ get "/view_bookmarks/details" do
     @num_of_rate = @found[:num_of_rate] 
     @date = @found[:date]
     
+    @number_c=Bookmark.number_of_comments(session[:id_bm],$db)
     erb :bookmark_details
 end
 
@@ -436,6 +437,42 @@ post "/my_bookmarks/edit/delete" do
   @id=params[:id]
   Bookmark.delete(@id,$db)
   redirect"/my_bookmarks"
+end
+
+get "/add_comment" do
+   erb :add_comment
+end
+
+post "/add_comment" do
+   @validation=true
+   @comment_yourself=false
+   time = Time.new
+
+   @id_bm=session[:id_bm]
+   @author=params[:author]
+   @content=params[:content]
+   @title=params[:title]
+   @date = (time.year.to_s + "-" + time.month.to_s + "-" + time.day.to_s)
+   
+   if (@title != '' && @title) &&
+      (@content != '' && @content) &&
+      (@author != '' && @author)
+       if !Bookmark.own_bookmark(@id_bm,session[:id_l],$db)
+        Bookmark.add_comment(@id_bm,@title,@author,@content,@date,$db)
+        redirect '/view_bookmarks/details'
+       else
+            @comment_yourself=true
+            erb :add_comment
+       end
+   else
+       @validation=false
+       erb :add_comment
+   end
+end
+
+get "/view_comments" do
+    @list=Bookmark.find_comments(session[:id_bm],$db)
+    erb :view_comments
 end
 
 

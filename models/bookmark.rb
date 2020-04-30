@@ -181,4 +181,28 @@ module Bookmark
         end
         return false
     end
+    
+    def Bookmark.add_comment(id_bm,title,author,content,date,db)
+       query= "INSERT INTO comment(title,content,author,date_created,bookmark_id) 
+                                                                      VALUES(?,?,?,?,?)"
+       result = db.execute query, title, content, author,date, id_bm
+    end
+    
+    def Bookmark.number_of_comments(id_bm,db)
+        query= "SELECT COUNT(*) FROM comment WHERE bookmark_id=?;"
+        rows = db.execute query, id_bm
+        row=rows[0]
+        return row[0]
+    end
+    
+    def Bookmark.find_comments(id_bm,db)
+        result=[]
+        query= "SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;"
+        rows = db.execute query,id_bm    
+        rows.each do |row|
+            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})
+        end
+        
+        return result
+    end
 end

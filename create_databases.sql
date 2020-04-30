@@ -56,3 +56,6 @@ INSERT INTO user VALUES(6, "qwe", "qwe", "role4","qwe@gmail.com", "registered", 
 INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0);
 INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data", "James Acaster",2, '2020-3-19', 5, 31, 0);
 INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr",3, '2019-12-9', 0, 0, 0);
+
+--Comment test data
+INSERT INTO comment VALUES(1,"Test comment","Test!!!","Logan Miller","2020-3-28",2);

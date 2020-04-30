@@ -32,6 +32,10 @@ module NavigationHelpers
       '/my_bookmarks'
     when /the edit bookmark page/
       '/my_bookmarks/edit'
+    when /the add comment page/
+      '/add_comment'
+    when /the view comments page/
+      '/view_comments'
         
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

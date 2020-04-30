@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+  <nav>
+        <a href="/view_bookmarks/details">Back to details</a>
+  </nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>View Comments</h2>
+
+      <div class="TableHolder">       
+       
+        <% @list.each do |comment| %>
+          <table>
+          <tr>
+              <td><%=comment[:author]%></td>
+              <td><%=comment[:date]%></td>           
+          </tr>
+          <tr> 
+              <td colspan="2"><%=comment[:title]%></td>
+          </tr>
+          <tr> 
+              <td colspan="2">>><%=comment[:content]%></td>
+          </tr>
+         </table>
+          <%end%>
+      
+      </div>
+     </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+            
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+</body>
+</html>
