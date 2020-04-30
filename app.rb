@@ -61,8 +61,56 @@ post '/login' do
       @validation = false
       erb :login
    end
-  
 end
+
+get '/request' do
+    
+    erb :create_request
+end
+
+post '/request' do
+    @validation = true
+    @no_such_user=false
+    
+    @username=params[:username]
+    @content=params[:content]
+    
+     if  (@username != '' && @username) &&
+        (@content != '' && @content) 
+         if(Users.check_same_username(@username,$db))
+          Users.request(@username,@content,$db)
+          redirect '/login'
+         else
+             @no_such_user=true
+             erb :create_request
+         end
+     else   
+         
+         @validation=false
+         erb :create_request
+     end
+   
+    
+end
+
+get '/view_request' do
+    @list=Users.find_requests($db)
+    erb :view_request
+end
+
+post '/view_request/read' do
+    @id=params[:idr]
+    Users.mark_as_read(@id,$db)
+    redirect '/view_request'
+end
+
+post '/view_request/unread' do
+    @id=params[:idu]
+    Users.mark_as_unread(@id,$db)
+    redirect '/view_request'
+end
+
+
 
 get '/register' do
 
@@ -183,7 +231,7 @@ get "/check_all_users/details" do
     end
     @id = session[:id_u]
     @found = Users.find_one(@id,$db)
-    puts @found
+
     @firstname = @found[:firstname]
     @surname = @found[:surname]
     @username = @found[:username]

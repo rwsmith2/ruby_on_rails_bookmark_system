@@ -34,9 +34,17 @@
         </form>
         <%if @validation==false %>
           <p id="failure_text">Invalid Username or Password. Please try again.</p>
+          <form method="get" action="/request">
+           <p id="failure_text">Forget your password?</p>
+           <input type="submit" value="Request"> 
+          </form>
+          
        <% end %>
        <%if @suspend==true %>
           <p id="failure_text">Your account has been suspended. Please contact admin.</p>
+            <form method="get" action="/request">
+           <input type="submit" value="Contact"> 
+          </form>
        <% end %> 
         </div>
 	</main>

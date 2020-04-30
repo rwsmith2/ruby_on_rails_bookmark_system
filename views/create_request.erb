@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+ 
+	<main>
+		<div class="contentSmallForm">
+			<h2>Request</h2>          
+			<form method="post" action="/request">
+            <p>
+            Username<input name="username" type="text" value="<%=@username%>">
+            <p><label for="content">Content</label>  
+            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
+            <input type="submit" value="Submit">
+        </form>
+        <form method="get" action="/login">
+           <input type="submit" value="Cancel"> 
+        </form>
+          <%if @validation==false %>
+           <p id="failure_text">Please ensure all fields are filled correctly.</p>
+          <% end %>
+          <%if @no_such_user==true %>
+           <p id="failure_text">The username does not exist, please type the right one.</p>
+          <% end %>
+
+        </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+
+</body>
+</html>

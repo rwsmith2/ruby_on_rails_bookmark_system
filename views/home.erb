@@ -35,6 +35,9 @@
          		<form  methood='get' action='/check_all_users'>
            			<input type="submit" value="View Users">  
          		</form> 
+                <form  methood='get' action='/view_request'>
+           			<input type="submit" value="View request">  
+         		</form> 
         	<% end %>
             <%if session[:role]=="admin" || session[:role]=="employee"  %>
             <form  methood='get' action='/adding_bookmarks'>

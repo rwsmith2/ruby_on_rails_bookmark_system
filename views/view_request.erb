@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+  <nav>
+       
+        <a href="/logout">Log Out</a>
+        <a href="/">Home</a>
+  </nav>
+	<main>
+		<div class="contentSmallForm">
+			<h2>View Requests</h2>
+
+      <div class="TableHolder">       
+       
+        <% @list.each do |request| %>
+          <table>
+          <tr>
+              <td><%=request[:username]%></td>
+               <% if request[:read] == 1 %>
+               <td>
+                  <form method="post" action="/view_request/read">
+                  <p><input type="hidden" name="idr" value="<%=request[:id]%>"></p>
+                  <input type="submit" value="Mark as read">
+                  </form>
+              </td>
+               <% end %>
+              <% if request[:read] == 0 %>
+               <td>
+                  <form method="post" action="/view_request/unread">
+                  <p><input type="hidden" name="idu" value="<%=request[:id]%>"></p>
+                  <input type="submit" value="Mark as unread">
+                  </form>
+              </td>
+               <% end %>
+          </tr>
+          <tr> 
+              <td colspan="2">>><%=request[:content]%></td>
+          </tr>
+             <tr>
+              <% if request[:read] == 1 %>
+              <td>Unread</td>
+              <% end %>
+              <% if request[:read] == 0 %>
+              <td>Read</td>
+              <% end %>
+              </tr>
+         </table>
+          <%end%>
+      
+      </div>
+     </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+            
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+</body>
+</html>

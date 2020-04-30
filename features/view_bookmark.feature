@@ -198,4 +198,3 @@ Scenario: Delete bookmark
     Then I should not see "Funny jokes"
     
 #search by tags
-#comment
