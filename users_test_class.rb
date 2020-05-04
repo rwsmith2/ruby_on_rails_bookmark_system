@@ -164,13 +164,14 @@ class TestStringComparison < Minitest::Test
     # if it returns nothing (as is expected)
     def test_requests
         assert_equal [], Users.request("role1", "content", $db);
-        
     end
 
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_requests
-        assert_output(/{id: row[0],username: row[1], content: row[2],read: row[3]}n/, '') do
+        Users.request("role1", "content", $db);
+        
+        assert_output(/{id: 1, username: role1, content: content, read: 1}n/, '') do
             Users.find_requests($db);
         end
     end
