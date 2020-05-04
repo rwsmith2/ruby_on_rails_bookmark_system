@@ -19,13 +19,13 @@ class TestStringComparison < Minitest::Test
         assert_output(//, '') do
             setup_test_find_search("");
         end
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+        assert_output(/{:id=>1, :username=>\"role1", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
             setup_test_find_search("LOGAN");
         end
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+        assert_output(/{:id=>1, :username=>\"role1", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
             setup_test_find_search("logan");
         end
-         assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+         assert_output(/{:id=>1, :username=>\"role1", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
             setup_test_find_search("oga");
         end   
     end
@@ -39,7 +39,7 @@ class TestStringComparison < Minitest::Test
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_all
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n{:id=>2, :firstname=>\"James\", :surname=>\"Acaster\", :access_level=>\"employee\", :suspended=>0}\n{:id=>3, :firstname=>\"Jimmy\", :surname=>\"Carr\", :access_level=>\"registered\", :suspended=>1}\n/, '') do
+        assert_output(/{:id=>1, :username=>\"role1", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n{:id=>2, :username=>\"role2", :firstname=>\"James\", :surname=>\"Acaster\", :access_level=>\"employee\", :suspended=>0}\n{:id=>3, :username=>\"role3", :firstname=>\"Jimmy\", :surname=>\"Carr\", :access_level=>\"registered\", :suspended=>1}\n/, '') do
             setup_test_find_all;
         end
     end
@@ -159,4 +159,31 @@ class TestStringComparison < Minitest::Test
         
     end
     
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+    def test_requests
+        assert_equal [], Users.request("role1", "content", $db);
+        
+    end
+
+    # Compares methods returned hash value by outputting method to console and checking this output
+    # (assert_equal currently not working for hash values)
+    def test_find_requests
+        assert_output(/{id: row[0],username: row[1], content: row[2],read: row[3]}n/, '') do
+            Users.find_requests($db);
+        end
+    end
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+    def test_mark_as_read
+        assert_equal [], Users.mark_as_read("1", $db);
+    end
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+    def test_mark_as_unread
+        assert_equal [], Users.mark_as_unread("1", $db);
+    end
 end
