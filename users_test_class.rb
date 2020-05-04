@@ -53,7 +53,7 @@ class TestStringComparison < Minitest::Test
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_one
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :email=>\"lmiller6@sheffield.ac.uk\", :phone=>\"07123456789\", :password=>\"password", :access_level=>"admin"}/, '') do
+        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :username=>\"role1\", :email=>\"lmiller6@sheffield.ac.uk\", :phone=>\"07123456789\", :password=>\"password", :access_level=>"admin"}/, '') do
             setup_test_find_one;
         end
     end
@@ -75,15 +75,15 @@ class TestStringComparison < Minitest::Test
     end
     
     def test_check_same_email
-        assert_equal false, Users.check_same_email("unusedemail@email.com", $db);
-        assert_equal true, Users.check_same_email("lmiller6@sheffield.ac.uk", $db);
+        assert_equal false, Users.check_same_username("role5", $db);
+        assert_equal true, Users.check_same_username("role1", $db);
     end
     
     def test_validation
-        assert_equal true, Users.validation("lmiller6@sheffield.ac.uk", "password", $db);
-        assert_equal true, Users.validation("jimbo69@hotmail.com", "CAPITALlower314", $db);
-        assert_equal false, Users.validation("lmiller6@sheffield.ac.uk", "PASSWORD", $db);
-        assert_equal false, Users.validation("jamesa@gmail.com", "", $db);
+        assert_equal true, Users.validation("role1", "password", $db);
+        assert_equal true, Users.validation("role3", "CAPITALlower314", $db);
+        assert_equal false, Users.validation("role1", "PASSWORD", $db);
+        assert_equal false, Users.validation("role1", "", $db);
     end
 
     
@@ -99,9 +99,9 @@ class TestStringComparison < Minitest::Test
     end
     
     def test_find_id
-        assert_equal 1, Users.find_id("lmiller6@sheffield.ac.uk", "password", $db);
-        assert_equal 2, Users.find_id("jamesa@gmail.com", "pWORD1", $db);
-        assert_equal 3, Users.find_id("jimbo69@hotmail.com", "CAPITALlower314", $db);
+        assert_equal 1, Users.find_id("role1", "password", $db);
+        assert_equal 2, Users.find_id("role2", "pWORD1", $db);
+        assert_equal 3, Users.find_id("role3", "CAPITALlower314", $db);
     end
     
     

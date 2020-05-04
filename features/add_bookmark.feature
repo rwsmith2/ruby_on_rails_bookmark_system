@@ -1,8 +1,7 @@
-Feature: register
-
+Feature: add bookmark
 Scenario: Go to adding bookmark page
     Given I am on the login page
-    When I fill in "email" with "jamesa@gmail.com"
+    When I fill in "username" with "role2"
     When I fill in "password" with "pWORD1"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"
@@ -27,7 +26,7 @@ Scenario: Adding with duplicate title
 
 Scenario: Proper adding without tags
     Given I am on the login page
-    When I fill in "email" with "jamesa@gmail.com"
+    When I fill in "username" with "role2"
     When I fill in "password" with "pWORD1"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"

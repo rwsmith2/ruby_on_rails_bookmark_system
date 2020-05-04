@@ -2,7 +2,7 @@ Feature: view bookmark
 
 Scenario: Go to view bookmark page
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
@@ -35,7 +35,7 @@ Scenario: Report bookmark
     
 Scenario: Unreport bookmark
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
@@ -57,7 +57,7 @@ Scenario: Go to bookmark details page
 
 Scenario: Rate bookmark
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
@@ -72,7 +72,7 @@ Scenario: Rate bookmark
     
 Scenario: Delete bookmark
     Given I am on the login page
-    When I fill in "email" with "lmiller6@sheffield.ac.uk"
+    When I fill in "username" with "role1"
     When I fill in "password" with "password"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
