@@ -22,15 +22,43 @@
 	<main>
 		<div class="contentSmallForm">
 			<h2>View Bookmarks</h2>
+           
              <form method="post" action="/view_bookmarks">
                   <p><input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
+            <%if session[:no_results]==false||!session[:no_results] %>
+              <form method="post" action="/view_bookmarks/filter">
+               <p><label for="filter">Filter by:</label>
+                <select name="filter">
+                 <option name="R" value="rate" >Rate</option>
+                 <option name="D" value="date">Date</option>
+                </select>
+                  <input type="submit" value="Filter">
+                </p>
+              </form>
+         
+            <%if session[:filter_r]==true||session[:filter_d]==true%>
+              <form method="post" action="/view_bookmarks/reset">
+                  <input type="submit" value="Reset">
+               </form>
+            <%end%>
+            <%end%>
+            
+           
             <% if session[:search_bm] == true %>
              <form method="post" action="/view_bookmarks/back">
                   <input type="submit" value="Back to all bookmarks">
              </form>
             <%end%>
+            <%if session[:filter_r]==true %>
+             <h2>Now Order By Rate:</h2>
+            <%end%>
+            <%if session[:filter_d]==true %>
+              <h2>Now Order By Date:</h2>
+            <%end%>
+            
+             
             <%if @no_results==true %>
                 <p id=failure_text>Sorry. There is no relevant results.</p>
             <% end %>

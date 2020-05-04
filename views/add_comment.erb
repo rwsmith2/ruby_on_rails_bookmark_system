@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>Bookmark Manager</title>
+  <link href="css/general.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <div id="page-container">
+   <div id="content-wrap">
+	<header>
+		<h1>Bookmark Manager</h1>
+	</header>
+ 
+	<main>
+		<div class="contentSmallForm">
+			<h2>Adding Comment</h2>          
+			<form method="post" action="/add_comment">
+            <p>
+            Title<input name="title" type="text" value="<%=@title%>">
+            Author<input name="author" type="text" value="<%=@author%>">  </p>  
+            <p><label for="content">Content</label>  
+            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
+            <input type="submit" value="Add">
+        </form>
+        <form method="get" action="/view_bookmarks/details">
+           <input type="submit" value="Cancel"> 
+        </form>
+          <%if @validation==false %>
+           <p id="failure_text">Please ensure all fields are filled correctly.</p>
+          <% end %>
+          <%if @comment_yourself==true %>
+           <p id="failure_text">Sorry. You can't comment the bookmark created by you.</p>
+          <% end %>
+    
+        </div>
+	</main>
+    </div>
+	<footer>
+		<ul>
+			<li><a href="/">Back to homepage</a></li>
+		</ul>
+		<hr>
+		<p>COM1001, 2020</p>
+	</footer>
+    </div>
+
+</body>
+</html>

@@ -36,7 +36,7 @@
             <p>Creating Date: <%=@date%></p>   
             
           <%if session[:role]%>
-           <form method="post" action="/view_bookmarks/details/rating">
+           <form method="post" action="/view_bookmarks/details">
             <input type="hidden" name="id" value="<%=@id%>">
             <select name="rating_points">
                 <option value="5" >5</option>
@@ -49,6 +49,17 @@
             <input type="submit" value="Rate">
            </form>
           <%end%>
+          <%if @rate_yourself==true %>
+                <p id=failure_text>Sorry. You can't rate the bookmark created by you.</p>
+          <% end %>
+          <%if session[:login]==true %>
+            <form method="get" action="/add_comment">
+              <input type="submit" value="Add Comment">
+            </form>
+          <%end%>
+             <form method="get" action="/view_comments">
+              <input type="submit" value="View Comments(<%=@number_c%>)">
+            </form>
           <%if session[:role]=="admin"%>
            <form method="post" action="/view_bookmarks/details/delete">
             <input type="hidden" name="id" value="<%=@id%>">
