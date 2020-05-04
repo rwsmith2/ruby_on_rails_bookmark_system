@@ -19,14 +19,14 @@ class TestStringComparison < Minitest::Test
         assert_output(//, '') do
             setup_test_find_search("");
         end
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
-            setup_test_find_search("LOGAN");
+        assert_output(/{:id=>1, :username=>\"role1\", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("role1");
         end
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
-            setup_test_find_search("logan");
+        assert_output(/{:id=>1, :username=>\"role1\", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("ROLE1");
         end
-         assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
-            setup_test_find_search("oga");
+         assert_output(/{:id=>1, :username=>\"role1\", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n/, '') do
+            setup_test_find_search("1");
         end   
     end
 
@@ -39,7 +39,7 @@ class TestStringComparison < Minitest::Test
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_all
-        assert_output(/{:id=>1, :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n{:id=>2, :firstname=>\"James\", :surname=>\"Acaster\", :access_level=>\"employee\", :suspended=>0}\n{:id=>3, :firstname=>\"Jimmy\", :surname=>\"Carr\", :access_level=>\"registered\", :suspended=>1}\n/, '') do
+        assert_output(/{:id=>1, :username=>\"role1\", :firstname=>\"Logan\", :surname=>\"Miller\", :access_level=>\"admin\", :suspended=>0}\n{:id=>2, :username=>\"role2\", :firstname=>\"James\", :surname=>\"Acaster\", :access_level=>\"employee\", :suspended=>0}\n{:id=>3, :username=>\"role3\", :firstname=>\"Jimmy\", :surname=>\"Carr\", :access_level=>\"registered\", :suspended=>1}\n/, '') do
             setup_test_find_all;
         end
     end
