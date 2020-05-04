@@ -25,6 +25,13 @@ CREATE TABLE bookmark (
     reported BOOLEAN NOT NULL
 );
 
+CREATE TABLE request (
+    request_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    content TEXT NOT NULL,
+    read  BOOLEAN NOT NULL
+);
+
 CREATE TABLE comment (
     comment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,

@@ -421,7 +421,9 @@ post "/view_bookmarks/details" do
        @rate = @found[:rate]
        @num_of_rate = @found[:num_of_rate] 
        @date = @found[:date]
-    
+        
+        
+       @number_c=Bookmark.number_of_comments(session[:id_bm],$db)
        erb :bookmark_details
     end
 end

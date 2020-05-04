@@ -10,7 +10,7 @@ Scenario: Go to all users page
     
 Scenario: Search users
     Given I am on the all users page
-    When I fill in "search" with "Logan"
+    When I fill in "search" with "role1"
     When I press "Search" within ".contentSmallForm"
     Then I should see "Logan"
     Then I should not see "Jimmy"
@@ -27,7 +27,7 @@ Scenario: Search but no results
     
 Scenario: Suspend user
     Given I am on the all users page
-    When I fill in "search" with "Logan"
+    When I fill in "search" with "role1"
     When I press "Search" within ".contentSmallForm"
     When I press "Suspend" within ".TableHolder"
     Then I should see "Suspended"
@@ -35,7 +35,7 @@ Scenario: Suspend user
     
 Scenario: UnSuspend user
     Given I am on the all users page
-    When I fill in "search" with "Logan"
+    When I fill in "search" with "role1"
     When I press "Search" within ".contentSmallForm"
     When I press "UnSuspend" within ".TableHolder"
     Then I should see "Unsuspended"
@@ -43,7 +43,7 @@ Scenario: UnSuspend user
     
 Scenario: Go to user details page
     Given I am on the all users page
-    When I fill in "search" with "Logan"
+    When I fill in "search" with "role1"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     Then I should be on the user details page
@@ -53,7 +53,7 @@ Scenario: Go to user details page
       
 Scenario: Set role
     Given I am on the all users page
-    When I fill in "search" with "Jimmy"
+    When I fill in "search" with "role3"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     Then I should see "Access Level: registered"
@@ -65,7 +65,7 @@ Scenario: Set role
     
 Scenario: Reset password but type nothing
     Given I am on the all users page
-    When I fill in "search" with "Jimmy"
+    When I fill in "search" with "role3"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Reset password" within ".contentSmallForm"
@@ -75,7 +75,7 @@ Scenario: Reset password but type nothing
     
 Scenario: Reset password properly
     Given I am on the all users page
-    When I fill in "search" with "Jimmy"
+    When I fill in "search" with "role3"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Reset password" within ".contentSmallForm"

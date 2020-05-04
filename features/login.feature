@@ -39,7 +39,6 @@ Scenario: Logout
     Then I should see "Thank you for using Bookmark Manager"
 
 Scenario: Suspend account
-   
     Given I am on the login page
     When I fill in "username" with "role3"
     When I fill in "password" with "CAPITALlower314"

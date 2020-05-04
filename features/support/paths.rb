@@ -36,6 +36,10 @@ module NavigationHelpers
       '/add_comment'
     when /the view comments page/
       '/view_comments'
+    when /the create request page/
+      '/request'
+    when /the view request page/
+      '/view_request'
         
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
