@@ -9,10 +9,10 @@ module Users
         
         result=[]
         if search && search!=''
-            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user WHERE firstname LIKE ? ;"
+            query= "SELECT user.user_id,username,firstname,surname,access_level,suspended FROM user WHERE username LIKE ? ;"
             rows=db.execute query, '%'+search+'%' 
             rows.each do |row|
-                result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
+                result.push({id: row[0], username: row[1],firstname: row[2], surname: row[3], access_level: row[4], suspended:row[5]})
             end
         end
         return result 
@@ -22,10 +22,10 @@ module Users
     def Users.find_all(db)
         
         result=[]
-            query= "SELECT user.user_id,firstname,surname,access_level,suspended FROM user ;"
+            query= "SELECT user_id,username,firstname,surname,access_level,suspended FROM user ;"
             rows=db.execute query 
             rows.each do |row|
-                result.push({id: row[0], firstname: row[1], surname: row[2], access_level: row[3], suspended:row[4]})
+                result.push({id: row[0], username: row[1],firstname: row[2], surname: row[3], access_level: row[4], suspended:row[5]})
             end
         
         return result 
@@ -35,10 +35,10 @@ module Users
     def Users.find_one(id,db)
       
         result=[]
-        query= "SELECT user.user_id,firstname,surname,username,email,mobile_number,password,access_level FROM user WHERE user_id= ?;"
+        query= "SELECT user_id,firstname,surname,username,email,mobile_number,access_level FROM user WHERE user_id= ?;"
         rows=db.execute query,id 
         row=rows[0]
-        result={id: row[0], firstname: row[1], surname: row[2],username: row[3],email: row[4], phone: row[5],password: row[6], access_level:row[7]}   
+        result={id: row[0], firstname: row[1], surname: row[2],username: row[3],email: row[4], phone: row[5], access_level:row[6]}   
         return result 
     end
     
@@ -161,7 +161,32 @@ module Users
        query= "UPDATE user SET password=? WHERE user_id=?;"
        rows=db.execute query, password,id
    end
-       
- 
+      
+   def Users.request(username,content,db)
+         query= "INSERT INTO request(username,content,read) VALUES(?,?,?)"
+         result=db.execute query, username,content, 1
+   end
+    
+   def Users.find_requests(db)
+        result=[]
+        query= "SELECT request_id,username, content,read FROM request ORDER BY read DESC;"
+        rows = db.execute query
+        rows.each do |row|
+            result.push({id: row[0],username: row[1], content: row[2],read: row[3]})
+        end
+        
+        return result
+   end
+    
+   def Users.mark_as_read(id,db)
+       query= "UPDATE request SET read=? WHERE request_id=?;"
+       result=db.execute query,0,id   
+   end
+    
+   def Users.mark_as_unread(id,db)
+       query= "UPDATE request SET read=? WHERE request_id=?;"
+       result=db.execute query,1,id   
+   end
+    
         
 end

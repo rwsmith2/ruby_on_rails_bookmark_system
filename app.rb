@@ -5,7 +5,7 @@ require_relative 'models/users.rb'
 require_relative 'models/bookmark.rb'
 
 #If checking the system test please delete the database first 
-#and type "sqlite3 database/bookmark_system.sqlite<create_database.sql" to create a new one.
+#and type "sqlite3 database/bookmark_system.sqlite<create_databases.sql" to create a new one.
 #Then type "cucumber features" to run the tests.
 set :bind, '0.0.0.0'
 enable :sessions
@@ -15,8 +15,6 @@ $db = SQLite3::Database.new 'database/bookmark_system.sqlite'
 #User Part--------------------------   
 
 get '/' do
-   session[:search_u]=false
-   session[:search_bm]=false
    # If the user is logged in
    if Users.check_for_login(session[:login],$db)
     @name=session[:name]
@@ -55,7 +53,7 @@ post '/login' do
            session[:login] = true 
            session[:role] = Users.check_role(@id, $db)
            session[:name] = Users.find_name(@id, $db)
-           session[:id] = @id
+           session[:id_l] = @id
            
            redirect '/'
      end
@@ -63,8 +61,56 @@ post '/login' do
       @validation = false
       erb :login
    end
-  
 end
+
+get '/request' do
+    
+    erb :create_request
+end
+
+post '/request' do
+    @validation = true
+    @no_such_user=false
+    
+    @username=params[:username]
+    @content=params[:content]
+    
+     if  (@username != '' && @username) &&
+        (@content != '' && @content) 
+         if(Users.check_same_username(@username,$db))
+          Users.request(@username,@content,$db)
+          redirect '/login'
+         else
+             @no_such_user=true
+             erb :create_request
+         end
+     else   
+         
+         @validation=false
+         erb :create_request
+     end
+   
+    
+end
+
+get '/view_request' do
+    @list=Users.find_requests($db)
+    erb :view_request
+end
+
+post '/view_request/read' do
+    @id=params[:idr]
+    Users.mark_as_read(@id,$db)
+    redirect '/view_request'
+end
+
+post '/view_request/unread' do
+    @id=params[:idu]
+    Users.mark_as_unread(@id,$db)
+    redirect '/view_request'
+end
+
+
 
 get '/register' do
 
@@ -131,7 +177,7 @@ get '/logout' do
      session.delete(:name)
      session.delete(:login)
      session.delete(:role)
-     session.delete(:id)
+     session.delete(:id_l)
      erb :logout
 end
 
@@ -139,7 +185,7 @@ end
 
 
 get "/check_all_users" do
-   if session[:search_u]==false
+   if session[:search_u]==false||!session[:search_u]
      @list=Users.find_all($db)
    else
      @list= Users.find_search( session[:result_u], $db)
@@ -175,58 +221,49 @@ post "/check_all_users/unsuspend" do
 end
 
 post "/check_all_users/back" do 
-    session[:search_u]=false
+    session.delete(:search_u)
     redirect '/check_all_users'
 end
 
 get "/check_all_users/details" do
-    @id = params[:id]
+    if !session[:id_u]
+     session[:id_u]= params[:id]
+    end
+    @id = session[:id_u]
     @found = Users.find_one(@id,$db)
-    puts @found
+
     @firstname = @found[:firstname]
     @surname = @found[:surname]
     @username = @found[:username]
     @email = @found[:email]
     @phone = @found[:phone]
-    @password = @found[:password]
     @access_level = @found[:access_level] 
     
     erb :user_details
 end
 
 get "/check_all_users/details/back" do
+    session.delete(:id_u)
     redirect '/check_all_users'
 end
 
 post "/check_all_users/details/set_role" do
-    @id = params[:id]
+    @id = session[:id_u]
     @access_level = params[:access_level]
     
     Users.set_role(@access_level, @id, $db)
     
-    @found = Users.find_one(@id,$db)
-    
-    @firstname = @found[:firstname]
-    @surname = @found[:surname]
-    @username = @found[:username]
-    @email = @found[:email]
-    @phone = @found[:phone]
-    @password = @found[:password]
-    @access_level = @found[:access_level]
-    
-    erb :user_details
+    redirect"/check_all_users/details"
 end
 
-get "/check_all_users/details/set_password" do
-    @id = params[:id]
-    
+get "/check_all_users/details/set_password" do    
     erb :set_password
 end
 
 post "/check_all_users/details/set_password" do
     @validation = true
     
-    @id = params[:id]
+    @id = session[:id_u]
     @newpassword = params[:new_password]
     
    
@@ -235,17 +272,7 @@ post "/check_all_users/details/set_password" do
         erb :set_password
     else
       Users.change_password(@newpassword, @id, $db)
-      @found = Users.find_one(@id, $db)
-      
-      @firstname = @found[:firstname]
-      @surname = @found[:surname]
-      @username = @found[:username]
-      @email = @found[:email]
-      @phone = @found[:phone]
-      @password = @found[:password]
-      @access_level = @found[:access_level] 
-      
-      erb :user_details
+      redirect"/check_all_users/details"
     end
 end
 
@@ -264,9 +291,9 @@ post "/adding_bookmarks" do
     @content = params[:content]
     @description = params[:description]
     @author = params[:author]
-    @author_id=session[:id]
+    @author_id=session[:id_l]
     
-    @date = (time.day.to_s + "/" + time.month.to_s + "/" + time.year.to_s)
+    @date = (time.day.to_s + "-" + time.month.to_s + "-" + time.year.to_s)
     @rating = 0
     @num_rating = 0
     @reported = 0
@@ -290,10 +317,10 @@ post "/adding_bookmarks" do
 end
 
 get "/view_bookmarks" do
-    if session[:search_bm]==false
-      @list = Bookmark.find_all($db)
+    if session[:search_bm]==false||!session[:search_bm]
+      @list = Bookmark.find_all(session[:filter_r],session[:filter_d],$db)
     else
-      @list = Bookmark.find_search( session[:result_bm], $db)
+      @list = Bookmark.find_search( session[:filter_r],session[:filter_d],session[:result_bm], $db)
     end
     erb :view_bookmarks
 end
@@ -307,11 +334,31 @@ post "/view_bookmarks" do
     session[:search_bm]=true
     @no_results=false
     session[:result_bm] = params[:search]
-    @list = Bookmark.find_search( session[:result_bm], $db)
+    @list = Bookmark.find_search( session[:filter_r],session[:filter_d],session[:result_bm], $db)
+     puts @list
     if (@list==[])
+        puts @list
         @no_results=true
     end
     erb :view_bookmarks
+end
+
+post "/view_bookmarks/filter" do
+    @choice=params[:filter]
+    if @choice=="rate"
+         session[:filter_r]=true
+         session[:filter_d]=false
+    else
+       session[:filter_r]=false
+       session[:filter_d]=true
+    end
+     redirect '/view_bookmarks'
+end
+
+post "/view_bookmarks/reset" do
+     session.delete(:filter_r)
+     session.delete(:filter_d)
+    redirect '/view_bookmarks'
 end
 
 post "/view_bookmarks/reported" do
@@ -330,7 +377,10 @@ end
 
 
 get "/view_bookmarks/details" do
-    @id = params[:id]
+    if !session[:id_bm]
+     session[:id_bm]= params[:id]
+    end
+    @id=session[:id_bm]
     @found = Bookmark.find_one(@id,$db)
     
     @title = @found[:title]
@@ -341,41 +391,51 @@ get "/view_bookmarks/details" do
     @num_of_rate = @found[:num_of_rate] 
     @date = @found[:date]
     
+    @number_c=Bookmark.number_of_comments(session[:id_bm],$db)
     erb :bookmark_details
 end
 
 get "/view_bookmarks/details/back" do
+    session.delete(:id_bm)
     redirect '/view_bookmarks'
 end
 
-post "/view_bookmarks/details/rating" do
-    @id = params[:id]
+post "/view_bookmarks/details" do
+    
+    @rate_yourself=false
+    @id = session[:id_bm]
     @rating_points = params[:rating_points].to_i
     
-    Bookmark.rate(@rating_points, @id, $db)
+    if !Bookmark.own_bookmark(@id,session[:id_l],$db)
+      Bookmark.rate(@rating_points, @id, $db)
+      redirect '/view_bookmarks/details'
+    else
+       @rate_yourself=true 
+       @id=session[:id_bm]
+       @found = Bookmark.find_one(@id,$db)   
+        
+       @title = @found[:title]
+       @author = @found[:author]
+       @description = @found[:description]
+       @content = @found[:content]
+       @rate = @found[:rate]
+       @num_of_rate = @found[:num_of_rate] 
+       @date = @found[:date]
     
-    @found = Bookmark.find_one(@id,$db)
-    
-    @title = @found[:title]
-    @author = @found[:author]
-    @description = @found[:description]
-    @content = @found[:content]
-    @rate = @found[:rate]
-    @num_of_rate = @found[:num_of_rate] 
-    @date = @found[:date] 
-    
-    erb :bookmark_details
+       erb :bookmark_details
+    end
 end
 
 post "/view_bookmarks/details/delete" do
     @id = params[:id]
     
     Bookmark.delete(@id, $db)
+    session.delete(:id_bm)
     redirect '/view_bookmarks'
 end
 
 get "/my_bookmarks" do
-    @id=session[:id]
+    @id=session[:id_l]
     @list = Bookmark.find_my_bookmark(@id,$db)
     erb :my_bookmarks
 end
@@ -425,6 +485,42 @@ post "/my_bookmarks/edit/delete" do
   @id=params[:id]
   Bookmark.delete(@id,$db)
   redirect"/my_bookmarks"
+end
+
+get "/add_comment" do
+   erb :add_comment
+end
+
+post "/add_comment" do
+   @validation=true
+   @comment_yourself=false
+   time = Time.new
+
+   @id_bm=session[:id_bm]
+   @author=params[:author]
+   @content=params[:content]
+   @title=params[:title]
+   @date = (time.year.to_s + "-" + time.month.to_s + "-" + time.day.to_s)
+   
+   if (@title != '' && @title) &&
+      (@content != '' && @content) &&
+      (@author != '' && @author)
+       if !Bookmark.own_bookmark(@id_bm,session[:id_l],$db)
+        Bookmark.add_comment(@id_bm,@title,@author,@content,@date,$db)
+        redirect '/view_bookmarks/details'
+       else
+            @comment_yourself=true
+            erb :add_comment
+       end
+   else
+       @validation=false
+       erb :add_comment
+   end
+end
+
+get "/view_comments" do
+    @list=Bookmark.find_comments(session[:id_bm],$db)
+    erb :view_comments
 end
 
 

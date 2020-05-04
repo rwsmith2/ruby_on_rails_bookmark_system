@@ -14,9 +14,17 @@ module Bookmark
     end
     
     # Return all bookmarks
-    def Bookmark.find_all(db)
+     def Bookmark.find_all(filter_by_rate,filter_by_date,db)
         result = []
-        query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark;"
+       if filter_by_rate==true
+         query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
+                                                                            ORDER BY rating DESC;"
+       elsif filter_by_date==true
+         query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
+                                                                            ORDER BY date_created DESC;"
+       else 
+         query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark;"
+       end
         rows = db.execute query 
         rows.each do |row|
             result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
@@ -39,12 +47,20 @@ module Bookmark
     end
     
     # Return bookmark title, author, date, rating & reported status if bookmark contains search term
-    def Bookmark.find_search(search, db)     
+    def Bookmark.find_search(filter_by_rate,filter_by_date,search, db)     
         result = []
         
         #If user has entered something in the search field
         if search && search!=''
+          if filter_by_rate==true
+              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE title LIKE ? 
+                    ORDER BY rating DESC;"  
+          elsif filter_by_date==true
+             query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  WHERE title LIKE ? 
+                                                                            ORDER BY date_created DESC;"   
+          else
             query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE title LIKE ? ;"
+          end
             rows = db.execute query, '%'+search+'%' 
             rows.each do |row|
                 result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
@@ -154,5 +170,39 @@ module Bookmark
           return true
         end
         return false
+    end
+    
+    def Bookmark.own_bookmark(id_bm,id_login, db)
+       query= "SELECT author_id FROM bookmark WHERE bookmark_id=?;"
+       rows = db.execute query, id_bm
+       row = rows[0]
+        if row[0]==id_login
+            return true
+        end
+        return false
+    end
+    
+    def Bookmark.add_comment(id_bm,title,author,content,date,db)
+       query= "INSERT INTO comment(title,content,author,date_created,bookmark_id) 
+                                                                      VALUES(?,?,?,?,?)"
+       result = db.execute query, title, content, author,date, id_bm
+    end
+    
+    def Bookmark.number_of_comments(id_bm,db)
+        query= "SELECT COUNT(*) FROM comment WHERE bookmark_id=?;"
+        rows = db.execute query, id_bm
+        row=rows[0]
+        return row[0]
+    end
+    
+    def Bookmark.find_comments(id_bm,db)
+        result=[]
+        query= "SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;"
+        rows = db.execute query,id_bm    
+        rows.each do |row|
+            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})
+        end
+        
+        return result
     end
 end

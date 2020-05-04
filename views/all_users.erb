@@ -34,10 +34,11 @@
             <% end %>
       <div class="TableHolder">
       <table>
-        <tr><th>ID</th><th>Firstname</th><th>Surname</th><th>Access Level</th><th>Status</th><th></th><th>Details</th></tr>
+        <tr><th>ID</th><th>Username</th><th>firstname</th><th>Surname</th><th>Role</th><th>Status</th><th></th><th>Details</th></tr>
         <%  @list.each do |user| %>
           <tr>
               <td><%=user[:id]%></td>
+              <td><%=user[:username]%></td>
               <td><%=user[:firstname]%></td>
               <td><%=user[:surname]%></td>
               <td><%=user[:access_level]%></td>
