@@ -159,4 +159,35 @@ class TestStringComparison < Minitest::Test
         
     end
     
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+   def test_requests
+       assert_equal [], Users.request("role1", "content", $db);
+   end
+
+    # Compares methods returned hash value by outputting method to console and checking this output
+    # (assert_equal currently not working for hash values)
+    def test_find_requests
+        
+        assert_output(/{:id=>1, :username=>\"role1\", :content=>\"test\", :read=>1}/, '') do
+             setup_test_find_requests;       
+        end
+    end
+    
+    def setup_test_find_requests
+        puts Users.find_requests($db);
+    end
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+    def test_mark_as_read
+        assert_equal [], Users.mark_as_read("1", $db);
+    end
+    
+    # Cannot fully test method with Mini Test as it does not return value, so simply testing
+    # if it returns nothing (as is expected)
+    def test_mark_as_unread
+        assert_equal [], Users.mark_as_unread("1", $db);
+    end
 end
