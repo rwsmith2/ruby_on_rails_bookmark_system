@@ -22,7 +22,10 @@ CREATE TABLE bookmark (
     date_created DATE NOT NULL,
     rating INTEGER,
     num_of_ratings INTEGER,
-    reported BOOLEAN NOT NULL
+    reported BOOLEAN NOT NULL,
+    bookmark_tag_one TEXT,
+    bookmark_tag_two TEXT,
+    bookmark_tag_three TEXT
 );
 
 CREATE TABLE comment (
@@ -47,9 +50,8 @@ CREATE TABLE tag (
 );
 
 CREATE TABLE bookmark_tag (
-    bookmark_tag_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
-    -- tag_id INTEGER REFERENCES tag(tag_id)
+    bookmark_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT REFERENCES bookmark(bookmark_id)
+ 
 );
 -- Users test data
 INSERT INTO user VALUES(1, "Logan", "Miller","role1", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
@@ -60,9 +62,17 @@ INSERT INTO user VALUES(5, "User", "Account", "user","user@gmail.com", "employee
 INSERT INTO user VALUES(6, "qwe", "qwe", "role4","qwe@gmail.com", "registered", "21312", 0, "123");
 
 -- Bookmark test data
-INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0);
-INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data", "James Acaster",2, '2020-3-19', 5, 31, 0);
-INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr",3, '2019-12-9', 0, 0, 0);
+INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0,null, null,null);
+INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data", "James Acaster",2, '2020-3-19', 5, 31, 0,null, null,null);
+INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr",3, '2019-12-9', 0, 0, 0,null, null,null);
 
 --Comment test data
 INSERT INTO comment VALUES(1,"Test comment","Test!!!","Logan Miller","2020-3-28",2);
+
+--Request test data
+INSERT INTO request VALUES(1, "role1", "test", 1);
+
+--Tag test data
+INSERT INTO tag VALUES(1,"Lab");
+INSERT INTO tag VALUES(2,"Website");
+INSERT INTO tag VALUES(3,"Fun");

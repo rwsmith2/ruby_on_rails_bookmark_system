@@ -279,6 +279,8 @@ end
 #Bookmark Part--------------------------
 
 get "/adding_bookmarks" do
+    @list=Bookmark.find_tags($db)
+    puts @list
     erb :adding_bookmarks
 end
 
@@ -298,20 +300,40 @@ post "/adding_bookmarks" do
     @num_rating = 0
     @reported = 0
     
-    #If bookmark details have been entered
+    if(params[:select_tag1]!="null")
+     @tag1=params[:select_tag1]
+    end
+    
+    puts @tag1
+    puts "123"
+    if(params[:select_tag2]!="null")
+     @tag2=params[:select_tag2]
+    end
+    puts @tag3
+    puts "123"
+    if(params[:select_tag3]!="null")
+     @tag3=params[:select_tag3]
+    end
+    puts @tag3
+    puts "123"
+    
+   #If bookmark details have been entered
     if (@title != '' && @title) &&
        (@content != '' && @content) &&
        (@description != '' && @description)
       #If the title of the bookmark is unique
       if(!Bookmark.duplicate(@title,$db)) 
-       Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, @reported, $db)
+       Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, 
+                                                                        @reported,@tag1,@tag2,@tag3, $db)
        redirect "/"
       else
           @duplicate=true
+          @list=Bookmark.find_tags($db)
           erb :adding_bookmarks
       end
     else 
         @validation = false
+        @list=Bookmark.find_tags($db)
         erb :adding_bookmarks
     end
 end

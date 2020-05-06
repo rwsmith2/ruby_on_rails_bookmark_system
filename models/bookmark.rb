@@ -4,12 +4,14 @@ require 'sinatra/reloader'
 module Bookmark
     
     # Create new bookmark
-    def Bookmark.new(title, content, description, author,author_id, date, rating, num_rating, reported, db)
+    def Bookmark.new(title, content, description, author,author_id, date, rating, num_rating, reported,tag1,tag2,tag3,db)
         
-        query= "INSERT INTO bookmark(title,content,description,author,author_id,date_created,rating,num_of_ratings,reported) 
-                                                                      VALUES(?,?,?,?,?,?,?,?,?)"
+        query= "INSERT INTO bookmark(title,content,description,author,author_id,date_created,rating,num_of_ratings,reported,
+                                                               bookmark_tag_one,bookmark_tag_two,bookmark_tag_three) 
+                                                                      VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
         
-        result = db.execute query, title, content, description, author,author_id, date, rating, num_rating, reported
+        result = db.execute query, title, content, description, author,author_id, date, rating, 
+                                                                num_rating, reported,tag1,tag2,tag3
         
     end
     
@@ -203,6 +205,16 @@ module Bookmark
             result.push({title: row[0], content: row[1], author: row[2], date: row[3]})
         end
         
+        return result
+    end
+    
+    def Bookmark.find_tags(db)
+        result=[]
+        query= "SELECT tag FROM tag;"
+        rows = db.execute query 
+        rows.each do |row|
+            result.push({name: row[0]})
+        end
         return result
     end
 end

@@ -27,8 +27,28 @@
             Title<input name="title" type="text" value="<%=@title%>">
             Description<input name="description" type="text" value="<%=@description%>">
             Author<input name="author" type="text" value="<%=@author%>">  </p>  
+            <h2>If you want add tags(3 tags at most)</h2> 
+            <select name="select_tag1">    
+                <option value="null">None</option>
+                <% @list.each do |tags| %>
+                 <option value="<%=tags[:name]%>"><%=tags[:name]%></option> 
+                <%end%>
+            </select>
+            <select name="select_tag2">    
+                <option value="null">None</option>
+                <% @list.each do |tags| %>
+                 <option value="<%=tags[:name]%>"><%=tags[:name]%></option> 
+                <%end%>
+            </select>
+            <select name="select_tag3">    
+                <option value="null">None</option>
+                <% @list.each do |tags| %>
+                 <option value="<%=tags[:name]%>"><%=tags[:name]%></option> 
+                <%end%>
+            </select>
             <p><label for="content">Content</label>  
-            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
+            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p> 
+          
             <input type="submit" value="Add">
         </form>
         <form method="get" action="/">
