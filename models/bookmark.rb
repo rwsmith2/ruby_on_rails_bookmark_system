@@ -74,12 +74,14 @@ module Bookmark
     # Return ID, title, author, description, content, rating & date of bookmark with given ID
     def Bookmark.find_one(id, db)
         result = []
-        query = "SELECT bookmark_id,title,author,description,content,rating,num_of_ratings,date_created 
+        query = "SELECT bookmark_id,title,author,description,content,rating,num_of_ratings,date_created,
+                                                      bookmark_tag_one,bookmark_tag_two,bookmark_tag_three
                                           FROM bookmark WHERE bookmark_id= ?;"
 
         rows = db.execute query,id 
         row = rows[0]
-        result = {id: row[0],title: row[1], author: row[2], description: row[3],content: row[4], rate: row[5],num_of_rate: row[6], date:row[7]}   
+        result = {id: row[0],title: row[1], author: row[2], description: row[3],content: row[4], rate: row[5],
+                                                   num_of_rate: row[6], date:row[7],tag1: row[8], tag2: row[9], tag3: row[10]}  
         return result 
     end
     

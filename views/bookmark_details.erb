@@ -27,6 +27,20 @@
             <p>Author: <%=@author%></p>
             <p>Description: <%=@description%></p>
             <p>Content: <%=@content%></p>
+            <p>Tags:
+               <%if @tag1%>
+                 #<%=@tag1%>#
+                <%end%>
+                <%if @tag2%>
+                 #<%=@tag2%>#
+                <%end%>
+                <%if @tag3%>
+                 #<%=@tag3%>#            
+                <%end%>
+                <%if !@tag1&&!@tag2&&!@tag3%>
+                  None tags added
+                <%end%>
+                </p>
             <%if @num_of_rate==0%>
               <p>Rateing: Not Rated</p>
             <%else%>

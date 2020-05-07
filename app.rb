@@ -280,13 +280,13 @@ end
 
 get "/adding_bookmarks" do
     @list=Bookmark.find_tags($db)
-    puts @list
     erb :adding_bookmarks
 end
 
 post "/adding_bookmarks" do
     @validation = true
     @duplicate=false
+    @same_tag=false
     time = Time.new
     
     @title = params[:title]
@@ -295,7 +295,7 @@ post "/adding_bookmarks" do
     @author = params[:author]
     @author_id=session[:id_l]
     
-    @date = (time.day.to_s + "-" + time.month.to_s + "-" + time.year.to_s)
+    @date = (time.year.to_s + "-" + time.month.to_s + "-" + time.day.to_s)
     @rating = 0
     @num_rating = 0
     @reported = 0
@@ -303,29 +303,33 @@ post "/adding_bookmarks" do
     if(params[:select_tag1]!="null")
      @tag1=params[:select_tag1]
     end
-    
-    puts @tag1
-    puts "123"
+ 
     if(params[:select_tag2]!="null")
      @tag2=params[:select_tag2]
     end
-    puts @tag3
-    puts "123"
+    
     if(params[:select_tag3]!="null")
      @tag3=params[:select_tag3]
     end
-    puts @tag3
-    puts "123"
     
    #If bookmark details have been entered
     if (@title != '' && @title) &&
        (@content != '' && @content) &&
        (@description != '' && @description)
       #If the title of the bookmark is unique
-      if(!Bookmark.duplicate(@title,$db)) 
-       Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, 
+      if(!Bookmark.duplicate(@title,$db))
+          #If there us duplicated tags
+          if((@tag1!=@tag2&&@tag1!=@tag3&&@tag2!=@tag3)||(!@tag1&&!@tag2&&!@tag3)||
+                                                  ((!@tag1&&!@tag3)||(!@tag2&&!@tag3)||(!@tag2&&!@tag1)))
+              
+            Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, 
                                                                         @reported,@tag1,@tag2,@tag3, $db)
-       redirect "/"
+            redirect "/"
+          else
+               @same_tag=true
+               @list=Bookmark.find_tags($db)
+               erb :adding_bookmarks
+          end
       else
           @duplicate=true
           @list=Bookmark.find_tags($db)
@@ -412,6 +416,9 @@ get "/view_bookmarks/details" do
     @rate = @found[:rate]
     @num_of_rate = @found[:num_of_rate] 
     @date = @found[:date]
+    @tag1 = @found[:tag1]
+    @tag2 = @found[:tag2]
+    @tag3 = @found[:tag3]
     
     @number_c=Bookmark.number_of_comments(session[:id_bm],$db)
     erb :bookmark_details
@@ -443,6 +450,9 @@ post "/view_bookmarks/details" do
        @rate = @found[:rate]
        @num_of_rate = @found[:num_of_rate] 
        @date = @found[:date]
+       @tag1 = @found[:tag1]
+       @tag2 = @found[:tag2]
+       @tag3 = @found[:tag3]
         
         
        @number_c=Bookmark.number_of_comments(session[:id_bm],$db)
