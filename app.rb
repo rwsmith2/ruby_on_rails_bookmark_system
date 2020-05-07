@@ -476,12 +476,16 @@ end
 
 
 get "/my_bookmarks/edit" do
+    @list=Bookmark.find_tags($db)
     @id=params[:id]
     @found=Bookmark.find_one(@id,$db)
     @title = @found[:title]
     @author = @found[:author]
     @description = @found[:description]
-    @content = @found[:content]  
+    @content = @found[:content] 
+    @tag1=@found[:tag1]
+    @tag2=@found[:tag2]
+    @tag3=@found[:tag3]
     erb :edit
 end
 
@@ -493,24 +497,40 @@ post"/my_bookmarks/edit" do
     @title = params[:title]
     @author = params[:author]
     @description = params[:description]
-    @content = params[:content]  
+    @content = params[:content] 
+    
+    if(params[:select_tag1]!="null")
+     @tag1=params[:select_tag1]
+    end
+ 
+    if(params[:select_tag2]!="null")
+     @tag2=params[:select_tag2]
+    end
+    
+    if(params[:select_tag3]!="null")
+     @tag3=params[:select_tag3]
+    end
+    
     if (@title != '' && @title) &&
        (@content != '' && @content) &&
        (@description != '' && @description)
-      if(!Bookmark.not_change(@id,@title,@author,@description,@content,$db))
+      if(!Bookmark.not_change(@id,@title,@author,@description,@content,@tag1,@tag2,@tag3,$db))
         if(!Bookmark.change_to_duplicate(@title,@id,$db))
-           Bookmark.update(@id,@title ,@author ,@description,@content,$db)
+           Bookmark.update(@id,@title ,@author ,@description,@content,@tag1,@tag2,@tag3,$db)
            redirect "/my_bookmarks"
         else
              @duplicate=true
+             @list=Bookmark.find_tags($db)
              erb :edit
         end
       else
            @same=true
+           @list=Bookmark.find_tags($db)
            erb :edit
       end
     else
          @validation=false
+         @list=Bookmark.find_tags($db)
          erb :edit
     end
 end
