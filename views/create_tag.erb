@@ -16,22 +16,21 @@
  
 	<main>
 		<div class="contentSmallForm">
-			<h2>Request</h2>          
-			<form method="post" action="/request">
+			<h2>Create new tag</h2>          
+			<form method="post" action="/create_tag">
             <p>
-            Username<input name="username" type="text" value="<%=@username%>">
-            <p><label for="content">Content</label>  
-            <textarea name="content"  rows="5" cols="92"><%=@content%></textarea> </p>   
-            <input type="submit" value="Submit">
+            Tag<input name="tag" type="text" value="<%=@tag%>">
+            </p>
+            <input type="submit" value="Create">
         </form>
         <form method="get" action="/">
            <input type="submit" value="Cancel"> 
         </form>
           <%if @validation==false %>
-           <p id="failure_text">Please ensure all fields are filled correctly.</p>
+           <p id="failure_text">You should type something before you submit.</p>
           <% end %>
-          <%if @no_such_user==true %>
-           <p id="failure_text">The username does not exist, please type the right one.</p>
+          <%if @duplicated_tag==true %>
+           <p id="failure_text">The tag you want to create already exists. Please change a new one.</p>
           <% end %>
 
         </div>

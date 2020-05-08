@@ -16,7 +16,7 @@ module Bookmark
     end
     
     # Return all bookmarks
-     def Bookmark.find_all(filter_by_rate,filter_by_date,db)
+     def Bookmark.find_all(filter_by_rate,filter_by_date,filter_by_reported,db)
         result = []
        if filter_by_rate==true
          query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
@@ -24,7 +24,10 @@ module Bookmark
        elsif filter_by_date==true
          query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
                                                                             ORDER BY date_created DESC;"
-       else 
+       elsif filter_by_reported==true
+         query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
+                                                                            ORDER BY reported DESC;"
+       else
          query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark;"
        end
         rows = db.execute query 
@@ -49,7 +52,7 @@ module Bookmark
     end
     
     # Return bookmark title, author, date, rating & reported status if bookmark contains search term
-    def Bookmark.find_search(filter_by_rate,filter_by_date,search, db)     
+    def Bookmark.find_search(filter_by_rate,filter_by_date,filter_by_reported,search, db)     
         result = []
         
         #If user has entered something in the search field
@@ -60,6 +63,9 @@ module Bookmark
           elsif filter_by_date==true
              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  WHERE title LIKE ? 
                                                                             ORDER BY date_created DESC;"   
+          elsif filter_by_reported==true
+             query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
+                                                                             ORDER BY reported DESC;"
           else
             query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE title LIKE ? ;"
           end
@@ -128,7 +134,7 @@ module Bookmark
        query= "SELECT title FROM bookmark;"
        rows=db.execute query  
        rows.each do |row|
-          if row[0]==title 
+          if row[0].upcase==title.upcase
               return true  
           end          
        end
@@ -221,4 +227,31 @@ module Bookmark
         end
         return result
     end
+    
+    def Bookmark.same_tag(tag1,tag2,tag3,db)
+     if(tag1!=tag2&&tag1!=tag3&&tag2!=tag3)||(!tag1&&!tag2&&!tag3)||
+                                ((!tag1&&!tag3)||(!tag2&&!tag3)||(!tag2&&!tag1))
+         return false
+     else
+         return true
+     end
+    end
+     
+    def Bookmark.create_tag(tag,db)
+       query= "INSERT INTO tag(tag) VALUES(?)"
+       result = db.execute query, tag  
+    end
+    
+    def Bookmark.duplicate_tag(tag,db)
+       query= "SELECT tag FROM tag;"
+       rows=db.execute query  
+       rows.each do |row|
+          if row[0].upcase==tag.upcase
+              return true  
+          end          
+       end
+       
+      return false
+    end
+    
 end

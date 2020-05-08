@@ -33,12 +33,15 @@
                 <select name="filter">
                  <option name="R" value="rate" >Rate</option>
                  <option name="D" value="date">Date</option>
+                 <%if(session[:role]=="admin")%> 
+                  <option name="R" value="reported">Reported</option>
+                 <%end%>
                 </select>
                   <input type="submit" value="Filter">
                 </p>
               </form>
          
-            <%if session[:filter_r]==true||session[:filter_d]==true%>
+            <%if session[:filter_r]==true||session[:filter_d]==true||session[:filter_re]==true%>
               <form method="post" action="/view_bookmarks/reset">
                   <input type="submit" value="Reset">
                </form>
@@ -56,6 +59,9 @@
             <%end%>
             <%if session[:filter_d]==true %>
               <h2>Now Order By Date:</h2>
+            <%end%>
+             <%if session[:filter_re]==true %>
+              <h2>Now Order By Reported:</h2>
             <%end%>
             
              

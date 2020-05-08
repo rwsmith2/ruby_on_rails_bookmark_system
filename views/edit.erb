@@ -76,6 +76,9 @@
           <%if @duplicate==true %>
            <p id="failure_text">The title of your bookmark already exists. Please change another one</p>
           <% end %>
+          <%if @same_tag==true %>
+           <p id="failure_text">The bookmark contains duplicated tags. Please change them to unique.</p>
+          <% end %>
     </div>
 	</main>
     </div>

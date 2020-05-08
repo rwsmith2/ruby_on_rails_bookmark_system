@@ -67,7 +67,7 @@ module Users
             query= "SELECT username FROM user;"
             rows=db.execute query  
             rows.each do |row|
-                if row[0]==username 
+                if row[0].upcase==username.upcase 
                     return true  
                 end          
             end

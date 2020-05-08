@@ -49,10 +49,7 @@ CREATE TABLE tag (
     tag TEXT NOT NULL
 );
 
-CREATE TABLE bookmark_tag (
-    bookmark_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT REFERENCES bookmark(bookmark_id)
- 
-);
+
 -- Users test data
 INSERT INTO user VALUES(1, "Logan", "Miller","role1", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
 INSERT INTO user VALUES(2, "James", "Acaster","role2" ,"jamesa@gmail.com", "employee", "07111222333", 0, "pWORD1");

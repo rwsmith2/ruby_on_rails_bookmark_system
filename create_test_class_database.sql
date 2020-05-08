@@ -23,6 +23,9 @@ CREATE TABLE bookmark (
     rating INTEGER,
     num_of_ratings INTEGER,
     reported BOOLEAN NOT NULL
+    bookmark_tag_one TEXT,
+    bookmark_tag_two TEXT,
+    bookmark_tag_three TEXT
 );
 
 CREATE TABLE request (
@@ -46,11 +49,6 @@ CREATE TABLE tag (
     tag TEXT NOT NULL
 );
 
-CREATE TABLE bookmark_tag (
-    bookmark_tag_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
-    -- tag_id INTEGER REFERENCES tag(tag_id)
-);
 
 -- Users test data
 INSERT INTO user VALUES(1, "Logan", "Miller","role1", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
@@ -64,3 +62,8 @@ INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jim
 
 --Request test data
 INSERT INTO request VALUES(1, "role1", "test", 1);
+
+--Tag test data
+INSERT INTO tag VALUES(1,"Lab");
+INSERT INTO tag VALUES(2,"Website");
+INSERT INTO tag VALUES(3,"Fun");

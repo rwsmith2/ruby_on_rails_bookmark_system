@@ -21,8 +21,7 @@ get '/' do
    else
     @name=''
    end
-    session[:search]=false
-    erb :home
+   erb :home
 end
 
 
@@ -319,8 +318,7 @@ post "/adding_bookmarks" do
       #If the title of the bookmark is unique
       if(!Bookmark.duplicate(@title,$db))
           #If there us duplicated tags
-          if((@tag1!=@tag2&&@tag1!=@tag3&&@tag2!=@tag3)||(!@tag1&&!@tag2&&!@tag3)||
-                                                  ((!@tag1&&!@tag3)||(!@tag2&&!@tag3)||(!@tag2&&!@tag1)))
+          if(!Bookmark.same_tag(@tag1,@tag2,@tag3,$db))
               
             Bookmark.new(@title, @content, @description, @author,@author_id, @date, @rating, @num_rating, 
                                                                         @reported,@tag1,@tag2,@tag3, $db)
@@ -344,9 +342,9 @@ end
 
 get "/view_bookmarks" do
     if session[:search_bm]==false||!session[:search_bm]
-      @list = Bookmark.find_all(session[:filter_r],session[:filter_d],$db)
+      @list = Bookmark.find_all(session[:filter_r],session[:filter_d], session[:filter_re],$db)
     else
-      @list = Bookmark.find_search( session[:filter_r],session[:filter_d],session[:result_bm], $db)
+      @list = Bookmark.find_search( session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm], $db)
     end
     erb :view_bookmarks
 end
@@ -360,7 +358,7 @@ post "/view_bookmarks" do
     session[:search_bm]=true
     @no_results=false
     session[:result_bm] = params[:search]
-    @list = Bookmark.find_search( session[:filter_r],session[:filter_d],session[:result_bm], $db)
+    @list = Bookmark.find_search( session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm], $db)
      puts @list
     if (@list==[])
         puts @list
@@ -372,11 +370,17 @@ end
 post "/view_bookmarks/filter" do
     @choice=params[:filter]
     if @choice=="rate"
-         session[:filter_r]=true
-         session[:filter_d]=false
-    else
+       session[:filter_r]=true
+       session[:filter_d]=false
+       session[:filter_re]=false
+    elsif @choice=="date"
        session[:filter_r]=false
        session[:filter_d]=true
+       session[:filter_re]=false
+    else
+       session[:filter_r]=false
+       session[:filter_d]=false
+       session[:filter_re]=true
     end
      redirect '/view_bookmarks'
 end
@@ -384,7 +388,8 @@ end
 post "/view_bookmarks/reset" do
      session.delete(:filter_r)
      session.delete(:filter_d)
-    redirect '/view_bookmarks'
+     session.delete(:filter_re)
+     redirect '/view_bookmarks'
 end
 
 post "/view_bookmarks/reported" do
@@ -493,6 +498,8 @@ post"/my_bookmarks/edit" do
     @validation=true
     @same=false
     @duplicate=false
+    @same_tag=false
+    
     @id=params[:id]
     @title = params[:title]
     @author = params[:author]
@@ -516,8 +523,15 @@ post"/my_bookmarks/edit" do
        (@description != '' && @description)
       if(!Bookmark.not_change(@id,@title,@author,@description,@content,@tag1,@tag2,@tag3,$db))
         if(!Bookmark.change_to_duplicate(@title,@id,$db))
-           Bookmark.update(@id,@title ,@author ,@description,@content,@tag1,@tag2,@tag3,$db)
-           redirect "/my_bookmarks"
+           if(!Bookmark.same_tag(@tag1,@tag2,@tag3,$db))
+               
+             Bookmark.update(@id,@title ,@author ,@description,@content,@tag1,@tag2,@tag3,$db)
+             redirect "/my_bookmarks"
+           else
+               @same_tag=true
+               @list=Bookmark.find_tags($db)
+               erb :edit
+           end
         else
              @duplicate=true
              @list=Bookmark.find_tags($db)
@@ -559,7 +573,7 @@ post "/add_comment" do
    if (@title != '' && @title) &&
       (@content != '' && @content) &&
       (@author != '' && @author)
-       if !Bookmark.own_bookmark(@id_bm,session[:id_l],$db)
+       if (!Bookmark.own_bookmark(@id_bm,session[:id_l],$db))
         Bookmark.add_comment(@id_bm,@title,@author,@content,@date,$db)
         redirect '/view_bookmarks/details'
        else
@@ -576,5 +590,30 @@ get "/view_comments" do
     @list=Bookmark.find_comments(session[:id_bm],$db)
     erb :view_comments
 end
+
+get "/create_tag" do
+    erb :create_tag
+end
+
+post "/create_tag" do
+    @validation=true
+    @duplicated_tag=false
+    @tag=params[:tag]
+    
+    if(@tag != '' && @tag)
+        if(!Bookmark.duplicate_tag(@tag,$db))
+          Bookmark.create_tag(@tag,$db)
+          redirect '/'
+        else
+            @duplicated_tag=true
+            erb :create_tag
+        end
+    else
+         @validation=false
+         erb :create_tag 
+    end
+end
+
+
 
 
