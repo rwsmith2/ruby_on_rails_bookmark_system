@@ -49,7 +49,7 @@ Scenario: create a request properly
     When I fill in "username" with "role1"
     When I fill in "content" with "change the password"
     When I press "Submit" within ".contentSmallForm"
-    Then I should be on the login page.
+    Then I should be on the homepage.
     
 Scenario: create a request with empty fields
     Given I am on the create request page

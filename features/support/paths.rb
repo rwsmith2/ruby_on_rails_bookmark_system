@@ -40,6 +40,8 @@ module NavigationHelpers
       '/request'
     when /the view request page/
       '/view_request'
+    when /the create tag page/
+      '/create_tag'
         
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -52,27 +52,50 @@ module Bookmark
     end
     
     # Return bookmark title, author, date, rating & reported status if bookmark contains search term
-    def Bookmark.find_search(filter_by_rate,filter_by_date,filter_by_reported,search, db)     
+    def Bookmark.find_search(filter_by_rate,filter_by_date,filter_by_reported,search,search_by, db)     
         result = []
         
         #If user has entered something in the search field
         if search && search!=''
-          if filter_by_rate==true
-              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE title LIKE ? 
-                    ORDER BY rating DESC;"  
-          elsif filter_by_date==true
-             query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  WHERE title LIKE ? 
-                                                                            ORDER BY date_created DESC;"   
-          elsif filter_by_reported==true
-             query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  
+          if search_by=="title"
+             if filter_by_rate==true
+                query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE title LIKE ? 
+                      ORDER BY rating DESC;"  
+             elsif filter_by_date==true
+               query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE title LIKE ? 
+                                                                              ORDER BY date_created DESC;"   
+             elsif filter_by_reported==true
+               query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE title LIKE ?
                                                                              ORDER BY reported DESC;"
-          else
-            query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE title LIKE ? ;"
-          end
-            rows = db.execute query, '%'+search+'%' 
-            rows.each do |row|
+             else
+               query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE title LIKE ? ;"
+             end
+             rows = db.execute query, '%'+search+'%' 
+             rows.each do |row|
                 result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
+             end
+          else
+          
+            if filter_by_rate==true
+              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE bookmark_tag_one LIKE ? 
+                                                                    OR bookmark_tag_two LIKE ? OR bookmark_tag_three LIKE ? ORDER BY rating DESC;"  
+            elsif filter_by_date==true
+              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark  WHERE bookmark_tag_one LIKE ? 
+                                                                    OR bookmark_tag_two LIKE ? OR bookmark_tag_three LIKE ? ORDER BY date_created DESC;"   
+            elsif filter_by_reported==true
+              query = "SELECT title,author,date_created,rating,num_of_ratings,reported,bookmark_id FROM bookmark WHERE bookmark_tag_one LIKE ? 
+                                                                    OR bookmark_tag_two LIKE ? OR bookmark_tag_three LIKE ? ORDER BY reported DESC;"
+            else
+              query = "SELECT title, author, date_created, rating, num_of_ratings, reported,bookmark_id FROM bookmark WHERE bookmark_tag_one LIKE ? 
+                                                                    OR bookmark_tag_two LIKE ? OR bookmark_tag_three LIKE ?;"
             end
+             rows = db.execute query, '%'+search+'%',  '%'+search+'%', '%'+search+'%'
+             rows.each do |row|
+                result.push({title: row[0], author: row[1], date: row[2], rating: row[3],num_of_rate: row[4],reported: row[5],id: row[6]})
+             end
+          end
+         
+          
         end        
         return result 
     end

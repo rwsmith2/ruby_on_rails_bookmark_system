@@ -43,6 +43,17 @@ Scenario: Edit bookmark with duplicate title
     When I fill in "title" with "My website"
     When I press "Save" within ".contentSmallForm"
     Then I should see "The title of your bookmark already exists. Please change another one"
+
+Scenario: Edit bookmark with duplicate tags
+    Given I am on the login page
+    When I fill in "username" with "role1"
+    When I fill in "password" with "password"
+    When I press "Login" within ".contentSmallForm"
+    Given I am on the my bookmark page
+    When I press "Edit" within ".TableHolder"
+    When I select "Lab" from "select_tag2"
+    When I press "Save" within ".contentSmallForm"
+    Then I should see "The bookmark contains duplicated tags. Please change them to unique."
  
 Scenario: Edit bookmark without changing
     Given I am on the login page
@@ -54,7 +65,7 @@ Scenario: Edit bookmark without changing
     When I press "Save" within ".contentSmallForm"
     Then I should see "You need to change something"
     
-Scenario: Edit bookmark without changing
+Scenario: Proper edit(with or without tag)
     Given I am on the login page
     When I fill in "username" with "role1"
     When I fill in "password" with "password"
@@ -62,9 +73,8 @@ Scenario: Edit bookmark without changing
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
     When I fill in "title" with "Labs"
+    When I select "Website" from "select_tag2"
     When I press "Save" within ".contentSmallForm"
     Then I should be on the my bookmark page
     Then I should see "Labs"
     Then I should not see "Lab results"
-
-#edit tags/add tags

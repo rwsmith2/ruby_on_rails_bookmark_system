@@ -25,6 +25,11 @@
            
              <form method="post" action="/view_bookmarks">
                   <p><input name="search" type="text" value="<%=@search%>"></p>
+                 <p><label for="search">Search by:</label>
+                 <select name="search_by">
+                  <option name="Ti" value="title" >Title</option>
+                  <option name="Ta" value="tag">Tag</option>
+                 </select>
                   <input type="submit" value="Search">
              </form>
             <%if session[:no_results]==false||!session[:no_results] %>
@@ -34,7 +39,7 @@
                  <option name="R" value="rate" >Rate</option>
                  <option name="D" value="date">Date</option>
                  <%if(session[:role]=="admin")%> 
-                  <option name="R" value="reported">Reported</option>
+                  <option name="Re" value="reported">Reported</option>
                  <%end%>
                 </select>
                   <input type="submit" value="Filter">

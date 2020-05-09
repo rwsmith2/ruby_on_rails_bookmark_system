@@ -83,5 +83,3 @@ Scenario: Reset password properly
     When I fill in "new_password" with "awe"
     When I press "Submit" within ".contentSmallForm"
     Then I should be on the user details page
-    
-#request for unsuspend

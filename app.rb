@@ -78,7 +78,7 @@ post '/request' do
         (@content != '' && @content) 
          if(Users.check_same_username(@username,$db))
           Users.request(@username,@content,$db)
-          redirect '/login'
+          redirect '/'
          else
              @no_such_user=true
              erb :create_request
@@ -344,24 +344,28 @@ get "/view_bookmarks" do
     if session[:search_bm]==false||!session[:search_bm]
       @list = Bookmark.find_all(session[:filter_r],session[:filter_d], session[:filter_re],$db)
     else
-      @list = Bookmark.find_search( session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm], $db)
+      @list = Bookmark.find_search(session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm],session[:search_by], $db)
     end
     erb :view_bookmarks
 end
 
 post "/view_bookmarks/back" do
-    session[:search_bm]=false
+    session.delete(:search_bm)
+    seosion.delete(:search_by)
+    session.delete(:filter_r)
+    session.delete(:filter_d)
+    session.delete(:filter_re)
     redirect '/view_bookmarks'
 end
 
 post "/view_bookmarks" do
     session[:search_bm]=true
+    session[:search_by]=params[:search_by]
     @no_results=false
     session[:result_bm] = params[:search]
-    @list = Bookmark.find_search( session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm], $db)
-     puts @list
+    @list = Bookmark.find_search( session[:filter_r],session[:filter_d], session[:filter_re],session[:result_bm],
+                                                               session[:search_by],$db)
     if (@list==[])
-        puts @list
         @no_results=true
     end
     erb :view_bookmarks

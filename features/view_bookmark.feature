@@ -11,6 +11,7 @@ Scenario: Go to view bookmark page
 Scenario: Search bookmarks by title
     Given I am on the view bookmark page
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     Then I should see "Funny jokes"
     Then I should not see "My website"
@@ -19,6 +20,7 @@ Scenario: Search bookmarks by title
 Scenario: Search but no results
     Given I am on the view bookmark page
     When I fill in "search" with "awe"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     Then I should see "Sorry. There is no relevant results."
     Then I should not see "Lab results"
@@ -36,26 +38,83 @@ Scenario: Filter by date
     When I select "D" from "filter"
     When I press "Filter" within ".contentSmallForm"
     Then I should see "Now Order By Date"
+
+Scenario: Filter by report
+    Given I am on the login page
+    When I fill in "username" with "role1"
+    When I fill in "password" with "password"
+    When I press "Login" within ".contentSmallForm"
+    When I press "View All Bookmarks" within ".contentSmallForm"
+    When I select "Re" from "filter"
+    When I press "Filter" within ".contentSmallForm"
+    Then I should see "Now Order By Reported"
     
-Scenario: Search first then filter by rate
+Scenario: Search title then filter by rate
     Given I am on the view bookmark page
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I select "R" from "filter"
     When I press "Filter" within ".contentSmallForm"
     Then I should see "Now Order By Rate"
 
-Scenario: Search first then filter by Date
+Scenario: Search title then filter by date
     Given I am on the view bookmark page
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I select "D" from "filter"
     When I press "Filter" within ".contentSmallForm"
     Then I should see "Now Order By Date"
+
+Scenario: Search title then filter by report
+    Given I am on the login page
+    When I fill in "username" with "role1"
+    When I fill in "password" with "password"
+    When I press "Login" within ".contentSmallForm"
+    When I press "View All Bookmarks" within ".contentSmallForm"
+    When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
+    When I press "Search" within ".contentSmallForm"
+    When I select "Re" from "filter"
+    When I press "Filter" within ".contentSmallForm"
+    Then I should see "Now Order By Reported"
+
+Scenario: Search tag then filter by rate
+    Given I am on the view bookmark page
+    When I fill in "search" with "Fun"
+    When I select "Ta" from "search_by"
+    When I press "Search" within ".contentSmallForm"
+    When I select "R" from "filter"
+    When I press "Filter" within ".contentSmallForm"
+    Then I should see "Now Order By Rate"
+
+Scenario: Search tag then filter by date
+    Given I am on the view bookmark page
+    When I fill in "search" with "Fun"
+    When I select "Ta" from "search_by"
+    When I press "Search" within ".contentSmallForm"
+    When I select "D" from "filter"
+    When I press "Filter" within ".contentSmallForm"
+    Then I should see "Now Order By Date"
+
+Scenario: Search tag then filter by report
+    Given I am on the login page
+    When I fill in "username" with "role1"
+    When I fill in "password" with "password"
+    When I press "Login" within ".contentSmallForm"
+    When I press "View All Bookmarks" within ".contentSmallForm"
+    When I fill in "search" with "Fun"
+    When I select "Ta" from "search_by"
+    When I press "Search" within ".contentSmallForm"
+    When I select "Re" from "filter"
+    When I press "Filter" within ".contentSmallForm"
+    Then I should see "Now Order By Reported"
     
 Scenario: Report bookmark
     Given I am on the view bookmark page
     When I fill in "search" with "Lab"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Report" within ".TableHolder"
     Then I should see "Has Been Reported"
@@ -68,6 +127,7 @@ Scenario: Unreport bookmark
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Lab"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Unreport" within ".TableHolder"
     Then I should see "Not Reported"
@@ -76,6 +136,7 @@ Scenario: Unreport bookmark
 Scenario: Go to bookmark details page
     Given I am on the view bookmark page
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     Then I should be on the bookmark details page
@@ -90,6 +151,7 @@ Scenario: Go to add comment page
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Add Comment" within ".contentSmallForm"
@@ -102,6 +164,7 @@ Scenario: Add comment with empty fields
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Add Comment" within ".contentSmallForm"
@@ -117,6 +180,7 @@ Scenario: Comment your own bookmark
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Add Comment" within ".contentSmallForm"
@@ -133,6 +197,7 @@ Scenario: Add comment properly
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Add Comment" within ".contentSmallForm"
@@ -149,6 +214,7 @@ Scenario: Go to the view comments page
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "View Comments(2)" within ".contentSmallForm"
@@ -163,6 +229,7 @@ Scenario: Rate bookmark
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     Then I should see "Rateing: Not Rated"
@@ -178,6 +245,7 @@ Scenario: Rate your own bookmark
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Lab"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I select "5" from "rating_points"
@@ -191,10 +259,10 @@ Scenario: Delete bookmark
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Funny"
+    When I select "Ti" from "search_by"
     When I press "Search" within ".contentSmallForm"
     When I press "Details" within ".TableHolder"
     When I press "Delete" within ".contentSmallForm"
     Then I should be on the view bookmark page
     Then I should not see "Funny jokes"
     
-#search by tags
