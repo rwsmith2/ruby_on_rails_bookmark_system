@@ -9,11 +9,8 @@ CREATE TABLE user (
     suspended BOOLEAN NOT NULL,
     password TEXT NOT NULL
 );
---Table for bookmark
 CREATE TABLE bookmark (
-    --primary key for table
     bookmark_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     description TEXT,
@@ -27,14 +24,12 @@ CREATE TABLE bookmark (
     bookmark_tag_two TEXT,
     bookmark_tag_three TEXT
 );
-
 CREATE TABLE request (
     request_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     content TEXT NOT NULL,
     read  BOOLEAN NOT NULL
 );
-
 CREATE TABLE comment (
     comment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -43,12 +38,10 @@ CREATE TABLE comment (
     date_created DATE NOT NULL,
     bookmark_id INTEGER REFERENCES bookmark(bookmark_id)
 );
-
 CREATE TABLE tag (
     tag_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     tag TEXT NOT NULL
 );
-
 
 -- Users test data
 INSERT INTO user VALUES(1, "Logan", "Miller","role1", "lmiller6@sheffield.ac.uk", "admin", "07123456789", 0, "password");
@@ -56,9 +49,50 @@ INSERT INTO user VALUES(2, "James", "Acaster","role2", "jamesa@gmail.com", "empl
 INSERT INTO user VALUES(3, "Jimmy", "Carr","role3", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
 
 -- Bookmark test data
-INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0,"Lab", null,null);
-INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data",2, "Jimmy Carr", '2020-3-19', 5, 31, 0,null,"Website",null);
-INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr", '2019-12-9',3, 2, 10, 0, null,null,"Fun");
+INSERT INTO bookmark VALUES(
+    1,
+    "Lab results",
+    "/lab.html",
+    "Details of february's lab",
+    "Logan Miller",1,
+    '2020-2-10',
+    4,
+    2,
+    0,
+    "Lab",
+    null,
+    null);
+INSERT INTO bookmark VALUES(
+    2,
+    "My website",
+    "https://www.jimmycarr.com/",
+    "Link to my personal data",
+    "James Acaster",
+    2,
+    '2020-3-19',
+    5,
+    31,
+    0,
+    null,
+    "Website",
+    null);
+INSERT INTO bookmark VALUES(
+    3,
+    "Funny jokes",
+    "jokes.txt",
+    "Top 100 jokes",
+    "Jimmy Carr",
+    3,
+    '2019-12-9',
+    0,
+    0,
+    1,
+    null,
+    null,
+    "Funny");
+
+--Comment test data
+INSERT INTO comment VALUES(1,"Test comment", "Test!!!", "Logan Miller", "2020-3-28", 2);
 
 --Request test data
 INSERT INTO request VALUES(1, "role1", "test", 1);

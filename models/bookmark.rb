@@ -153,6 +153,7 @@ module Bookmark
         result=db.execute query, id
     end
     
+    # Return true if bookmark title already taken
     def Bookmark.duplicate(title,db)   
        query= "SELECT title FROM bookmark;"
        rows=db.execute query  
@@ -179,6 +180,7 @@ module Bookmark
     end
     
     
+    # Return bookmark with given ID
     def Bookmark.find_my_bookmark(id, db)
         result = []
         query = "SELECT bookmark_id,title,date_created  FROM bookmark  WHERE author_id=?;"
@@ -189,6 +191,7 @@ module Bookmark
         return result 
     end
     
+    # Change bookmark's id, title, author, description, content, date and tags to given values
     def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)
 
        query= "UPDATE bookmark SET title=?, author=?, description=?,content=?,date_created=?,
@@ -207,6 +210,7 @@ module Bookmark
         return false
     end
     
+    # Return true if login id is author of bookmark with given bookmark id
     def Bookmark.own_bookmark(id_bm,id_login, db)
        query= "SELECT author_id FROM bookmark WHERE bookmark_id=?;"
        rows = db.execute query, id_bm
@@ -217,12 +221,14 @@ module Bookmark
         return false
     end
     
+    # Add comment to bookmark of given id
     def Bookmark.add_comment(id_bm,title,author,content,date,db)
        query= "INSERT INTO comment(title,content,author,date_created,bookmark_id) 
                                                                       VALUES(?,?,?,?,?)"
        result = db.execute query, title, content, author,date, id_bm
     end
     
+    # Return total number of comments for bookmark with given ID
     def Bookmark.number_of_comments(id_bm,db)
         query= "SELECT COUNT(*) FROM comment WHERE bookmark_id=?;"
         rows = db.execute query, id_bm
@@ -230,6 +236,7 @@ module Bookmark
         return row[0]
     end
     
+    # Returns comments for bookmark with given ID
     def Bookmark.find_comments(id_bm,db)
         result=[]
         query= "SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;"
@@ -241,6 +248,7 @@ module Bookmark
         return result
     end
     
+    # Return all tags in database
     def Bookmark.find_tags(db)
         result=[]
         query= "SELECT tag FROM tag;"
@@ -251,20 +259,26 @@ module Bookmark
         return result
     end
     
-    def Bookmark.same_tag(tag1,tag2,tag3,db)
-     if(tag1!=tag2&&tag1!=tag3&&tag2!=tag3)||(!tag1&&!tag2&&!tag3)||
-                                ((!tag1&&!tag3)||(!tag2&&!tag3)||(!tag2&&!tag1))
+    # Return true if bookmark does not have the same tag more than once
+    def Bookmark.same_tag(tag1, tag2, tag3, db)
+     if(tag1 != tag2 && tag1 != tag3 && tag2 != tag3) ||
+       (!tag1 && !tag2 && !tag3) || (
+       (!tag1 && !tag3) ||
+       (!tag2 && !tag3) ||
+       (!tag2 && !tag1))
          return false
      else
          return true
      end
     end
      
+    # Create tag
     def Bookmark.create_tag(tag,db)
        query= "INSERT INTO tag(tag) VALUES(?)"
        result = db.execute query, tag  
     end
     
+    # Return true if tag is already in db
     def Bookmark.duplicate_tag(tag,db)
        query= "SELECT tag FROM tag;"
        rows=db.execute query  
