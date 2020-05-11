@@ -22,7 +22,7 @@ CREATE TABLE bookmark (
     date_created DATE NOT NULL,
     rating INTEGER,
     num_of_ratings INTEGER,
-    reported BOOLEAN NOT NULL
+    reported BOOLEAN NOT NULL,
     bookmark_tag_one TEXT,
     bookmark_tag_two TEXT,
     bookmark_tag_three TEXT
@@ -56,9 +56,9 @@ INSERT INTO user VALUES(2, "James", "Acaster","role2", "jamesa@gmail.com", "empl
 INSERT INTO user VALUES(3, "Jimmy", "Carr","role3", "jimbo69@hotmail.com", "registered", "07328197892", 1, "CAPITALlower314");
 
 -- Bookmark test data
-INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0);
-INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data",2, "Jimmy Carr", '2020-3-19', 5, 31, 0);
-INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr", '2019-12-9',3, 2, 10, 0);
+INSERT INTO bookmark VALUES(1, "Lab results", "/lab.html", "Details of february's lab", "Logan Miller",1, '2020-2-10', 4, 2, 0,"Lab", null,null);
+INSERT INTO bookmark VALUES(2, "My website", "https://www.jimmycarr.com/", "Link to my personal data",2, "Jimmy Carr", '2020-3-19', 5, 31, 0,null,"Website",null);
+INSERT INTO bookmark VALUES(3, "Funny jokes", "jokes.txt", "Top 100 jokes", "Jimmy Carr", '2019-12-9',3, 2, 10, 0, null,null,"Fun");
 
 --Request test data
 INSERT INTO request VALUES(1, "role1", "test", 1);

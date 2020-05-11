@@ -55,12 +55,12 @@
             <form  methood='get' action='/view_bookmarks'>
                   <input type="submit" value="View All Bookmarks">
             </form> 
-            <%if session[:role]=="admin"%> 
+            <%if session[:role]=="admin" %>
              <form  methood='get' action='/create_tag'>
                   <input type="submit" value="Create Tag">
-             </form>
+             </form> 
             <%end%>
-            <%if session[:login]&&session[:role]!="admin"%> 
+            <% if session[:login]&&session[:role]!="admin" %>
              <form  methood='get' action='/request'>
                   <input type="submit" value="Request">
              </form>

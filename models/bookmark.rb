@@ -189,11 +189,11 @@ module Bookmark
         return result 
     end
     
-    def Bookmark.update(id,title ,author,description,content,tag1,tag2,tag3,db)
+    def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)
 
-       query= "UPDATE bookmark SET title=?, author=?, description=?,content=?,
+       query= "UPDATE bookmark SET title=?, author=?, description=?,content=?,date_created=?,
                                 bookmark_tag_one=?,bookmark_tag_two=?,bookmark_tag_three=? WHERE bookmark_id=?;"
-       result=db.execute query, title,author,description,content,tag1,tag2,tag3,id  
+       result=db.execute query, title,author,description,content,date,tag1,tag2,tag3,id  
     end
     
     def Bookmark.not_change(id,title ,author,description,content,tag1,tag2,tag3,db)

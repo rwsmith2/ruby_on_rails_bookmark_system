@@ -492,6 +492,7 @@ get "/my_bookmarks/edit" do
     @author = @found[:author]
     @description = @found[:description]
     @content = @found[:content] 
+ 
     @tag1=@found[:tag1]
     @tag2=@found[:tag2]
     @tag3=@found[:tag3]
@@ -509,6 +510,10 @@ post"/my_bookmarks/edit" do
     @author = params[:author]
     @description = params[:description]
     @content = params[:content] 
+    
+    time=Time.new
+    @date = (time.year.to_s + "-" + time.month.to_s + "-" + time.day.to_s)
+    
     
     if(params[:select_tag1]!="null")
      @tag1=params[:select_tag1]
@@ -529,7 +534,7 @@ post"/my_bookmarks/edit" do
         if(!Bookmark.change_to_duplicate(@title,@id,$db))
            if(!Bookmark.same_tag(@tag1,@tag2,@tag3,$db))
                
-             Bookmark.update(@id,@title ,@author ,@description,@content,@tag1,@tag2,@tag3,$db)
+             Bookmark.update(@id,@title ,@author ,@description,@content,@date,@tag1,@tag2,@tag3,$db)
              redirect "/my_bookmarks"
            else
                @same_tag=true
