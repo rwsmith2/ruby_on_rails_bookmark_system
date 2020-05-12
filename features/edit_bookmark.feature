@@ -3,7 +3,7 @@ Feature: edit bookmark
 Scenario: Go to my bookmark page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View My Bookmark" within ".contentSmallForm"
     Then I should be on the my bookmark page
@@ -11,7 +11,7 @@ Scenario: Go to my bookmark page
 Scenario: Go to edit bookmark page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
@@ -24,7 +24,7 @@ Scenario: Go to edit bookmark page
 Scenario: Edit bookmark with empty fieads
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
@@ -36,7 +36,7 @@ Scenario: Edit bookmark with empty fieads
 Scenario: Edit bookmark with duplicate title
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
@@ -47,7 +47,7 @@ Scenario: Edit bookmark with duplicate title
 Scenario: Edit bookmark with duplicate tags
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
@@ -58,7 +58,7 @@ Scenario: Edit bookmark with duplicate tags
 Scenario: Edit bookmark without changing
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"
@@ -68,7 +68,7 @@ Scenario: Edit bookmark without changing
 Scenario: Proper edit(with or without tag)
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     Given I am on the my bookmark page
     When I press "Edit" within ".TableHolder"

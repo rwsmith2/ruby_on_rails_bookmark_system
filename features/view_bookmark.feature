@@ -3,7 +3,7 @@ Feature: view bookmark
 Scenario: Go to view bookmark page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     Then I should be on the view bookmark page
@@ -42,7 +42,7 @@ Scenario: Filter by date
 Scenario: Filter by report
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I select "Re" from "filter"
@@ -70,7 +70,7 @@ Scenario: Search title then filter by date
 Scenario: Search title then filter by report
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Funny"
@@ -101,7 +101,7 @@ Scenario: Search tag then filter by date
 Scenario: Search tag then filter by report
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Fun"
@@ -123,7 +123,7 @@ Scenario: Report bookmark
 Scenario: Unreport bookmark
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Lab"
@@ -147,7 +147,7 @@ Scenario: Go to bookmark details page
 Scenario: Go to add comment page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
@@ -160,7 +160,7 @@ Scenario: Go to add comment page
 Scenario: Add comment with empty fields
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
@@ -176,7 +176,7 @@ Scenario: Add comment with empty fields
 Scenario: Comment your own bookmark
     Given I am on the login page
     When I fill in "username" with "role2"
-    When I fill in "password" with "pWORD1"
+    When I fill in "password" with "role2"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
@@ -193,7 +193,7 @@ Scenario: Comment your own bookmark
 Scenario: Add comment properly
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
@@ -210,7 +210,7 @@ Scenario: Add comment properly
 Scenario: Go to the view comments page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "My"
@@ -225,7 +225,7 @@ Scenario: Go to the view comments page
 Scenario: Rate bookmark
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Funny"
@@ -241,7 +241,7 @@ Scenario: Rate bookmark
 Scenario: Rate your own bookmark
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Lab"
@@ -255,7 +255,7 @@ Scenario: Rate your own bookmark
 Scenario: Delete bookmark
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View All Bookmarks" within ".contentSmallForm"
     When I fill in "search" with "Funny"

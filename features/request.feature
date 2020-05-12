@@ -3,7 +3,7 @@ Feature: request
 Scenario: Go to the view request page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View Request" within ".contentSmallForm"
     Then I should be on the view request page
@@ -11,7 +11,7 @@ Scenario: Go to the view request page
 Scenario: Mark request as read
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View Request" within ".contentSmallForm"
     When I press "Mark as read"
@@ -20,7 +20,7 @@ Scenario: Mark request as read
 Scenario: Mark request as unread
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View Request" within ".contentSmallForm"
     When I press "Mark as unread"
@@ -29,7 +29,7 @@ Scenario: Mark request as unread
 Scenario: Go to the create request page for to reset password
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "pass word"
+    When I fill in "password" with "awe"
     When I press "Login" within ".contentSmallForm"
     Then I should see "Invalid Username or Password. Please try again."
     When I press "Request" within ".contentSmallForm"
@@ -38,7 +38,7 @@ Scenario: Go to the create request page for to reset password
 Scenario: Go to the create request page for to ask for unsuspend
     Given I am on the login page
     When I fill in "username" with "role3"
-    When I fill in "password" with "CAPITALlower314"
+    When I fill in "password" with "role3"
     When I press "Login" within ".contentSmallForm"
     Then I should see "Your account has been suspended. Please contact admin."
     When I press "Contact" within ".contentSmallForm"

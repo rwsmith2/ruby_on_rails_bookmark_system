@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-05-11T14:14:18+00:00">2020-05-11T14:14:18+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-05-12T13:25:23+00:00">2020-05-12T13:25:23+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -84,7 +84,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#75280d46965959ac515dd7d677f3b5bf11bac277" class="src_link" title="models/bookmark.rb">models/bookmark.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">280</td>
+            <td class="cell--number">294</td>
             <td class="cell--number">153</td>
             <td class="cell--number">153</td>
             <td class="cell--number">0</td>
@@ -95,7 +95,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#5cdfd43f203596bf05e3c69fd3dc86205be4af35" class="src_link" title="models/users.rb">models/users.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">192</td>
+            <td class="cell--number">195</td>
             <td class="cell--number">102</td>
             <td class="cell--number">102</td>
             <td class="cell--number">0</td>
@@ -4036,7 +4036,7 @@
 
             
 
-            <code class="ruby">    seosion.delete(:search_by)</code>
+            <code class="ruby">    session.delete(:search_by)</code>
           </li>
         </div>
       
@@ -8791,7 +8791,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="156">
+          <li class="never" data-hits="" data-linenumber="156">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if bookmark title already taken</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="157">
             <span class="hits">1</span>
             
 
@@ -8802,24 +8813,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="157">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;SELECT title FROM bookmark;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="4" data-linenumber="158">
             <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">       rows=db.execute query  </code>
+            <code class="ruby">       query= &quot;SELECT title FROM bookmark;&quot;</code>
           </li>
         </div>
       
@@ -8830,12 +8830,23 @@
 
             
 
+            <code class="ruby">       rows=db.execute query  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="160">
+            <span class="hits">4</span>
+            
+
+            
+
             <code class="ruby">       rows.each do |row|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="160">
+          <li class="covered" data-hits="13" data-linenumber="161">
             <span class="hits">13</span>
             
 
@@ -8846,24 +8857,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="161">
+          <li class="covered" data-hits="1" data-linenumber="162">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">              return true  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="162">
-            
-            
-
-            
-
-            <code class="ruby">          end          </code>
           </li>
         </div>
       
@@ -8874,7 +8874,7 @@
 
             
 
-            <code class="ruby">       end</code>
+            <code class="ruby">          end          </code>
           </li>
         </div>
       
@@ -8885,29 +8885,29 @@
 
             
 
+            <code class="ruby">       end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="165">
+            
+            
+
+            
+
             <code class="ruby">       </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="165">
+          <li class="covered" data-hits="3" data-linenumber="166">
             <span class="hits">3</span>
             
 
             
 
             <code class="ruby">      return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="166">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -8918,12 +8918,23 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="168">
+            
+            
+
+            
+
             <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="168">
+          <li class="covered" data-hits="1" data-linenumber="169">
             <span class="hits">1</span>
             
 
@@ -8934,7 +8945,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="169">
+          <li class="covered" data-hits="3" data-linenumber="170">
             <span class="hits">3</span>
             
 
@@ -8945,7 +8956,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="170">
+          <li class="covered" data-hits="3" data-linenumber="171">
             <span class="hits">3</span>
             
 
@@ -8956,7 +8967,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="171">
+          <li class="covered" data-hits="3" data-linenumber="172">
             <span class="hits">3</span>
             
 
@@ -8967,7 +8978,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="172">
+          <li class="covered" data-hits="3" data-linenumber="173">
             <span class="hits">3</span>
             
 
@@ -8978,7 +8989,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="173">
+          <li class="covered" data-hits="12" data-linenumber="174">
             <span class="hits">12</span>
             
 
@@ -8989,7 +9000,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="174">
+          <li class="covered" data-hits="1" data-linenumber="175">
             <span class="hits">1</span>
             
 
@@ -9000,7 +9011,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="175">
+          <li class="never" data-hits="" data-linenumber="176">
             
             
 
@@ -9011,7 +9022,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="176">
+          <li class="never" data-hits="" data-linenumber="177">
             
             
 
@@ -9022,7 +9033,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="177">
+          <li class="never" data-hits="" data-linenumber="178">
             
             
 
@@ -9033,7 +9044,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="178">
+          <li class="covered" data-hits="2" data-linenumber="179">
             <span class="hits">2</span>
             
 
@@ -9044,24 +9055,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="179">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="180">
             
             
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -9077,7 +9077,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="182">
+          <li class="never" data-hits="" data-linenumber="182">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="183">
+            
+            
+
+            
+
+            <code class="ruby">    # Return bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="184">
             <span class="hits">1</span>
             
 
@@ -9088,7 +9110,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="183">
+          <li class="covered" data-hits="8" data-linenumber="185">
             <span class="hits">8</span>
             
 
@@ -9099,7 +9121,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="184">
+          <li class="covered" data-hits="8" data-linenumber="186">
             <span class="hits">8</span>
             
 
@@ -9110,7 +9132,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="185">
+          <li class="covered" data-hits="8" data-linenumber="187">
             <span class="hits">8</span>
             
 
@@ -9121,35 +9143,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="186">
+          <li class="covered" data-hits="8" data-linenumber="188">
             <span class="hits">8</span>
             
 
             
 
             <code class="ruby">        rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="187">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">         result.push({id: row[0],title: row[1], date:row[2]})  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="188">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -9160,7 +9160,7 @@
 
             
 
-            <code class="ruby">        return result </code>
+            <code class="ruby">         result.push({id: row[0],title: row[1], date:row[2]})  </code>
           </li>
         </div>
       
@@ -9171,29 +9171,29 @@
 
             
 
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="191">
+            <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">        return result </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="192">
+            
+            
+
+            
+
             <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="191">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="192">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)</code>
           </li>
         </div>
       
@@ -9204,12 +9204,45 @@
 
             
 
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="194">
+            
+            
+
+            
+
+            <code class="ruby">    # Change bookmark&#39;s id, title, author, description, content, date and tags to given values</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="195">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="196">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="194">
+          <li class="covered" data-hits="1" data-linenumber="197">
             <span class="hits">1</span>
             
 
@@ -9220,7 +9253,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="195">
+          <li class="never" data-hits="" data-linenumber="198">
             
             
 
@@ -9231,7 +9264,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="196">
+          <li class="covered" data-hits="1" data-linenumber="199">
             <span class="hits">1</span>
             
 
@@ -9242,7 +9275,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="197">
+          <li class="never" data-hits="" data-linenumber="200">
             
             
 
@@ -9253,7 +9286,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="198">
+          <li class="never" data-hits="" data-linenumber="201">
             
             
 
@@ -9264,7 +9297,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="199">
+          <li class="covered" data-hits="1" data-linenumber="202">
             <span class="hits">1</span>
             
 
@@ -9275,7 +9308,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="200">
+          <li class="never" data-hits="" data-linenumber="203">
             
             
 
@@ -9286,7 +9319,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="201">
+          <li class="covered" data-hits="4" data-linenumber="204">
             <span class="hits">4</span>
             
 
@@ -9297,7 +9330,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="202">
+          <li class="covered" data-hits="4" data-linenumber="205">
             <span class="hits">4</span>
             
 
@@ -9308,7 +9341,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="203">
+          <li class="never" data-hits="" data-linenumber="206">
             
             
 
@@ -9319,7 +9352,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="204">
+          <li class="never" data-hits="" data-linenumber="207">
             
             
 
@@ -9330,7 +9363,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="205">
+          <li class="covered" data-hits="1" data-linenumber="208">
             <span class="hits">1</span>
             
 
@@ -9341,7 +9374,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="206">
+          <li class="never" data-hits="" data-linenumber="209">
             
             
 
@@ -9352,7 +9385,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="207">
+          <li class="covered" data-hits="3" data-linenumber="210">
             <span class="hits">3</span>
             
 
@@ -9363,7 +9396,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="208">
+          <li class="never" data-hits="" data-linenumber="211">
             
             
 
@@ -9374,7 +9407,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="209">
+          <li class="never" data-hits="" data-linenumber="212">
             
             
 
@@ -9385,7 +9418,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="210">
+          <li class="never" data-hits="" data-linenumber="213">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if login id is author of bookmark with given bookmark id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="214">
             <span class="hits">1</span>
             
 
@@ -9396,7 +9440,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="211">
+          <li class="covered" data-hits="4" data-linenumber="215">
             <span class="hits">4</span>
             
 
@@ -9407,7 +9451,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="212">
+          <li class="covered" data-hits="4" data-linenumber="216">
             <span class="hits">4</span>
             
 
@@ -9418,7 +9462,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="213">
+          <li class="covered" data-hits="4" data-linenumber="217">
             <span class="hits">4</span>
             
 
@@ -9429,7 +9473,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="214">
+          <li class="covered" data-hits="4" data-linenumber="218">
             <span class="hits">4</span>
             
 
@@ -9440,7 +9484,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="215">
+          <li class="covered" data-hits="2" data-linenumber="219">
             <span class="hits">2</span>
             
 
@@ -9451,7 +9495,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="216">
+          <li class="never" data-hits="" data-linenumber="220">
             
             
 
@@ -9462,7 +9506,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="217">
+          <li class="covered" data-hits="2" data-linenumber="221">
             <span class="hits">2</span>
             
 
@@ -9473,7 +9517,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="218">
+          <li class="never" data-hits="" data-linenumber="222">
             
             
 
@@ -9484,57 +9528,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="219">
+          <li class="never" data-hits="" data-linenumber="223">
             
             
 
             
 
             <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="220">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.add_comment(id_bm,title,author,content,date,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="221">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;INSERT INTO comment(title,content,author,date_created,bookmark_id) </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="222">
-            
-            
-
-            
-
-            <code class="ruby">                                                                      VALUES(?,?,?,?,?)&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="223">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       result = db.execute query, title, content, author,date, id_bm</code>
           </li>
         </div>
       
@@ -9545,18 +9545,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    # Add comment to bookmark of given id</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="225">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="225">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    </code>
+            
+
+            <code class="ruby">    def Bookmark.add_comment(id_bm,title,author,content,date,db)</code>
           </li>
         </div>
       
@@ -9567,51 +9567,51 @@
 
             
 
-            <code class="ruby">    def Bookmark.number_of_comments(id_bm,db)</code>
+            <code class="ruby">       query= &quot;INSERT INTO comment(title,content,author,date_created,bookmark_id) </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="227">
-            <span class="hits">12</span>
+          <li class="never" data-hits="" data-linenumber="227">
+            
             
 
             
 
-            <code class="ruby">        query= &quot;SELECT COUNT(*) FROM comment WHERE bookmark_id=?;&quot;</code>
+            <code class="ruby">                                                                      VALUES(?,?,?,?,?)&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="228">
-            <span class="hits">12</span>
+          <li class="covered" data-hits="1" data-linenumber="228">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        rows = db.execute query, id_bm</code>
+            <code class="ruby">       result = db.execute query, title, content, author,date, id_bm</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="229">
-            <span class="hits">12</span>
+          <li class="never" data-hits="" data-linenumber="229">
+            
             
 
             
 
-            <code class="ruby">        row=rows[0]</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="230">
-            <span class="hits">12</span>
+          <li class="never" data-hits="" data-linenumber="230">
+            
             
 
             
 
-            <code class="ruby">        return row[0]</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -9622,84 +9622,84 @@
 
             
 
+            <code class="ruby">    # Return total number of comments for bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="232">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.number_of_comments(id_bm,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="233">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        query= &quot;SELECT COUNT(*) FROM comment WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="234">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query, id_bm</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="235">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        row=rows[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="236">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        return row[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="237">
+            
+            
+
+            
+
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="232">
+          <li class="never" data-hits="" data-linenumber="238">
             
             
 
             
 
             <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="233">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.find_comments(id_bm,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="234">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        result=[]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="235">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="236">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query,id_bm    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="237">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="238">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})</code>
           </li>
         </div>
       
@@ -9710,18 +9710,18 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">    # Returns comments for bookmark with given ID</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="240">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="240">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        </code>
+            
+
+            <code class="ruby">    def Bookmark.find_comments(id_bm,db)</code>
           </li>
         </div>
       
@@ -9732,29 +9732,29 @@
 
             
 
-            <code class="ruby">        return result</code>
+            <code class="ruby">        result=[]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="242">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="242">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        query= &quot;SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="243">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="243">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    </code>
+            
+
+            <code class="ruby">        rows = db.execute query,id_bm    </code>
           </li>
         </div>
       
@@ -9765,67 +9765,23 @@
 
             
 
-            <code class="ruby">    def Bookmark.find_tags(db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="245">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        result=[]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="246">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT tag FROM tag;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="247">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="248">
-            <span class="hits">19</span>
-            
-
-            
-
             <code class="ruby">        rows.each do |row|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="67" data-linenumber="249">
-            <span class="hits">67</span>
+          <li class="covered" data-hits="2" data-linenumber="245">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">            result.push({name: row[0]})</code>
+            <code class="ruby">            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="250">
+          <li class="never" data-hits="" data-linenumber="246">
             
             
 
@@ -9836,8 +9792,19 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="251">
-            <span class="hits">19</span>
+          <li class="never" data-hits="" data-linenumber="247">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="248">
+            <span class="hits">1</span>
             
 
             
@@ -9847,7 +9814,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="252">
+          <li class="never" data-hits="" data-linenumber="249">
             
             
 
@@ -9858,7 +9825,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="253">
+          <li class="never" data-hits="" data-linenumber="250">
             
             
 
@@ -9869,46 +9836,79 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="254">
+          <li class="never" data-hits="" data-linenumber="251">
+            
+            
+
+            
+
+            <code class="ruby">    # Return all tags in database</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="252">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def Bookmark.same_tag(tag1,tag2,tag3,db)</code>
+            <code class="ruby">    def Bookmark.find_tags(db)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="255">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="19" data-linenumber="253">
+            <span class="hits">19</span>
             
 
             
 
-            <code class="ruby">     if(tag1!=tag2&amp;&amp;tag1!=tag3&amp;&amp;tag2!=tag3)||(!tag1&amp;&amp;!tag2&amp;&amp;!tag3)||</code>
+            <code class="ruby">        result=[]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="256">
-            
-            
-
+          <li class="covered" data-hits="19" data-linenumber="254">
+            <span class="hits">19</span>
             
 
-            <code class="ruby">                                ((!tag1&amp;&amp;!tag3)||(!tag2&amp;&amp;!tag3)||(!tag2&amp;&amp;!tag1))</code>
+            
+
+            <code class="ruby">        query= &quot;SELECT tag FROM tag;&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="257">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="19" data-linenumber="255">
+            <span class="hits">19</span>
             
 
             
 
-            <code class="ruby">         return false</code>
+            <code class="ruby">        rows = db.execute query </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="256">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="67" data-linenumber="257">
+            <span class="hits">67</span>
+            
+
+            
+
+            <code class="ruby">            result.push({name: row[0]})</code>
           </li>
         </div>
       
@@ -9919,18 +9919,18 @@
 
             
 
-            <code class="ruby">     else</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="259">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="19" data-linenumber="259">
+            <span class="hits">19</span>
             
 
             
 
-            <code class="ruby">         return true</code>
+            <code class="ruby">        return result</code>
           </li>
         </div>
       
@@ -9941,7 +9941,7 @@
 
             
 
-            <code class="ruby">     end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -9952,7 +9952,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -9963,7 +9963,7 @@
 
             
 
-            <code class="ruby">     </code>
+            <code class="ruby">    # Return true if bookmark does not have the same tag more than once</code>
           </li>
         </div>
       
@@ -9974,29 +9974,29 @@
 
             
 
-            <code class="ruby">    def Bookmark.create_tag(tag,db)</code>
+            <code class="ruby">    def Bookmark.same_tag(tag1, tag2, tag3, db)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="264">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="5" data-linenumber="264">
+            <span class="hits">5</span>
             
 
             
 
-            <code class="ruby">       query= &quot;INSERT INTO tag(tag) VALUES(?)&quot;</code>
+            <code class="ruby">     if(tag1 != tag2 &amp;&amp; tag1 != tag3 &amp;&amp; tag2 != tag3) ||</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="265">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="265">
+            
             
 
             
 
-            <code class="ruby">       result = db.execute query, tag  </code>
+            <code class="ruby">       (!tag1 &amp;&amp; !tag2 &amp;&amp; !tag3) || (</code>
           </li>
         </div>
       
@@ -10007,7 +10007,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">       (!tag1 &amp;&amp; !tag3) ||</code>
           </li>
         </div>
       
@@ -10018,40 +10018,40 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">       (!tag2 &amp;&amp; !tag3) ||</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="268">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="268">
+            
             
 
             
 
-            <code class="ruby">    def Bookmark.duplicate_tag(tag,db)</code>
+            <code class="ruby">       (!tag2 &amp;&amp; !tag1))</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="269">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="269">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">       query= &quot;SELECT tag FROM tag;&quot;</code>
+            <code class="ruby">         return false</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="270">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="270">
+            
             
 
             
 
-            <code class="ruby">       rows=db.execute query  </code>
+            <code class="ruby">     else</code>
           </li>
         </div>
       
@@ -10062,78 +10062,23 @@
 
             
 
-            <code class="ruby">       rows.each do |row|</code>
+            <code class="ruby">         return true</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="272">
-            <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="272">
+            
             
 
             
 
-            <code class="ruby">          if row[0].upcase==tag.upcase</code>
+            <code class="ruby">     end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="273">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">              return true  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="274">
-            
-            
-
-            
-
-            <code class="ruby">          end          </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="275">
-            
-            
-
-            
-
-            <code class="ruby">       end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="276">
-            
-            
-
-            
-
-            <code class="ruby">       </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="277">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="278">
+          <li class="never" data-hits="" data-linenumber="273">
             
             
 
@@ -10144,7 +10089,73 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="274">
+            
+            
+
+            
+
+            <code class="ruby">     </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="275">
+            
+            
+
+            
+
+            <code class="ruby">    # Create tag</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="276">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.create_tag(tag,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="277">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;INSERT INTO tag(tag) VALUES(?)&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="278">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       result = db.execute query, tag  </code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="279">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="280">
             
             
 
@@ -10155,7 +10166,150 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="280">
+          <li class="never" data-hits="" data-linenumber="281">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if tag is already in db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="282">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.duplicate_tag(tag,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="283">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;SELECT tag FROM tag;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="284">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       rows=db.execute query  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="285">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="286">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">          if row[0].upcase==tag.upcase</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="287">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">              return true  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="288">
+            
+            
+
+            
+
+            <code class="ruby">          end          </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="289">
+            
+            
+
+            
+
+            <code class="ruby">       end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="290">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="291">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="292">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="293">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="294">
             
             
 
@@ -11996,18 +12150,18 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby">     </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="165">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="165">
+            
             
 
             
 
-            <code class="ruby">   def Users.request(username,content,db)</code>
+            <code class="ruby">  # Allows users to send requests to admins (e.g. password resets)</code>
           </li>
         </div>
       
@@ -12018,7 +12172,7 @@
 
             
 
-            <code class="ruby">         query= &quot;INSERT INTO request(username,content,read) VALUES(?,?,?)&quot;</code>
+            <code class="ruby">   def Users.request(username,content,db)</code>
           </li>
         </div>
       
@@ -12029,18 +12183,18 @@
 
             
 
-            <code class="ruby">         result=db.execute query, username,content, 1</code>
+            <code class="ruby">         query= &quot;INSERT INTO request(username,content,read) VALUES(?,?,?)&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="168">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="168">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">   end</code>
+            
+
+            <code class="ruby">         result=db.execute query, username,content, 1</code>
           </li>
         </div>
       
@@ -12051,12 +12205,23 @@
 
             
 
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="170">
+            
+            
+
+            
+
             <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="170">
+          <li class="covered" data-hits="1" data-linenumber="171">
             <span class="hits">1</span>
             
 
@@ -12067,7 +12232,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="171">
+          <li class="covered" data-hits="5" data-linenumber="172">
             <span class="hits">5</span>
             
 
@@ -12078,7 +12243,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="172">
+          <li class="covered" data-hits="5" data-linenumber="173">
             <span class="hits">5</span>
             
 
@@ -12089,7 +12254,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="173">
+          <li class="covered" data-hits="5" data-linenumber="174">
             <span class="hits">5</span>
             
 
@@ -12100,7 +12265,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="174">
+          <li class="covered" data-hits="5" data-linenumber="175">
             <span class="hits">5</span>
             
 
@@ -12111,7 +12276,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="175">
+          <li class="covered" data-hits="5" data-linenumber="176">
             <span class="hits">5</span>
             
 
@@ -12122,7 +12287,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="176">
+          <li class="never" data-hits="" data-linenumber="177">
             
             
 
@@ -12133,7 +12298,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="177">
+          <li class="never" data-hits="" data-linenumber="178">
             
             
 
@@ -12144,7 +12309,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="178">
+          <li class="covered" data-hits="5" data-linenumber="179">
             <span class="hits">5</span>
             
 
@@ -12155,7 +12320,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="179">
+          <li class="never" data-hits="" data-linenumber="180">
             
             
 
@@ -12166,7 +12331,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="180">
+          <li class="never" data-hits="" data-linenumber="181">
             
             
 
@@ -12177,24 +12342,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="181">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="182">
+            
             
 
             
 
-            <code class="ruby">   def Users.mark_as_read(id,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="182">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;UPDATE request SET read=? WHERE request_id=?;&quot;</code>
+            <code class="ruby">   # Marks bookmarks as read</code>
           </li>
         </div>
       
@@ -12205,45 +12359,12 @@
 
             
 
-            <code class="ruby">       result=db.execute query,0,id   </code>
+            <code class="ruby">   def Users.mark_as_read(id,db)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="184">
-            
-            
-
-            
-
-            <code class="ruby">   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="185">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="186">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">   def Users.mark_as_unread(id,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="187">
+          <li class="covered" data-hits="1" data-linenumber="184">
             <span class="hits">1</span>
             
 
@@ -12254,18 +12375,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="188">
+          <li class="covered" data-hits="1" data-linenumber="185">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">       result=db.execute query,1,id   </code>
+            <code class="ruby">       result=db.execute query,0,id   </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="189">
+          <li class="never" data-hits="" data-linenumber="186">
             
             
 
@@ -12276,7 +12397,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="190">
+          <li class="never" data-hits="" data-linenumber="187">
             
             
 
@@ -12287,7 +12408,73 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="191">
+          <li class="never" data-hits="" data-linenumber="188">
+            
+            
+
+            
+
+            <code class="ruby">   # Marks bookmarks as unread</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="189">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def Users.mark_as_unread(id,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="190">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;UPDATE request SET read=? WHERE request_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="191">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       result=db.execute query,1,id   </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="192">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="193">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="194">
             
             
 
@@ -12298,7 +12485,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="192">
+          <li class="never" data-hits="" data-linenumber="195">
             
             
 
