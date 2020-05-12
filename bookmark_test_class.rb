@@ -28,6 +28,11 @@ class TestStringComparison < Minitest::Test
     # Test occassionally fails due to new bookmark being created in another unit test
     # failing to be deleted
     def test_find_all
+        
+        # Returns test data to original form (incase a previous test did not delete it)
+        query = "DELETE FROM bookmark WHERE bookmark_id=4";
+        result = $db.execute query;
+        
         # Test for filtering by rate
         assert_output(/{:title=>\"My website\", :author=>\"James Acaster\", :date=>\"2020-3-19\", :rating=>5, :num_of_rate=>31, :reported=>0, :id=>2}\n{:title=>\"Lab results\", :author=>\"Logan Miller\", :date=>\"2020-2-10\", :rating=>4, :num_of_rate=>2, :reported=>0, :id=>1}\n{:title=>\"Funny jokes\", :author=>\"Jimmy Carr\", :date=>\"2019-12-9\", :rating=>0, :num_of_rate=>0, :reported=>1, :id=>3}\n/, '') do
             puts Bookmark.find_all(true, false, false, $db)
