@@ -351,7 +351,7 @@ end
 
 post "/view_bookmarks/back" do
     session.delete(:search_bm)
-    seosion.delete(:search_by)
+    session.delete(:search_by)
     session.delete(:filter_r)
     session.delete(:filter_d)
     session.delete(:filter_re)
