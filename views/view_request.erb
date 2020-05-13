@@ -22,43 +22,36 @@
 		<div class="contentSmallForm">
 			<h2>View Requests</h2>
 
-      <div class="TableHolder">       
-       
-        <% @list.each do |request| %>
+      <div class="TableHolder">
           <table>
-          <tr>
-              <td><%=request[:username]%></td>
-               <% if request[:read] == 1 %>
-               <td>
-                  <form method="post" action="/view_request/read">
-                  <p><input type="hidden" name="idr" value="<%=request[:id]%>"></p>
-                  <input type="submit" value="Mark as read">
-                  </form>
-              </td>
-               <% end %>
-              <% if request[:read] == 0 %>
-               <td>
-                  <form method="post" action="/view_request/unread">
-                  <p><input type="hidden" name="idu" value="<%=request[:id]%>"></p>
-                  <input type="submit" value="Mark as unread">
-                  </form>
-              </td>
-               <% end %>
-          </tr>
-          <tr> 
-              <td colspan="2">>><%=request[:content]%></td>
-          </tr>
-             <tr>
-              <% if request[:read] == 1 %>
-              <td class="r">Unread</td>
-              <% end %>
-              <% if request[:read] == 0 %>
-              <td class="r">Read</td>
-              <% end %>
+              <th>User</th><th>Request Content</th><th>Read/Unread</th><th></th>
+               <% @list.each do |request| %>
+              <tr>
+                  <td><%=request[:username]%></td>
+                  <td style="word-wrap: break-word;"><%=request[:content]%></td>
+                  <td>
+                  <% if request[:read] == 1 %>
+                      <form method="post" action="/view_request/read">
+                      <p><input type="hidden" name="idr" value="<%=request[:id]%>"></p>
+                      <input type="submit" value="Mark as read">
+                      </form>
+                  <% end %>
+                  <% if request[:read] == 0 %>
+                      <form method="post" action="/view_request/unread">
+                      <p><input type="hidden" name="idu" value="<%=request[:id]%>"></p>
+                      <input type="submit" value="Mark as unread">
+                      </form>
+                  <% end %>
+                  </td>
+                  <% if request[:read] == 1 %>
+                  <td class="r">Unread</td>
+                  <% end %>
+                  <% if request[:read] == 0 %>
+                  <td class="r">Read</td>
+                  <% end %>
               </tr>
+              <% end %>
          </table>
-          <%end%>
-      
       </div>
      </div>
 	</main>
