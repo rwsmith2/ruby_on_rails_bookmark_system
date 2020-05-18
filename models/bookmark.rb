@@ -165,7 +165,7 @@ module Bookmark
        
       return false
     end
-    
+    #return true if change duplicate 
     def Bookmark.change_to_duplicate(title,id,db)
        found=Bookmark.find_one(id, db)
        query= "SELECT title FROM bookmark;"
@@ -199,6 +199,7 @@ module Bookmark
        result=db.execute query, title,author,description,content,date,tag1,tag2,tag3,id  
     end
     
+    #check if the bookmark has been changed
     def Bookmark.not_change(id,title ,author,description,content,tag1,tag2,tag3,db)
         
         found=Bookmark.find_one(id, db)

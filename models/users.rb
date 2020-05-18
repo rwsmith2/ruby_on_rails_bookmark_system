@@ -167,7 +167,8 @@ module Users
          query= "INSERT INTO request(username,content,read) VALUES(?,?,?)"
          result=db.execute query, username,content, 1
    end
-    
+   
+   #finds request that the user makes
    def Users.find_requests(db)
         result=[]
         query= "SELECT request_id,username, content,read FROM request ORDER BY read DESC;"
