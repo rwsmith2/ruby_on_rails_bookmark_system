@@ -161,7 +161,8 @@ module Users
        query= "UPDATE user SET password=? WHERE user_id=?;"
        rows=db.execute query, password,id
    end
-      
+     
+  # Allows users to send requests to admins (e.g. password resets)
    def Users.request(username,content,db)
          query= "INSERT INTO request(username,content,read) VALUES(?,?,?)"
          result=db.execute query, username,content, 1
@@ -178,11 +179,13 @@ module Users
         return result
    end
     
+   # Marks bookmarks as read
    def Users.mark_as_read(id,db)
        query= "UPDATE request SET read=? WHERE request_id=?;"
        result=db.execute query,0,id   
    end
     
+   # Marks bookmarks as unread
    def Users.mark_as_unread(id,db)
        query= "UPDATE request SET read=? WHERE request_id=?;"
        result=db.execute query,1,id   
