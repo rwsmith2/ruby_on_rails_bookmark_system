@@ -109,8 +109,18 @@ module Bookmark
 
         rows = db.execute query,id 
         row = rows[0]
-        result = {id: row[0],title: row[1], author: row[2], description: row[3],content: row[4], rate: row[5],
-                                                   num_of_rate: row[6], date:row[7],tag1: row[8], tag2: row[9], tag3: row[10]}  
+        result = {
+            id: row[0],
+            title: row[1],
+            author: row[2],
+            description: row[3],
+            content: row[4],
+            rate: row[5],
+            num_of_rate: row[6],
+            date:row[7],
+            tag1: row[8],
+            tag2: row[9],
+            tag3: row[10]}  
         return result 
     end
     
@@ -141,52 +151,62 @@ module Bookmark
     
     # Return number of ratings of bookmark with given ID
     def Bookmark.find_num(id, db)
-        query= "SELECT num_of_ratings FROM bookmark WHERE bookmark_id=?;"
-        rows=db.execute query, id
-        row=rows[0]
+        query = "SELECT num_of_ratings FROM bookmark WHERE bookmark_id=?;"
+        rows = db.execute query, id
+        row = rows[0]
         return row[0]
     end
     
     # Delete bookmark with given ID
     def Bookmark.delete(id,db)
-        query= "DELETE FROM bookmark WHERE bookmark_id=?"
-        result=db.execute query, id
+        query = "DELETE FROM bookmark WHERE bookmark_id=?"
+        result =d b.execute query, id
     end
     
     # Return true if bookmark title already taken
-    def Bookmark.duplicate(title,db)   
-       query= "SELECT title FROM bookmark;"
-       rows=db.execute query  
+    def Bookmark.duplicate(title, db)   
+       query = "SELECT title FROM bookmark;"
+       rows = db.execute query 
        rows.each do |row|
-          if row[0].upcase==title.upcase
+          if row[0].upcase == title.upcase
               return true  
           end          
        end
        
       return false
     end
-    #return true if change duplicate 
-    def Bookmark.change_to_duplicate(title,id,db)
-       found=Bookmark.find_one(id, db)
-       query= "SELECT title FROM bookmark;"
-       rows=db.execute query  
-       rows.each do |row|
-          if row[0]!=found[:title]&&row[0]==title 
+    
+ 
+    #Returns true if a bookmark with the given title is already in the db
+    def Bookmark.change_to_duplicate(title, id, db)
+       
+        found = Bookmark.find_one(id, db)
+        query = "SELECT title FROM bookmark;"
+
+        # Bookmarks currently in the db
+        rows = db.execute query  
+        
+        rows.each do |row|
+          # If a bookmark with the given title already exists, return true
+          if row[0] != found[:title] && row[0] == title 
               return true  
           end          
-       end
-       
-      return false
+        end
+
+        return false
     end
     
     
     # Return bookmark with given ID
     def Bookmark.find_my_bookmark(id, db)
+        
         result = []
-        query = "SELECT bookmark_id,title,date_created  FROM bookmark  WHERE author_id=?;"
+        query = "SELECT bookmark_id, title, date_created FROM bookmark WHERE author_id=?;"
         rows = db.execute query,id 
+        
+        # Add each row to result
         rows.each do |row|
-         result.push({id: row[0],title: row[1], date:row[2]})  
+            result.push({id: row[0], title: row[1], date:row[2]})  
         end
         return result 
     end
@@ -196,18 +216,27 @@ module Bookmark
 
        query= "UPDATE bookmark SET title=?, author=?, description=?,content=?,date_created=?,
                                 bookmark_tag_one=?,bookmark_tag_two=?,bookmark_tag_three=? WHERE bookmark_id=?;"
-       result=db.execute query, title,author,description,content,date,tag1,tag2,tag3,id  
+       
+        result = db.execute query, title, author, description, content, date, tag1, tag2, tag3, id  
     end
     
-    #check if the bookmark has been changed
-    def Bookmark.not_change(id,title ,author,description,content,tag1,tag2,tag3,db)
+    # Checks if the bookmark has been changed
+    def Bookmark.not_change(id, title, author, description, content, tag1, tag2, tag3, db)
         
         found=Bookmark.find_one(id, db)
-        if(title==found[:title]&&author==found[:author]&&
-               description==found[:description]&&content==found[:content]&&
-                 tag1==found[:tag1]&&tag2==found[:tag2]&&tag3==found[:tag3])
-          return true
+        
+        # If given bookmark details match bookmark in db return true
+        if( title == found[:title] &&
+            author == found[:author] &&
+            description==found[:description] && 
+            content==found[:content] &&
+            tag1==found[:tag1] &&
+            tag2 == found[:tag2] &&
+            tag3==found[:tag3])
+            return true
         end
+        
+        # Otherwise, return false
         return false
     end
     
