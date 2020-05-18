@@ -19,8 +19,7 @@ class TestStringComparison < Minitest::Test
         assert_equal [], Bookmark.new("Uni website", "https://sheffield.ac.uk", "The official uni web page", "Mr Test", 4, "2020-3-19", 2, 1, 0, "tag1", "tag2", "tag3", $db);    
         
         # Change test data back to original form
-        query = "DELETE FROM bookmark WHERE bookmark_id=4";
-        result = $db.execute query;
+        Bookmark.delete(4, $db)
     end
     
     # Compares methods returned hash value by outputting method to console and checking this output
@@ -28,6 +27,11 @@ class TestStringComparison < Minitest::Test
     # Test occassionally fails due to new bookmark being created in another unit test
     # failing to be deleted
     def test_find_all
+        
+        # Returns test data to original form (incase a previous test did not delete it)
+          query= "DELETE FROM bookmark WHERE bookmark_id>=?"
+          result=$db.execute query, 4
+        
         # Test for filtering by rate
         assert_output(/{:title=>\"My website\", :author=>\"James Acaster\", :date=>\"2020-3-19\", :rating=>5, :num_of_rate=>31, :reported=>0, :id=>2}\n{:title=>\"Lab results\", :author=>\"Logan Miller\", :date=>\"2020-2-10\", :rating=>4, :num_of_rate=>2, :reported=>0, :id=>1}\n{:title=>\"Funny jokes\", :author=>\"Jimmy Carr\", :date=>\"2019-12-9\", :rating=>0, :num_of_rate=>0, :reported=>1, :id=>3}\n/, '') do
             puts Bookmark.find_all(true, false, false, $db)
@@ -100,8 +104,7 @@ class TestStringComparison < Minitest::Test
         assert_equal [], Bookmark.delete(4, $db);
         
         # Returns test data to original form (incase delete method failed)
-        query = "DELETE FROM bookmark WHERE bookmark_id=4";
-        result = $db.execute query;
+        Bookmark.delete(4, $db)
     end
     
     def test_duplicate
@@ -125,8 +128,7 @@ class TestStringComparison < Minitest::Test
         assert_equal [], Bookmark.update(4, "New website", "Mr Test", "https://shef.ac.uk", "New website", "2020-4-19", "new tag 1", "new tag 2", "new tag 3", $db);
         
         # Returns test data to original form
-        query = "DELETE FROM bookmark WHERE bookmark_id=4";
-        result = $db.execute query;
+        Bookmark.delete(4, $db)
         
     end
 

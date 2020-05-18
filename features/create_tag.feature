@@ -3,7 +3,7 @@ Feature: create tag
 Scenario: Go to create tag page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "Create Tag" within ".contentSmallForm"
     Then I should be on the create tag page
@@ -11,7 +11,7 @@ Scenario: Go to create tag page
 Scenario: Type nothing
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "Create Tag" within ".contentSmallForm"
     When I press "Create" within ".contentSmallForm"
@@ -20,7 +20,7 @@ Scenario: Type nothing
 Scenario: Create duplicated tag
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "Create Tag" within ".contentSmallForm"
     When I fill in "tag" with "Lab"
@@ -30,7 +30,7 @@ Scenario: Create duplicated tag
 Scenario: Create tag properly
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "Create Tag" within ".contentSmallForm"
     When I fill in "tag" with "Sport"

@@ -3,7 +3,7 @@ Feature: add bookmark
 Scenario: Go to adding bookmark page
     Given I am on the login page
     When I fill in "username" with "role2"
-    When I fill in "password" with "pWORD1"
+    When I fill in "password" with "role2"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"
     Then I should be on the adding bookmark page
@@ -28,7 +28,7 @@ Scenario: Adding with duplicate title
 Scenario: Proper adding without tags
     Given I am on the login page
     When I fill in "username" with "role2"
-    When I fill in "password" with "pWORD1"
+    When I fill in "password" with "role2"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"
     When I fill in "title" with "Test"
@@ -41,7 +41,7 @@ Scenario: Proper adding without tags
 Scenario: Proper adding with tags
     Given I am on the login page
     When I fill in "username" with "role2"
-    When I fill in "password" with "pWORD1"
+    When I fill in "password" with "role2"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"
     When I fill in "title" with "Test1"
@@ -56,7 +56,7 @@ Scenario: Proper adding with tags
 Scenario: adding with duplicated tags
     Given I am on the login page
     When I fill in "username" with "role2"
-    When I fill in "password" with "pWORD1"
+    When I fill in "password" with "role2"
     When I press "Login" within ".contentSmallForm"
     When I press "Add Bookmarks" within ".contentSmallForm"
     When I fill in "title" with "Test2"

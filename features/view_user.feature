@@ -3,7 +3,7 @@ Feature: view user
 Scenario: Go to all users page
     Given I am on the login page
     When I fill in "username" with "role1"
-    When I fill in "password" with "password"
+    When I fill in "password" with "role1"
     When I press "Login" within ".contentSmallForm"
     When I press "View Users" within ".contentSmallForm"
     Then I should be on the all users page
