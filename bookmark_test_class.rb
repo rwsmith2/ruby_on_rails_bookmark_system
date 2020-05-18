@@ -24,8 +24,6 @@ class TestStringComparison < Minitest::Test
     
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values).
-    # Test occassionally fails due to new bookmark being created in another unit test
-    # failing to be deleted
     def test_find_all
         
         # Returns test data to original form (incase a previous test did not delete it)
