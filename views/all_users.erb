@@ -20,7 +20,7 @@
 		<div class="contentSmallForm">
 			<h2>View Users</h2>
              <form method="post" action="/check_all_users">
-                  <p>Search by firstname: <input name="search" type="text" value="<%=@search%>"></p>
+                  <p>Search by username: <input name="search" type="text" value="<%=@search%>"></p>
                   <input type="submit" value="Search">
              </form>
             <% if session[:search_u] == true %>

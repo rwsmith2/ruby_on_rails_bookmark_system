@@ -160,7 +160,7 @@ module Bookmark
     # Delete bookmark with given ID
     def Bookmark.delete(id,db)
         query = "DELETE FROM bookmark WHERE bookmark_id=?"
-        result =d b.execute query, id
+        result =db.execute query, id
     end
     
     # Return true if bookmark title already taken
