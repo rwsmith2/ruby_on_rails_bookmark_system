@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-05-18T14:54:24+00:00">2020-05-18T14:54:24+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-05-20T12:55:53+00:00">2020-05-20T12:55:53+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -84,7 +84,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#75280d46965959ac515dd7d677f3b5bf11bac277" class="src_link" title="models/bookmark.rb">models/bookmark.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">295</td>
+            <td class="cell--number">324</td>
             <td class="cell--number">153</td>
             <td class="cell--number">153</td>
             <td class="cell--number">0</td>
@@ -9198,35 +9198,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="112">
+          <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">        result = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="113">
             <span class="hits">25</span>
             
 
             
 
-            <code class="ruby">        result = {id: row[0],title: row[1], author: row[2], description: row[3],content: row[4], rate: row[5],</code>
+            <code class="ruby">            id: row[0],</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="113">
+          <li class="never" data-hits="" data-linenumber="114">
             
             
 
             
 
-            <code class="ruby">                                                   num_of_rate: row[6], date:row[7],tag1: row[8], tag2: row[9], tag3: row[10]}  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="25" data-linenumber="114">
-            <span class="hits">25</span>
-            
-
-            
-
-            <code class="ruby">        return result </code>
+            <code class="ruby">            title: row[1],</code>
           </li>
         </div>
       
@@ -9237,7 +9237,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">            author: row[2],</code>
           </li>
         </div>
       
@@ -9248,7 +9248,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">            description: row[3],</code>
           </li>
         </div>
       
@@ -9259,40 +9259,40 @@
 
             
 
-            <code class="ruby">    # Calculate new average rating of bookmark based of given rating</code>
+            <code class="ruby">            content: row[4],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="118">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="118">
+            
             
 
             
 
-            <code class="ruby">    def Bookmark.rate(rating_points, id, db)   </code>
+            <code class="ruby">            rate: row[5],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="119">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="119">
+            
             
 
             
 
-            <code class="ruby">       last_rate = Bookmark.find_rating(id,db)</code>
+            <code class="ruby">            num_of_rate: row[6],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="120">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="120">
+            
             
 
             
 
-            <code class="ruby">       last_num = Bookmark.find_num(id,db)</code>
+            <code class="ruby">            date:row[7],</code>
           </li>
         </div>
       
@@ -9303,51 +9303,51 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">            tag1: row[8],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="122">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="122">
+            
             
 
             
 
-            <code class="ruby">       current_num = last_num + 1</code>
+            <code class="ruby">            tag2: row[9],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="123">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="123">
+            
             
 
             
 
-            <code class="ruby">       current_rate = (last_rate * last_num + rating_points).to_f / current_num</code>
+            <code class="ruby">            tag3: row[10]}  </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="124">
-            
-            
-
+          <li class="covered" data-hits="25" data-linenumber="124">
+            <span class="hits">25</span>
             
 
-            <code class="ruby">       </code>
+            
+
+            <code class="ruby">        return result </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="125">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="125">
+            
             
 
             
 
-            <code class="ruby">       result = &#39;%.2f&#39; % current_rate</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -9358,18 +9358,18 @@
 
             
 
-            <code class="ruby">       </code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="127">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="127">
+            
             
 
             
 
-            <code class="ruby">       query = &quot;UPDATE bookmark SET rating=? WHERE bookmark_id=?;&quot;</code>
+            <code class="ruby">    # Calculate new average rating of bookmark based of given rating</code>
           </li>
         </div>
       
@@ -9380,18 +9380,18 @@
 
             
 
-            <code class="ruby">       rows = db.execute query, result,id</code>
+            <code class="ruby">    def Bookmark.rate(rating_points, id, db)   </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="129">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="129">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">       </code>
+            
+
+            <code class="ruby">       last_rate = Bookmark.find_rating(id,db)</code>
           </li>
         </div>
       
@@ -9402,815 +9402,12 @@
 
             
 
-            <code class="ruby">       query = &quot;UPDATE bookmark SET num_of_ratings=? WHERE bookmark_id=?;&quot;</code>
+            <code class="ruby">       last_num = Bookmark.find_num(id,db)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="131">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       rows = db.execute query, current_num,id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="132">
-            
-            
-
-            
-
-            <code class="ruby">   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="133">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="134">
-            
-            
-
-            
-
-            <code class="ruby">   # Return the rating of the bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="135">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">   def Bookmark.find_rating(id, db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="136">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;SELECT rating FROM bookmark WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="137">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       rows = db.execute query, id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="138">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       row = rows[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="139">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       return row[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="140">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="141">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="142">
-            
-            
-
-            
-
-            <code class="ruby">    # Return number of ratings of bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="143">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.find_num(id, db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="144">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT num_of_ratings FROM bookmark WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="145">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        rows=db.execute query, id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="146">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        row=rows[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="147">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        return row[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="148">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="149">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="150">
-            
-            
-
-            
-
-            <code class="ruby">    # Delete bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="151">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.delete(id,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="152">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;DELETE FROM bookmark WHERE bookmark_id=?&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="153">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        result=db.execute query, id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="154">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="155">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="156">
-            
-            
-
-            
-
-            <code class="ruby">    # Return true if bookmark title already taken</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="157">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.duplicate(title,db)   </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="158">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;SELECT title FROM bookmark;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="159">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       rows=db.execute query  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="160">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="13" data-linenumber="161">
-            <span class="hits">13</span>
-            
-
-            
-
-            <code class="ruby">          if row[0].upcase==title.upcase</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="162">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">              return true  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="163">
-            
-            
-
-            
-
-            <code class="ruby">          end          </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="164">
-            
-            
-
-            
-
-            <code class="ruby">       end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="165">
-            
-            
-
-            
-
-            <code class="ruby">       </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="166">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">      return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="167">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="168">
-            
-            
-
-            
-
-            <code class="ruby">    #return true if change duplicate </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="169">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.change_to_duplicate(title,id,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="170">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">       found=Bookmark.find_one(id, db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="171">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;SELECT title FROM bookmark;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="172">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">       rows=db.execute query  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="173">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">       rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="174">
-            <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">          if row[0]!=found[:title]&amp;&amp;row[0]==title </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="175">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">              return true  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="176">
-            
-            
-
-            
-
-            <code class="ruby">          end          </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="177">
-            
-            
-
-            
-
-            <code class="ruby">       end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="178">
-            
-            
-
-            
-
-            <code class="ruby">       </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="179">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="180">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="181">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="182">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="183">
-            
-            
-
-            
-
-            <code class="ruby">    # Return bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="184">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.find_my_bookmark(id, db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="185">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">        result = []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="186">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">        query = &quot;SELECT bookmark_id,title,date_created  FROM bookmark  WHERE author_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="187">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query,id </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="188">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">        rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="189">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">         result.push({id: row[0],title: row[1], date:row[2]})  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="190">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="191">
-            <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">        return result </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="192">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="193">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="194">
-            
-            
-
-            
-
-            <code class="ruby">    # Change bookmark&#39;s id, title, author, description, content, date and tags to given values</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="195">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="196">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="197">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;UPDATE bookmark SET title=?, author=?, description=?,content=?,date_created=?,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="198">
-            
-            
-
-            
-
-            <code class="ruby">                                bookmark_tag_one=?,bookmark_tag_two=?,bookmark_tag_three=? WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="199">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       result=db.execute query, title,author,description,content,date,tag1,tag2,tag3,id  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="200">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="201">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="202">
-            
-            
-
-            
-
-            <code class="ruby">    #check if the bookmark has been changed</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="203">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.not_change(id,title ,author,description,content,tag1,tag2,tag3,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="204">
+          <li class="never" data-hits="" data-linenumber="131">
             
             
 
@@ -10221,24 +9418,827 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="205">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="1" data-linenumber="132">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        found=Bookmark.find_one(id, db)</code>
+            <code class="ruby">       current_num = last_num + 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="206">
+          <li class="covered" data-hits="1" data-linenumber="133">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       current_rate = (last_rate * last_num + rating_points).to_f / current_num</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="135">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       result = &#39;%.2f&#39; % current_rate</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="136">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="137">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query = &quot;UPDATE bookmark SET rating=? WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="138">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       rows = db.execute query, result,id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="139">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="140">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query = &quot;UPDATE bookmark SET num_of_ratings=? WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="141">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       rows = db.execute query, current_num,id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="142">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="143">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="144">
+            
+            
+
+            
+
+            <code class="ruby">   # Return the rating of the bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="145">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def Bookmark.find_rating(id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="146">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;SELECT rating FROM bookmark WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="147">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       rows = db.execute query, id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="148">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       row = rows[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="149">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       return row[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="150">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="151">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="152">
+            
+            
+
+            
+
+            <code class="ruby">    # Return number of ratings of bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="153">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.find_num(id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="154">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        query = &quot;SELECT num_of_ratings FROM bookmark WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="155">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query, id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="156">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        row = rows[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="157">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        return row[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="158">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="159">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="160">
+            
+            
+
+            
+
+            <code class="ruby">    # Delete bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="161">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.delete(id,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="162">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        query = &quot;DELETE FROM bookmark WHERE bookmark_id=?&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="163">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        result =db.execute query, id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="164">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="165">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="166">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if bookmark title already taken</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="167">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.duplicate(title, db)   </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="168">
             <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">        if(title==found[:title]&amp;&amp;author==found[:author]&amp;&amp;</code>
+            <code class="ruby">       query = &quot;SELECT title FROM bookmark;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="169">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">       rows = db.execute query </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="170">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">       rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="13" data-linenumber="171">
+            <span class="hits">13</span>
+            
+
+            
+
+            <code class="ruby">          if row[0].upcase == title.upcase</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="172">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">              return true  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="173">
+            
+            
+
+            
+
+            <code class="ruby">          end          </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="174">
+            
+            
+
+            
+
+            <code class="ruby">       end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="175">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="176">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="177">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="178">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="179">
+            
+            
+
+            
+
+            <code class="ruby"> </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="180">
+            
+            
+
+            
+
+            <code class="ruby">    #Returns true if a bookmark with the given title is already in the db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="181">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.change_to_duplicate(title, id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="182">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="183">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        found = Bookmark.find_one(id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="184">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        query = &quot;SELECT title FROM bookmark;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="185">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="186">
+            
+            
+
+            
+
+            <code class="ruby">        # Bookmarks currently in the db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="187">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="188">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="189">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="190">
+            
+            
+
+            
+
+            <code class="ruby">          # If a bookmark with the given title already exists, return true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="191">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">          if row[0] != found[:title] &amp;&amp; row[0] == title </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="192">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">              return true  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="193">
+            
+            
+
+            
+
+            <code class="ruby">          end          </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="194">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="195">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="196">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="197">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="198">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="199">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="200">
+            
+            
+
+            
+
+            <code class="ruby">    # Return bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="201">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.find_my_bookmark(id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="202">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="203">
+            <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">        result = []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="204">
+            <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">        query = &quot;SELECT bookmark_id, title, date_created FROM bookmark WHERE author_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="205">
+            <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query,id </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="206">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
           </li>
         </div>
       
@@ -10249,29 +10249,29 @@
 
             
 
-            <code class="ruby">               description==found[:description]&amp;&amp;content==found[:content]&amp;&amp;</code>
+            <code class="ruby">        # Add each row to result</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="208">
-            
-            
-
+          <li class="covered" data-hits="8" data-linenumber="208">
+            <span class="hits">8</span>
             
 
-            <code class="ruby">                 tag1==found[:tag1]&amp;&amp;tag2==found[:tag2]&amp;&amp;tag3==found[:tag3])</code>
+            
+
+            <code class="ruby">        rows.each do |row|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="209">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="8" data-linenumber="209">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">          return true</code>
+            <code class="ruby">            result.push({id: row[0], title: row[1], date:row[2]})  </code>
           </li>
         </div>
       
@@ -10287,13 +10287,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="211">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="8" data-linenumber="211">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">        return false</code>
+            <code class="ruby">        return result </code>
           </li>
         </div>
       
@@ -10326,7 +10326,7 @@
 
             
 
-            <code class="ruby">    # Return true if login id is author of bookmark with given bookmark id</code>
+            <code class="ruby">    # Change bookmark&#39;s id, title, author, description, content, date and tags to given values</code>
           </li>
         </div>
       
@@ -10337,837 +10337,45 @@
 
             
 
-            <code class="ruby">    def Bookmark.own_bookmark(id_bm,id_login, db)</code>
+            <code class="ruby">    def Bookmark.update(id,title ,author,description,content,date,tag1,tag2,tag3,db)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="216">
-            <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="216">
+            
             
 
             
 
-            <code class="ruby">       query= &quot;SELECT author_id FROM bookmark WHERE bookmark_id=?;&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="217">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       rows = db.execute query, id_bm</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="218">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">       row = rows[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="219">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">        if row[0]==id_login</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="220">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">            return true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="221">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="222">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="223">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="224">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="225">
-            
-            
-
-            
-
-            <code class="ruby">    # Add comment to bookmark of given id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="226">
+          <li class="covered" data-hits="1" data-linenumber="217">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def Bookmark.add_comment(id_bm,title,author,content,date,db)</code>
+            <code class="ruby">       query= &quot;UPDATE bookmark SET title=?, author=?, description=?,content=?,date_created=?,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="227">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="218">
             
-
-            
-
-            <code class="ruby">       query= &quot;INSERT INTO comment(title,content,author,date_created,bookmark_id) </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="228">
-            
-            
-
-            
-
-            <code class="ruby">                                                                      VALUES(?,?,?,?,?)&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="229">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       result = db.execute query, title, content, author,date, id_bm</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="230">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="231">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="232">
-            
-            
-
-            
-
-            <code class="ruby">    # Return total number of comments for bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="233">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.number_of_comments(id_bm,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="234">
-            <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT COUNT(*) FROM comment WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="235">
-            <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query, id_bm</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="236">
-            <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">        row=rows[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="237">
-            <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">        return row[0]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="238">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="239">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="240">
-            
-            
-
-            
-
-            <code class="ruby">    # Returns comments for bookmark with given ID</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="241">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.find_comments(id_bm,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="242">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        result=[]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="243">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="244">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query,id_bm    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="245">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="246">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="247">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="248">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="249">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        return result</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="250">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="251">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="252">
-            
-            
-
-            
-
-            <code class="ruby">    # Return all tags in database</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="253">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.find_tags(db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="254">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        result=[]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="255">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        query= &quot;SELECT tag FROM tag;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="256">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        rows = db.execute query </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="257">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="67" data-linenumber="258">
-            <span class="hits">67</span>
-            
-
-            
-
-            <code class="ruby">            result.push({name: row[0]})</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="259">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="19" data-linenumber="260">
-            <span class="hits">19</span>
-            
-
-            
-
-            <code class="ruby">        return result</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="261">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="262">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="263">
-            
-            
-
-            
-
-            <code class="ruby">    # Return true if bookmark does not have the same tag more than once</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="264">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.same_tag(tag1, tag2, tag3, db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="265">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">     if(tag1 != tag2 &amp;&amp; tag1 != tag3 &amp;&amp; tag2 != tag3) ||</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="266">
-            
-            
-
-            
-
-            <code class="ruby">       (!tag1 &amp;&amp; !tag2 &amp;&amp; !tag3) || (</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="267">
-            
-            
-
-            
-
-            <code class="ruby">       (!tag1 &amp;&amp; !tag3) ||</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="268">
-            
-            
-
-            
-
-            <code class="ruby">       (!tag2 &amp;&amp; !tag3) ||</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="269">
-            
-            
-
-            
-
-            <code class="ruby">       (!tag2 &amp;&amp; !tag1))</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="270">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">         return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="271">
-            
-            
-
-            
-
-            <code class="ruby">     else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="272">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">         return true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="273">
-            
-            
-
-            
-
-            <code class="ruby">     end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="274">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="275">
-            
-            
-
-            
-
-            <code class="ruby">     </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="276">
-            
-            
-
-            
-
-            <code class="ruby">    # Create tag</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="277">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.create_tag(tag,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="278">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;INSERT INTO tag(tag) VALUES(?)&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="279">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">       result = db.execute query, tag  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="280">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="281">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="282">
-            
-            
-
-            
-
-            <code class="ruby">    # Return true if tag is already in db</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="283">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def Bookmark.duplicate_tag(tag,db)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="284">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">       query= &quot;SELECT tag FROM tag;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="285">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">       rows=db.execute query  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="286">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">       rows.each do |row|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="287">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">          if row[0].upcase==tag.upcase</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="288">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">              return true  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="289">
-            
-            
-
-            
-
-            <code class="ruby">          end          </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="290">
-            
             
 
             
 
-            <code class="ruby">       end</code>
+            <code class="ruby">                                bookmark_tag_one=?,bookmark_tag_two=?,bookmark_tag_three=? WHERE bookmark_id=?;&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="291">
+          <li class="never" data-hits="" data-linenumber="219">
             
             
 
@@ -11178,18 +10386,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="292">
+          <li class="covered" data-hits="1" data-linenumber="220">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      return false</code>
+            <code class="ruby">        result = db.execute query, title, author, description, content, date, tag1, tag2, tag3, id  </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="293">
+          <li class="never" data-hits="" data-linenumber="221">
             
             
 
@@ -11200,7 +10408,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="294">
+          <li class="never" data-hits="" data-linenumber="222">
             
             
 
@@ -11211,7 +10419,1118 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="223">
+            
+            
+
+            
+
+            <code class="ruby">    # Checks if the bookmark has been changed</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="224">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.not_change(id, title, author, description, content, tag1, tag2, tag3, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="225">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="226">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        found=Bookmark.find_one(id, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="227">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="228">
+            
+            
+
+            
+
+            <code class="ruby">        # If given bookmark details match bookmark in db return true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="229">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        if( title == found[:title] &amp;&amp;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="230">
+            
+            
+
+            
+
+            <code class="ruby">            author == found[:author] &amp;&amp;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="231">
+            
+            
+
+            
+
+            <code class="ruby">            description==found[:description] &amp;&amp; </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="232">
+            
+            
+
+            
+
+            <code class="ruby">            content==found[:content] &amp;&amp;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="233">
+            
+            
+
+            
+
+            <code class="ruby">            tag1==found[:tag1] &amp;&amp;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="234">
+            
+            
+
+            
+
+            <code class="ruby">            tag2 == found[:tag2] &amp;&amp;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="235">
+            
+            
+
+            
+
+            <code class="ruby">            tag3==found[:tag3])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="236">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            return true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="237">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="238">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="239">
+            
+            
+
+            
+
+            <code class="ruby">        # Otherwise, return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="240">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="241">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="242">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="243">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if login id is author of bookmark with given bookmark id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="244">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.own_bookmark(id_bm,id_login, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="245">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;SELECT author_id FROM bookmark WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="246">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">       rows = db.execute query, id_bm</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="247">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">       row = rows[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="248">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        if row[0]==id_login</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="249">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">            return true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="250">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="251">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="252">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="253">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="254">
+            
+            
+
+            
+
+            <code class="ruby">    # Add comment to bookmark of given id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="255">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.add_comment(id_bm,title,author,content,date,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="256">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;INSERT INTO comment(title,content,author,date_created,bookmark_id) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="257">
+            
+            
+
+            
+
+            <code class="ruby">                                                                      VALUES(?,?,?,?,?)&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="258">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       result = db.execute query, title, content, author,date, id_bm</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="259">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="260">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="261">
+            
+            
+
+            
+
+            <code class="ruby">    # Return total number of comments for bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="262">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.number_of_comments(id_bm,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="263">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        query= &quot;SELECT COUNT(*) FROM comment WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="264">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query, id_bm</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="265">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        row=rows[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="266">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        return row[0]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="267">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="268">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="269">
+            
+            
+
+            
+
+            <code class="ruby">    # Returns comments for bookmark with given ID</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="270">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.find_comments(id_bm,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="271">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        result=[]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="272">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        query= &quot;SELECT title, content,author,date_created FROM comment WHERE bookmark_id=?;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="273">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query,id_bm    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="274">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="275">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">            result.push({title: row[0], content: row[1], author: row[2], date: row[3]})</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="276">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="277">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="278">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        return result</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="279">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="280">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="281">
+            
+            
+
+            
+
+            <code class="ruby">    # Return all tags in database</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="282">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.find_tags(db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="283">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        result=[]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="284">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        query= &quot;SELECT tag FROM tag;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="285">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        rows = db.execute query </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="286">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="67" data-linenumber="287">
+            <span class="hits">67</span>
+            
+
+            
+
+            <code class="ruby">            result.push({name: row[0]})</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="288">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="19" data-linenumber="289">
+            <span class="hits">19</span>
+            
+
+            
+
+            <code class="ruby">        return result</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="290">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="291">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="292">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if bookmark does not have the same tag more than once</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="293">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.same_tag(tag1, tag2, tag3, db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="294">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">     if(tag1 != tag2 &amp;&amp; tag1 != tag3 &amp;&amp; tag2 != tag3) ||</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="295">
+            
+            
+
+            
+
+            <code class="ruby">       (!tag1 &amp;&amp; !tag2 &amp;&amp; !tag3) || (</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="296">
+            
+            
+
+            
+
+            <code class="ruby">       (!tag1 &amp;&amp; !tag3) ||</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="297">
+            
+            
+
+            
+
+            <code class="ruby">       (!tag2 &amp;&amp; !tag3) ||</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="298">
+            
+            
+
+            
+
+            <code class="ruby">       (!tag2 &amp;&amp; !tag1))</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="299">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">         return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="300">
+            
+            
+
+            
+
+            <code class="ruby">     else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="301">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">         return true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="302">
+            
+            
+
+            
+
+            <code class="ruby">     end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="303">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="304">
+            
+            
+
+            
+
+            <code class="ruby">     </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="305">
+            
+            
+
+            
+
+            <code class="ruby">    # Create tag</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="306">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.create_tag(tag,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="307">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;INSERT INTO tag(tag) VALUES(?)&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="308">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">       result = db.execute query, tag  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="309">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="310">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="311">
+            
+            
+
+            
+
+            <code class="ruby">    # Return true if tag is already in db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="312">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def Bookmark.duplicate_tag(tag,db)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="313">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       query= &quot;SELECT tag FROM tag;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="314">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       rows=db.execute query  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="315">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">       rows.each do |row|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="316">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">          if row[0].upcase==tag.upcase</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="317">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">              return true  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="318">
+            
+            
+
+            
+
+            <code class="ruby">          end          </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="319">
+            
+            
+
+            
+
+            <code class="ruby">       end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="320">
+            
+            
+
+            
+
+            <code class="ruby">       </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="321">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      return false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="322">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="323">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="324">
             
             
 
