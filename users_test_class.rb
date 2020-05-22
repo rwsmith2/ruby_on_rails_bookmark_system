@@ -169,6 +169,9 @@ class TestStringComparison < Minitest::Test
     # Compares methods returned hash value by outputting method to console and checking this output
     # (assert_equal currently not working for hash values)
     def test_find_requests
+        # Returns test data to original form (incase a previous test did not delete it)
+          query= "DELETE FROM comment WHERE comment_id>=?"
+          result=$db.execute query, 2
         
         assert_output(/{:id=>1, :username=>\"role1\", :content=>\"test\", :read=>1}/, '') do
              setup_test_find_requests;       
