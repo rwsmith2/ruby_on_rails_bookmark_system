@@ -122,8 +122,10 @@ table {
       border: 1px solid rgb(48,48,48);
       width: 98%;
       margin: 0 1% 1em 1%;
-      table-layout: fixed
     }
+#table_custom {
+    table-layout: fixed
+}
 th, td {
     padding: 8px;
     text-align: left;
